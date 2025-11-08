@@ -2984,13 +2984,13 @@
 	)
 	(wire
 		(pts
-			(xy 130.81 120.65) (xy 113.03 120.65)
+			(xy 120.65 72.39) (xy 113.03 72.39)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "299a36b5-dd4f-4300-800b-4826513e62a0")
+		(uuid "298f8d04-bc51-41b3-a344-4c5feaff4857")
 	)
 	(wire
 		(pts
@@ -3104,13 +3104,13 @@
 	)
 	(wire
 		(pts
-			(xy 130.81 118.11) (xy 113.03 118.11)
+			(xy 120.65 74.93) (xy 113.03 74.93)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "55c9e4d2-f99c-478c-9952-c983f039ff03")
+		(uuid "54123a6c-2527-4bae-a61a-cf1ab165c5cd")
 	)
 	(wire
 		(pts
@@ -3362,7 +3362,7 @@
 		)
 		(uuid "fd784ba6-ff44-4fd8-a248-f2106970baa8")
 	)
-	(label "GPIO_16"
+	(label "GPIO_4"
 		(at 162.56 127 180)
 		(effects
 			(font
@@ -3372,7 +3372,7 @@
 		)
 		(uuid "15c493ac-0d6a-4a45-a42b-c49cc3903052")
 	)
-	(label "GPIO_17"
+	(label "GPIO_5"
 		(at 161.29 66.04 180)
 		(effects
 			(font
@@ -3392,8 +3392,8 @@
 		)
 		(uuid "3d5bbe54-cd05-495b-ac77-b22cf815d060")
 	)
-	(label "GPIO_16"
-		(at 130.81 118.11 0)
+	(label "GPIO_4"
+		(at 120.65 72.39 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3412,8 +3412,8 @@
 		)
 		(uuid "69c86462-24c9-4272-857a-d83d8e79259d")
 	)
-	(label "GPIO_17"
-		(at 130.81 120.65 0)
+	(label "GPIO_5"
+		(at 120.65 74.93 0)
 		(effects
 			(font
 				(size 1.27 1.27)
