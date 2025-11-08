@@ -2,7 +2,7 @@
 // Conectar: DATA (pin 3 del AC) -> divisor 5V->2.5V -> GPIO dataPin
 // GND común: GND AC <-> GND ESP32
 
-const int dataPin = 27;               // GPIO conectado (después del divisor)
+const int dataPin = 4;               // GPIO conectado (después del divisor)
 const int MAX_PULSOS = 5000;          // Máximo de transiciones por trama
 const unsigned long GAP = 10000;      // 10 ms sin cambios => fin de trama (en microsegundos)
 const unsigned long MIN_PULSO = 500;  // Ignorar pulsos < 500 us (ruido)
@@ -20,7 +20,7 @@ void setup() {
   lastState = digitalRead(dataPin);
   lastTime = micros();
 
-  Serial.println("=== Sniffer iniciado (MIN_PULSO=500us, GAP=8000us) ===");
+  Serial.printf("=== Sniffer iniciado (MIN_PULSO=%dus, GAP=%dus) ===\n", MIN_PULSO, GAP);
 }
 
 void loop() {
