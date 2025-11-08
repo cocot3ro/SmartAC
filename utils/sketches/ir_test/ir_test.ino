@@ -1,5 +1,5 @@
 // ==== Configuración básica ====
-#define IR_LED 25           // GPIO que controla el transistor
+#define IR_LED 5           // GPIO que controla el transistor
 #define CARRIER_FREQ 38000  // Frecuencia de portadora (38 kHz)
 #define PERIOD_US (1000000 / CARRIER_FREQ)  // Periodo de la portadora (~26 µs)
 #define HALF_PERIOD_US (PERIOD_US / 2)      // Semiperiodo (~13 µs)
