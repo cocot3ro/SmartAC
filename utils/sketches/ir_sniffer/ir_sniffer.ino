@@ -8,7 +8,7 @@
 //   - MIN_PULSO = 350us
 //   - GAP = 100000us (100ms en HIGH => fin de trama)
 
-const int dataPin = 32;              // GPIO del receptor IR
+const int dataPin = 27;              // GPIO del receptor IR
 const int MAX_PULSOS = 1000;         // Máximo de transiciones por trama
 const unsigned long GAP = 100000;    // 100 ms sin cambios => fin de trama
 const unsigned long MIN_PULSO = 350; // Ignorar pulsos < 350 us (ruido)

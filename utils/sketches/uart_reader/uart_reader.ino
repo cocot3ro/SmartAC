@@ -13,7 +13,7 @@ const uint8_t SYNC_BYTE = 0xAA;
 int ok_counter = 0;
 int fail_counter = 0;
 
-uint8_t buffer[128];
+uint8_t buffer[64];
 int bufPos = 0;
 
 uint8_t compute_checksum(const uint8_t *data, int len) {

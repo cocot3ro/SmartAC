@@ -203,7 +203,7 @@ data class DisplaySignal(
         }
     }
 
-    fun Int.toHex() = this.toString(16).uppercase().padStart(2, '0')
+    private fun Int.toHex() = this.toString(16).uppercase().padStart(2, '0')
 
     companion object {
 
