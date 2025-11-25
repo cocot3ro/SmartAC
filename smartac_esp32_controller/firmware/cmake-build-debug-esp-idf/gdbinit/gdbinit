@@ -1,2 +1,0 @@
-source /mnt/SSD-RAID/Repos/SmartAC/smartac_esp32_controller/cmake-build-debug-esp-idf/gdbinit/symbols
-source /mnt/SSD-RAID/Repos/SmartAC/smartac_esp32_controller/cmake-build-debug-esp-idf/gdbinit/connect

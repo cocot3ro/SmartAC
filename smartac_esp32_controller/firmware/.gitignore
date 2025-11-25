@@ -1,0 +1,5 @@
+./cmake-build-debug-esp-idf
+./build
+sdkconfig
+sdkconfig.old
+main/secrets.h
