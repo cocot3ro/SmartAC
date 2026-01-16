@@ -1,3 +1,4 @@
+#include <cstring>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_log.h"
@@ -28,7 +29,7 @@ void irSendTask(void *pv) {
 
     while (true) {
         if (xQueueReceive(displayFrameQueue, &frame, portMAX_DELAY) == pdTRUE) {
-            MqttManager::publishStatus(frame, DISPLAY_FRAME_SIZE);
+            MqttManager::publishState(frame, DISPLAY_FRAME_SIZE);
         }
     }
 }
