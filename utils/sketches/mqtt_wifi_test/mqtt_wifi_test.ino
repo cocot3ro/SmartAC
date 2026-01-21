@@ -10,7 +10,7 @@ const char* password = "rUnPtUyf$JeAqaKn%bU963%8%KBq3c!c7Pe*XXjbuzeG%fep8H";
 // ----------------------
 // MQTT
 // ----------------------
-const char* mqtt_server = "raspberry.local";
+const char* mqtt_server = "raspberry.lan";
 const int mqtt_port = 1883;
 const char* mqtt_user = "";
 const char* mqtt_pass = "";
@@ -97,9 +97,3 @@ void loop() {
     client.publish("ac/status", "ESP32 activo");
   }
 }
-
-
-
-
-
-
