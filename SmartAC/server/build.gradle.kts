@@ -1,9 +1,10 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.kotlinJvm)
     alias(libs.plugins.ktor)
     application
     alias(libs.plugins.kotlin.plugin.serialization)
-    alias(libs.plugins.ksp)
 }
 
 group = "dev.cocot3ro.smartac"
@@ -26,9 +27,8 @@ dependencies {
 
     implementation(libs.hivemq.mqtt.client)
 
-    api(libs.koin.annotations)
-    ksp(libs.koin.ksp.compiler)
-
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.testJunit)
+
+    implementation(libs.kotlinx.datetime)
 }

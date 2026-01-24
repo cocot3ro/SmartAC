@@ -7,28 +7,53 @@ class Api {
 
     companion object : ResourceRoute {
         const val PATH: String = "/api"
-
         override fun getRoute(): String = PATH
     }
 
-    @Resource(Ac.PATH)
-    data class Ac(val parent: Api = Api()) {
-
+    @Resource(State.PATH)
+    data class State(val parent: Api = Api()) {
         companion object : ResourceRoute {
+            const val PATH: String = "state"
+            override fun getRoute(): String = "${Api.getRoute()}/$PATH"
+        }
+    }
 
-            const val PATH: String = "ac"
-
+    @Resource(Control.PATH)
+    data class Control(val parent: Api = Api()) {
+        companion object : ResourceRoute {
+            const val PATH: String = "control"
             override fun getRoute(): String = "${Api.getRoute()}/$PATH"
         }
 
-
-        @Resource("status")
-        data class Status(val parent: Ac = Ac()) {
-
+        @Resource(Power.PATH)
+        data class Power(val parent: Control = Control()) {
             companion object : ResourceRoute {
-                const val PATH: String = "status"
+                const val PATH: String = "power"
+                override fun getRoute(): String = "${Control.getRoute()}/$PATH"
+            }
+        }
 
-                override fun getRoute(): String = "${Ac.getRoute()}/$PATH"
+        @Resource(Mode.PATH)
+        data class Mode(val parent: Control = Control()) {
+            companion object : ResourceRoute {
+                const val PATH: String = "mode"
+                override fun getRoute(): String = "${Control.getRoute()}/$PATH"
+            }
+        }
+
+        @Resource(Temperature.PATH)
+        data class Temperature(val parent: Control = Control()) {
+            companion object : ResourceRoute {
+                const val PATH: String = "temperature"
+                override fun getRoute(): String = "${Control.getRoute()}/$PATH"
+            }
+        }
+
+        @Resource(FanSpeed.PATH)
+        data class FanSpeed(val parent: Control = Control()) {
+            companion object : ResourceRoute {
+                const val PATH: String = "fanSpeed"
+                override fun getRoute(): String = "${Control.getRoute()}/$PATH"
             }
         }
     }

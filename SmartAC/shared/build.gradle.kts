@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlin.plugin.serialization)
+
+    alias(libs.plugins.ksp)
 }
 
 kotlin {
@@ -12,15 +14,16 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     jvm()
-    
+
     sourceSets {
         commonMain.dependencies {
             // put your Multiplatform dependencies here
             implementation(project.dependencies.platform(libs.ktor.bom))
             implementation(libs.ktor.server.resources)
         }
+
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }

@@ -1,5 +1,6 @@
 package dev.cocot3ro.smartac
 
+import dev.cocot3ro.smartac.network.mqtt.initMqtt
 import io.ktor.server.application.Application
 
 fun Application.module() {
@@ -9,4 +10,6 @@ fun Application.module() {
     configureMonitoring()
     configureSecurity()
     configureRouting()
+
+    initMqtt()
 }
