@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import org.koin.core.annotation.Provided
 import org.koin.core.annotation.Single
 
-@Single
+@Single(createdAtStart = true)
 class AppLifecycleObserver(
     @Provided private val connectUseCase: ConnectUseCase
 ) : DefaultLifecycleObserver {

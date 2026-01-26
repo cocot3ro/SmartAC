@@ -4,9 +4,10 @@ import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -25,7 +26,9 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import dev.cocot3ro.smartac.ui.theme.SmartAcTheme
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.min
@@ -35,7 +38,27 @@ private const val ANGLE: Float = 270f
 private const val ANGLE_HALF: Float = ANGLE * 0.5f
 private const val PI_180: Double = PI / 180f
 
-// TODO: Create a State and `rememberCircularTempIndicatorState` for loading, error, etc.
+@Preview
+@Composable
+private fun CircularTempIndicatorPreview() {
+    SmartAcTheme {
+        Surface {
+            CircularTempIndicator(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(1f),
+                stroke = 10f,
+                circleRadius = 32f,
+                minValue = 16f,
+                maxValue = 30f,
+                value = 23f,
+                progressColor = Color.White,
+                backgroundColor = Color.Gray
+            )
+        }
+    }
+}
+
 @Composable
 fun CircularTempIndicator(
     stroke: Float,
@@ -64,19 +87,12 @@ fun CircularTempIndicator(
         )
     )
 
-    val appliedAngle: Float = animatedValue * ANGLE
-
-    val offset = Offset(
-        x = radius * cos(x = (ANGLE_HALF + appliedAngle) * PI_180).toFloat(),
-        y = radius * sin(x = (ANGLE_HALF + appliedAngle) * PI_180).toFloat()
-    )
-
     Canvas(
         modifier = modifier
             .graphicsLayer {
                 compositingStrategy = CompositingStrategy.Offscreen
             }
-            .padding(top = 12.dp)
+            .padding(top = 10.dp, start = 10.dp, end = 10.dp)
             .onGloballyPositioned { coordinates: LayoutCoordinates ->
                 width = coordinates.size.width
                 height = coordinates.size.height
@@ -97,6 +113,11 @@ fun CircularTempIndicator(
             )
         )
 
+        // Don't draw progress if value is null
+        if (value == null) return@Canvas
+
+        val appliedAngle: Float = ANGLE * animatedValue
+
         drawArc(
             color = progressColor,
             startAngle = ANGLE_HALF,
@@ -110,17 +131,22 @@ fun CircularTempIndicator(
             )
         )
 
+        val centerOffset: Offset = center + Offset(
+            x = radius * cos(x = (ANGLE_HALF + appliedAngle) * PI_180).toFloat(),
+            y = radius * sin(x = (ANGLE_HALF + appliedAngle) * PI_180).toFloat()
+        )
+
         drawCircle(
             color = Color.Transparent,
             radius = circleRadius * 1.5f,
-            center = center + offset,
+            center = centerOffset,
             blendMode = BlendMode.Clear
         )
 
         drawCircle(
             color = progressColor,
             radius = circleRadius,
-            center = center + offset
+            center = centerOffset
         )
     }
 }

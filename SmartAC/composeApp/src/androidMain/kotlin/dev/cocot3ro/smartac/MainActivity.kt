@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import dev.cocot3ro.smartac.ui.App
+import dev.cocot3ro.smartac.ui.theme.SmartAcTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -23,7 +24,7 @@ class MainActivity : ComponentActivity() {
         )
 
         setContent {
-            MaterialTheme(colorScheme = dynamicDarkColorScheme(this)) {
+            SmartAcTheme {
                 App(modifier = Modifier.fillMaxSize())
             }
         }

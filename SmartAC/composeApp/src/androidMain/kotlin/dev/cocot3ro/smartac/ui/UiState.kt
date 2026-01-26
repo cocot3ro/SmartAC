@@ -12,9 +12,6 @@ sealed interface UiState {
     data object Loading : UiState
 
     @Immutable
-    data object Connecting : UiState
-
-    @Immutable
     data object DeviceOffline : UiState
 
     @Immutable
