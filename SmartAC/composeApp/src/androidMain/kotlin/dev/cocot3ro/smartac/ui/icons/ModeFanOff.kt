@@ -1,4 +1,4 @@
-package dev.cocot3ro.smartac.ui.theme
+package dev.cocot3ro.smartac.ui.icons
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.ui.graphics.Color
@@ -11,7 +11,7 @@ import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
 
-public val Icons.ModeFanOff: ImageVector by lazy {
+val Icons.ModeFanOff: ImageVector by lazy {
     Builder(
         name = "ModeFanOff24dpE3e3e3Fill0Wght400Grad0Opsz24",
         defaultWidth = 24.0.dp,

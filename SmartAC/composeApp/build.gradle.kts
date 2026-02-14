@@ -1,4 +1,3 @@
-import io.kotzilla.gradle.ext.KotzillaKeyGeneration
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -9,7 +8,7 @@ plugins {
 
     alias(libs.plugins.kotzilla)
     alias(libs.plugins.kotlin.plugin.serialization)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.koin.compiler)
 }
 
 kotlin {
@@ -44,7 +43,6 @@ kotlin {
 
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(libs.bundles.koin)
-            api(libs.koin.annotations)
 
             implementation(project.dependencies.platform(libs.ktor.bom))
             implementation(libs.bundles.ktor.client)
@@ -63,7 +61,7 @@ kotlin {
     }
 }
 
-val vName = "0.0.1"
+val vName = "1.0.0"
 val vCode: Int = vName.split('.')
     .map(String::toInt)
     .reduce { acc, i -> acc * 100 + i }
@@ -100,20 +98,9 @@ android {
 
 dependencies {
     debugImplementation(libs.ui.tooling)
-
-    kspCommonMainMetadata(libs.koin.ksp.compiler)
-    add("kspAndroid", libs.koin.ksp.compiler)
-}
-
-
-
-ksp {
-    arg("KOIN_CONFIG_CHECK", "true")
-    arg("KOIN_USE_COMPOSE_VIEWMODEL", "true")
 }
 
 kotzilla {
     versionName = vName
-    keyGeneration = KotzillaKeyGeneration.COMPOSE
     composeInstrumentation = true
 }

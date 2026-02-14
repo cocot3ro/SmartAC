@@ -162,7 +162,5 @@ fun MainSection(
                 }
             }
         }
-
-
     }
 }

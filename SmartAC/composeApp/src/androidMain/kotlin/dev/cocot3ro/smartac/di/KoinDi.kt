@@ -7,8 +7,7 @@ import org.koin.core.annotation.KoinApplication
         UiModule::class,
         AppModule::class,
         UseCaseModule::class,
-        NetworkModule::class,
-        DatastoreModule::class
+        NetworkModule::class
     ]
 )
 object KoinDi

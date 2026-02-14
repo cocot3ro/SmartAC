@@ -3,30 +3,29 @@ agp = "8.13.2"
 android-compileSdk = "36"
 android-minSdk = "33"
 android-targetSdk = "36"
-androidx-activity = "1.12.2"
+androidx-activity = "1.12.4"
 androidx-appcompat = "1.7.1"
 androidx-core = "1.17.0"
 androidx-espresso = "3.7.0"
 androidx-lifecycle = "2.9.6"
 androidx-testExt = "1.3.0"
-componentsResources = "1.10.0"
-composeMultiplatform = "1.10.0"
-foundation = "1.10.0"
+componentsResources = "1.10.1"
+composeMultiplatform = "1.10.1"
+foundation = "1.10.1"
 hivemqMqttClient = "1.3.12"
 junit = "4.13.2"
-kotlin = "2.3.0"
+kotlin = "2.3.10"
 ktor = "3.4.0"
-logback = "1.5.25"
-koin = "4.1.1"
-koin-annotations = "2.3.1"
-ksp = "2.3.3"
+logback = "1.5.29"
+koin = "4.2.0-RC1"
+koin-plugin = "0.3.0"
 datetime = "0.7.1"
-kotzilla = "1.4.2"
+kotzilla = "2.0.4"
 lifecycleProcess = "2.10.0"
 datastore = "1.2.0"
-androidx-material3 = "1.5.0-alpha12"
+androidx-material3 = "1.5.0-alpha14"
 materialIconsExtended = "1.7.3"
-compose = "1.10.0"
+compose = "1.10.1"
 material3 = "1.9.0"
 
 [libraries]
@@ -60,6 +59,7 @@ ktor-server-call-logging = { module = "io.ktor:ktor-server-call-logging" }
 ktor-server-resources = { module = "io.ktor:ktor-server-resources" }
 ktor-server-auth = { module = "io.ktor:ktor-server-auth" }
 ktor-server-test-host = { module = "io.ktor:ktor-server-test-host-jvm" }
+ktor-client-auth = { module = "io.ktor:ktor-client-auth" }
 ktor-client-core = { module = "io.ktor:ktor-client-core" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp" }
 ktor-client-logging = { module = "io.ktor:ktor-client-logging" }
@@ -76,8 +76,7 @@ koin-android = { group = "io.insert-koin", name = "koin-android" }
 koin-compose = { group = "io.insert-koin", name = "koin-compose" }
 koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel" }
 
-koin-annotations = { group = "io.insert-koin", name = "koin-annotations", version.ref = "koin-annotations" }
-koin-ksp-compiler = { group = "io.insert-koin", name = "koin-ksp-compiler", version.ref = "koin-annotations" }
+koin-annotations = { group = "io.insert-koin", name = "koin-annotations" }
 
 hivemq-mqtt-client = { module = "com.hivemq:hivemq-mqtt-client", version.ref = "hivemqMqttClient" }
 
@@ -102,7 +101,7 @@ ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotzilla = { id = "io.kotzilla.kotzilla-plugin", version.ref = "kotzilla" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+koin-compiler = { id = "io.insert-koin.compiler.plugin", version.ref = "koin-plugin" }
 
 
 [bundles]
@@ -119,6 +118,7 @@ ktor-server = [
 
 ktor-client = [
     "ktor-serialization-kotlinx-json",
+    "ktor-client-auth",
     "ktor-client-core",
     "ktor-client-okhttp",
     "ktor-client-logging",
@@ -135,5 +135,6 @@ koin-server = [
 koin = [
     "koin-core",
     "koin-compose",
-    "koin-compose-viewmodel"
+    "koin-compose-viewmodel",
+    "koin-annotations"
 ]

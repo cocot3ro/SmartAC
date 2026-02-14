@@ -1,14 +1,13 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.kotlinJvm)
     alias(libs.plugins.ktor)
     application
     alias(libs.plugins.kotlin.plugin.serialization)
+    alias(libs.plugins.koin.compiler)
 }
 
 group = "dev.cocot3ro.smartac"
-version = "0.0.1"
+version = "1.0.0"
 
 application {
     mainClass = "io.ktor.server.netty.EngineMain"

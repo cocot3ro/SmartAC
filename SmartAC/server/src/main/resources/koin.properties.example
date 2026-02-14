@@ -1,3 +1,0 @@
-mqtt_client_id=mqtt_client_001
-mqtt_broker_host=broker.lan
-mqtt_broker_port=1883
