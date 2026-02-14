@@ -10,7 +10,7 @@ RUN gradle dependencies --no-daemon
 # Stage 2: Build Application
 FROM gradle:latest AS build
 COPY --from=cache /home/gradle/cache_home /home/gradle/.gradle
-COPY --chown=gradle:gradle . /home/gradle/src
+COPY --chown=gradle:gradle server /home/gradle/src
 WORKDIR /home/gradle/src
 # Build the fat JAR, Gradle also supports shadow
 # and boot JAR by default.
