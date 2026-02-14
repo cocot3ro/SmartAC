@@ -1,0 +1,31 @@
+import dev.cocot3ro.signalanalyzer.data.database.entity.SignalTypeEntity;
+import kotlin.Boolean;
+import kotlin.Int;
+import kotlin.collections.List;
+
+CREATE TABLE SignalEntity (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    type TEXT AS SignalTypeEntity NOT NULL,
+    name TEXT NOT NULL,
+    signalData TEXT AS List<Int> NOT NULL,
+    compare INTEGER AS Boolean NOT NULL
+);
+
+selectAll:
+SELECT * FROM SignalEntity;
+
+insert:
+INSERT INTO SignalEntity (type, name, signalData, compare)
+VALUES (?, ?, ?, ?);
+
+update:
+UPDATE SignalEntity SET name = ?, signalData = ?, compare = ? WHERE id = ?;
+
+deleteById:
+DELETE FROM SignalEntity WHERE id = ?;
+
+updateCompareAll:
+UPDATE SignalEntity SET compare = ?;
+
+deleteAll:
+DELETE FROM SignalEntity;

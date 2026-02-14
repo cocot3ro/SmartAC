@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SmartAC</string>
+    <string name="connecting">Connecting...</string>
+    <string name="unexpected_error">Unexpected Error</string>
+    <string name="connection_error">Connection Error</string>
+    <string name="connection_error_detail">Unable to connect to the server</string>
+</resources>
