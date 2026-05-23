@@ -1,4 +1,4 @@
-rootProject.name = "SmartAC"
+rootProject.name = "SmartAC-old"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
