@@ -51,6 +51,10 @@ kotlin {
             implementation(libs.bundles.koin.client)
 
             implementation(libs.ksafe)
+
+            implementation(libs.androidx.navigation3.runtime)
+            implementation(libs.androidx.navigation3.ui)
+            implementation(libs.androidx.lifecycle.viewmodel.navigation3)
         }
 
         commonTest.dependencies {
