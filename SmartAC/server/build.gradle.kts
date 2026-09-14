@@ -14,6 +14,7 @@ application {
 
 dependencies {
     api(projects.core)
+    implementation(projects.webAppShared)
 
     implementation(libs.logback.classic)
 
@@ -25,6 +26,8 @@ dependencies {
     implementation(ktorLibs.server.netty)
     implementation(ktorLibs.server.resources)
     implementation(ktorLibs.server.websockets)
+    implementation(ktorLibs.server.auth)
+    implementation(ktorLibs.server.cors)
 
     implementation(libs.ukemp.ktor.mqtt.core)
     implementation(libs.ukemp.ktor.mqtt.client)

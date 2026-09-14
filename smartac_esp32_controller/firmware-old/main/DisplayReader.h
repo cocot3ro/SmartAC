@@ -11,7 +11,7 @@ class DisplayReader {
 public:
     DisplayReader(uart_port_t uart_port, gpio_num_t rx_pin, int baud_rate);
 
-    [[noreturn]] void readLoop(QueueHandle_t frameQueue) const;
+    [[noreturn]] void readLoop(const QueueHandle_t *frameQueue) const;
 
 private:
     uart_port_t uart_port;

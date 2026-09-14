@@ -4,6 +4,8 @@ ktor:
   application:
     modules:
       - dev.cocot3ro.smartac.modules.SerializationKt.configureSerialization
+      - dev.cocot3ro.smartac.modules.CorsKt.configureCors
       - dev.cocot3ro.smartac.modules.ResourcesKt.configureResources
+      - dev.cocot3ro.smartac.modules.SecurityKt.configureSecurity
       - dev.cocot3ro.smartac.modules.WebsocketsKt.configureWebsockets
       - dev.cocot3ro.smartac.modules.RoutingKt.configureRouting

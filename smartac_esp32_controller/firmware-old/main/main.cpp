@@ -14,13 +14,13 @@ DisplayReader displayReader(UART_NUM_2, GPIO_NUM_4, 1200);
 QueueHandle_t displayFrameQueue = nullptr;
 
 [[noreturn]] void displayReaderTask(void *pv) {
-    displayReader.readLoop(displayFrameQueue);
+    displayReader.readLoop(&displayFrameQueue);
 }
 
 void irSendTask(void *pv) {
-    const uint8_t *frame = static_cast<uint8_t *>(pv);
+    auto *frame = static_cast<uint8_t *>(pv);
     irSender.sendIr(frame);
-    free((void *) frame);
+    free(frame);
     vTaskDelete(nullptr);
 }
 

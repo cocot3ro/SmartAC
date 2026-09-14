@@ -6,31 +6,31 @@ plugins {
 }
 
 kotlin {
+    iosArm64()
+    iosSimulatorArm64()
+    
     jvm()
-
+    
     android {
-        namespace = "dev.cocot3ro.smartac.core"
-        compileSdk = libs.versions.android.compileSdk.get().toInt()
-        minSdk = libs.versions.android.minSdk.get().toInt()
-
-        compilerOptions {
-            jvmTarget = JvmTarget.JVM_11
-        }
-
-        androidResources {
-            enable = true
-        }
-
-        withHostTest {
-            isIncludeAndroidResources = true
-        }
+       namespace = "dev.cocot3ro.smartac.core"
+       compileSdk = libs.versions.android.compileSdk.get().toInt()
+       minSdk = libs.versions.android.minSdk.get().toInt()
+    
+       compilerOptions {
+           jvmTarget = JvmTarget.JVM_11
+       }
+       androidResources {
+           enable = true
+       }
+       withHostTest {
+           isIncludeAndroidResources = true
+       }
     }
-
+    
     sourceSets {
         commonMain.dependencies {
             // put your Multiplatform dependencies here
         }
-
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }

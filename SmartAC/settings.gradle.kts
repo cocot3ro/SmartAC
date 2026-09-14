@@ -16,6 +16,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
@@ -33,7 +34,7 @@ dependencyResolutionManagement {
     }
 
     versionCatalogs {
-        create("ktorLibs").from("io.ktor:ktor-version-catalog:3.5.0")
+        create("ktorLibs").from("io.ktor:ktor-version-catalog:3.5.1")
     }
 }
 
@@ -41,3 +42,4 @@ include(":app:androidApp")
 include(":app:shared")
 include(":core")
 include(":server")
+include(":webApp-shared")

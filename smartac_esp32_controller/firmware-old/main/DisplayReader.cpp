@@ -31,7 +31,7 @@ DisplayReader::DisplayReader(
     );
 }
 
-[[noreturn]] void DisplayReader::readLoop(QueueHandle_t frameQueue) const {
+[[noreturn]] void DisplayReader::readLoop(const QueueHandle_t *frameQueue) const {
     uint8_t buffer[DISPLAY_FRAME_SIZE];
     size_t idx = 0;
 
@@ -47,7 +47,7 @@ DisplayReader::DisplayReader(
         buffer[idx++] = byte;
 
         if (idx == DISPLAY_FRAME_SIZE) {
-            xQueueSend(frameQueue, &buffer, 0);
+            xQueueSend(*frameQueue, &buffer, 0);
 
             idx = 0;
         }

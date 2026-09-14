@@ -1,3 +1,5 @@
 managed_components
 .idea
 build
+sdkconfig.old
+nvs/devicecfg_dev.bin

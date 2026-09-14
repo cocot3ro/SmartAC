@@ -9,6 +9,15 @@ plugins {
 }
 
 kotlin {
+    listOf(
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "Shared"
+            isStatic = true
+        }
+    }
 
     android {
         namespace = "dev.cocot3ro.smartac.app.shared"
@@ -25,6 +34,12 @@ kotlin {
 
         withHostTest {
             isIncludeAndroidResources = true
+        }
+
+        withDeviceTestBuilder {
+            sourceSetTreeName = "test"
+        }.configure {
+            instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
     }
 
@@ -51,10 +66,6 @@ kotlin {
             implementation(libs.bundles.koin.client)
 
             implementation(libs.ksafe)
-
-            implementation(libs.androidx.navigation3.runtime)
-            implementation(libs.androidx.navigation3.ui)
-            implementation(libs.androidx.lifecycle.viewmodel.navigation3)
         }
 
         commonTest.dependencies {
@@ -64,8 +75,12 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
             implementation(ktorLibs.client.okhttp)
-
+            implementation(libs.compose.uiTooling)
             implementation(libs.koin.android)
+        }
+
+        iosMain.dependencies {
+
         }
     }
 }

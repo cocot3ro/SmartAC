@@ -1,0 +1,10 @@
+key,type,encoding,value
+config,namespace,,
+device_code,data,string,019f0df5-73e1-7eb1-a926-cfde8473263b
+api_key,data,string,MEZex*h9eC&3KvygSUK2HHM9#zvdJeErKY7f5b33XCH4H68YfFT93FaH!s&mN2Ax
+prov_pop,data,string,abcd1234
+backend_host,data,string,test.smartac.cocot3ro.freeddns.org
+mqtt_host,data,string,mqtt.smartac.cocot3ro.freeddns.org
+mqtt_port,data,u32,8883
+mqtt_user,data,string,019f22fe-dbed-7a3c-84b0-35a35c091778
+mqtt_password,data,string,TNywrsY#qSTfmYs*@vZHbYpdNnFgXbtN0fu7fECs&8veSSfpE2xwfEs6ZQ&Jv77S

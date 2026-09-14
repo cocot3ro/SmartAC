@@ -1,0 +1,29 @@
+menu "SmartAC Configuration"
+
+    config OTA_TIMER_DELAY_S
+    int "OTA Timer Delay (seconds)"
+    default 43200
+    help
+        This option sets the delay for the OTA timer in seconds. The default value is 43200, which corresponds to 12 hours.
+
+    config NVS_PARTITION_NAME
+    string "NVS Partition Name"
+    default "devicecfg"
+
+    config NVS_NAMESPACE
+    string "NVS Partition Namespace"
+    default "config"
+
+    config UART_RX_PIN
+    int "UART RX Pin"
+
+    config UART_BAUD_RATE
+    int "UART Baud Rate"
+
+    config IR_TX_PIN
+    int "IR TX pin"
+
+    config IR_CARRIER_FREQ_HZ
+    int "IR carrier frequency in hertz"
+
+endmenu
