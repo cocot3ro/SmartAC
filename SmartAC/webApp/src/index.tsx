@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {MemoryRouter, Routes, Route, NavLink} from "react-router-dom";
-import {App} from "./App.tsx";
+import App from "./App.tsx";
 
 const rootElement = document.getElementById('root');
 if (!rootElement) throw new Error('Failed to find the root element');

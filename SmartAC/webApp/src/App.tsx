@@ -13,7 +13,7 @@ function Foo2() {
     )
 }
 
-export function App() {
+export default function App() {
     return (
         <main className="main-content">
             <nav className="navbar">
