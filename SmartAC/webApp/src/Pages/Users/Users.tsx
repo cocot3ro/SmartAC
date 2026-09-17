@@ -1,6 +1,10 @@
+import {Button} from "@mui/material";
+
 function Users() {
     return (
-        <p>Users</p>
+        <Button variant="contained">
+            Hola MUI
+        </Button>
     );
 }
 
