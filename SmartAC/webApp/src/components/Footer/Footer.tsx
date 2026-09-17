@@ -1,13 +1,18 @@
-import "./Footer.css";
-import {Typography} from "@mui/material";
 import packageJson from '../../../package.json';
 
-export default function Footer() {
+function Footer() {
     return (
-        <footer>
-            <Typography variant="body2">
-                v${packageJson.version}
-            </Typography>
+        <footer
+            style={{
+                padding: '16px 0',
+                textAlign: 'left',
+            }}
+        >
+            <p variant="body2" color="text.secondary">
+                v{packageJson.version}
+            </p>
         </footer>
     );
 }
+
+export default Footer;

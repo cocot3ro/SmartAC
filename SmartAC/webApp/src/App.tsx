@@ -1,10 +1,8 @@
-import "./App.css";
-import {Routes, Route, useNavigate} from "react-router-dom";
-import {CssBaseline, Toolbar, Button} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 import useLocalizeDocumentAttributes from "./i18n/useLocalizeDocumentAttributes.ts";
-import Devices from "./Pages/Devices/Devices.tsx";
-import Users from "./Pages/Users/Users.tsx";
+import Header from "./components/Header/Header.tsx";
 import Footer from "./components/Footer/Footer.tsx";
+import {Home} from "./pages/Home/Home.tsx";
 
 function App() {
 
@@ -13,20 +11,27 @@ function App() {
     useLocalizeDocumentAttributes();
 
     return (
-        <>
-            <CssBaseline/>
-            <Toolbar className="navbar">
-                <Button variant={"contained"} onClick={() => navigate("/users")}>Users</Button>
-                <Button variant={"contained"} onClick={() => navigate("/devices")}>Devices</Button>
-            </Toolbar>
-            <main className={"main-content"}>
-                <Routes>
-                    <Route path="/users" element={<Users/>}/>
-                    <Route path="/devices" element={<Devices/>}/>
-                </Routes>
-            </main>
+        <div>
+            <Header/>
+
+            <div style={{flex: 1}}>
+                <Home/>
+            </div>
+
             <Footer/>
-        </>
+        </div>
+        // <div className="page">
+        //     <div className="page-wrapper">
+        //         <div className="container-xl py-4">
+        //             <div className="card">
+        //                 <div className="card-body">
+        //                     <h3 className="card-title">React + Tabler</h3>
+        //                     <p className="text-secondary mb-0">Your Tabler setup is working.</p>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
     );
 }
 

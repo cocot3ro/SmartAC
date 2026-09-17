@@ -12,10 +12,8 @@
     "start": "npm run build:shared && npm run start -w webApp"
   },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
-    "@mui/icons-material": "^9.4.0",
-    "@mui/material": "^9.4.0",
+    "@tabler/core": "^1.5.1",
+    "@tabler/icons-react": "^3.46.0",
     "axios": "^1.19.0",
     "i18next": "^26.4.2",
     "i18next-browser-languagedetector": "^8.2.1",
