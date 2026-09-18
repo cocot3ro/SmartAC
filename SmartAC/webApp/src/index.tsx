@@ -12,7 +12,7 @@ if (!rootElement) throw new Error('Failed to find the root element');
 ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
         <React.Suspense fallback={<div>Loading...</div>}>
-            <MemoryRouter initialEntries={["/users"]}>
+            <MemoryRouter initialEntries={["/"]}>
                 <App/>
             </MemoryRouter>
         </React.Suspense>
