@@ -13,6 +13,10 @@ i18n
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
+        detection: {
+            order: ['querystring', 'navigator'],
+            lookupQuerystring: 'lng'
+        },
         fallbackLng: "en",
         supportedLngs: Object.keys(supportedLngs),
         debug: true,
