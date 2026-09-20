@@ -1,5 +1,5 @@
 import packageJson from '../../package.json';
-import {IconGitHub} from '@tabler/icons-react';
+import {IconBrandGithub} from '@tabler/icons-react';
 
 export default function Footer() {
     return (
@@ -15,7 +15,10 @@ export default function Footer() {
                                 <a href="#" className="link-secondary">License</a>
                             </li>
                             <li className="list-inline-item">
-                                <a href="#" className="link-secondary">Source code</a>
+                                <a href="https://github.com/cocot3ro/SmartAC" className="link-secondary">
+                                    <IconBrandGithub/>
+                                    <span>Source code</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -25,7 +28,7 @@ export default function Footer() {
                                 company</a> . All rights reserved.
                             </li>
                             <li className="list-inline-item">
-                                <a href="#" className="link-secondary">v1.0.0</a>
+                                <a href="#" className="link-secondary">v{packageJson.version}</a>
                             </li>
                         </ul>
                     </div>

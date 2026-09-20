@@ -3,18 +3,19 @@ import ReactDOM from 'react-dom/client';
 import {MemoryRouter} from "react-router-dom";
 import App from "./App.tsx";
 import './i18n/config.ts';
-import '@tabler/core/dist/css/tabler.min.css';
 import '@tabler/core/dist/js/tabler.min.js';
+import "./App.css";
+import {ThemeProvider} from "./context";
 
 const rootElement = document.getElementById('root');
 if (!rootElement) throw new Error('Failed to find the root element');
 
 ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
-        <React.Suspense fallback={<div>Loading...</div>}>
+        <ThemeProvider>
             <MemoryRouter initialEntries={["/"]}>
                 <App/>
             </MemoryRouter>
-        </React.Suspense>
+        </ThemeProvider>
     </React.StrictMode>
 );
