@@ -1,8 +1,7 @@
-import React from "react";
-import NavLink from "./NavLink.tsx";
+import {NavLink} from "src/components";
 import {IconCpu, IconHome, IconSettings, IconUser} from "@tabler/icons-react";
 
-export default function Header() {
+export function Header() {
 
     return (
         <header className="navbar navbar-expand-md d-print-none">

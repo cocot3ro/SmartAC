@@ -1,4 +1,4 @@
-export default function LangIcon() {
+export function LangIcon() {
     return (
         <svg
             className="me-2 h-4 w-4 stroke-cyan-400"

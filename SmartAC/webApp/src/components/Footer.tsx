@@ -1,7 +1,7 @@
-import packageJson from '../../package.json';
+import packageJson from 'src/../package.json';
 import {IconBrandGithub} from '@tabler/icons-react';
 
-export default function Footer() {
+export function Footer() {
     return (
         <footer className="footer footer-transparent d-print-none">
             <div className="container-xl">

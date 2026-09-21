@@ -9,4 +9,7 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: { port: 8080 },
+  resolve: {
+    tsconfigPaths: true,
+  },
 });

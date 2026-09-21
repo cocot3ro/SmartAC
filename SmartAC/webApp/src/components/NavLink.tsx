@@ -7,7 +7,7 @@ interface NavLinkProps {
     path: string;
 }
 
-export default function NavLink({icon, title, path}: NavLinkProps) {
+export function NavLink({icon, title, path}: NavLinkProps) {
 
     let navigate = useNavigate();
     let location = useLocation()
