@@ -8,6 +8,8 @@
     "start": "vite"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
+    "country-flag-icons": "^1.6.20",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "webApp-shared": "0.0.0-unspecified"
@@ -17,6 +19,6 @@
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.1",
     "typescript": "^7.0.2",
-    "vite": "^8.2.2"
+    "vite": "^8.3.1"
   }
 }

@@ -118,5 +118,5 @@ label.row {
 }
 
 html {
-    scrollbar-gutter: auto;
+    scrollbar-gutter: auto !important;
 }

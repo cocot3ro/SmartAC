@@ -12,6 +12,12 @@ export default function useLocalizeDocumentAttributes() {
 
             // Set the <HTML dir> attribute.
             document.documentElement.dir = i18n.dir(i18n.resolvedLanguage);
+
+            if (i18n.dir(i18n.resolvedLanguage) === "rtl") {
+                import("@tabler/core/dist/css/tabler.rtl.min.css");
+            } else {
+                import("@tabler/core/dist/css/tabler.min.css");
+            }
         }
 
         document.title = t("app_title");

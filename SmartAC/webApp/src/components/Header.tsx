@@ -1,7 +1,12 @@
-import {NavLink} from "src/components";
+import {LocaleSwitcher, NavLink} from "src/components";
 import {IconCpu, IconHome, IconSettings, IconUser} from "@tabler/icons-react";
+import {useTranslation} from "react-i18next";
+import {ThemeSwitcher} from "src/components/ThemeSwitcher.tsx";
+import {LocalePicker} from "src/components/LocalePicker.tsx";
 
 export function Header() {
+
+    const {t} = useTranslation();
 
     return (
         <header className="navbar navbar-expand-md d-print-none">
@@ -11,8 +16,8 @@ export function Header() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <a href="." aria-label="SmartAC" className="navbar-brand navbar-brand-autodark me-3">
-                    <span>SmartAC</span>
+                <a href="." aria-label={t("app_title")} className="navbar-brand navbar-brand-autodark me-3">
+                    <span>{t("app_title")}</span>
                 </a>
 
                 <div className="collapse navbar-collapse" id="navbar-menu">
@@ -23,6 +28,17 @@ export function Header() {
                         <NavLink icon={IconCpu} title={"Devices"} path="/devices"/>
                         <NavLink icon={IconSettings} title={"Settings"} path="/settings"/>
                     </ul>
+                </div>
+
+                <div className={"navbar-nav flex-row order-md-last"}>
+                    <div className="d-none d-md-flex">
+                        <div className="nav-item">
+                            <LocalePicker />
+                        </div>
+                        <div className="nav-item">
+                            <ThemeSwitcher />
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
