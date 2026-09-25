@@ -12,9 +12,6 @@ export function Footer() {
                                 <a href="#" className="link-secondary">Documentation</a>
                             </li>
                             <li className="list-inline-item">
-                                <a href="#" className="link-secondary">License</a>
-                            </li>
-                            <li className="list-inline-item">
                                 <a href="https://github.com/cocot3ro/SmartAC" className="link-secondary">
                                     <IconBrandGithub/>
                                     <span>Source code</span>

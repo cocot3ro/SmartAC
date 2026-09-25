@@ -1,5 +1,5 @@
 import type React from "react";
-import { createContext, type ReactNode, useContext, useEffect, useState } from "react";
+import {createContext, type ReactNode, useContext, useEffect, useState} from "react";
 
 const StorageKey = "tabler-theme";
 export const Light = "light";
@@ -28,7 +28,7 @@ const getBrowserDefault = (): Theme => {
     return Light;
 };
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({children}) => {
     const [theme, setThemeState] = useState<Theme>(() => {
         // Try to read theme from localStorage or use 'light' as default
         if (typeof window !== "undefined") {
@@ -58,7 +58,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     };
 
     document.documentElement.setAttribute("data-bs-theme", theme);
-    return <ThemeContext.Provider value={{ theme, toggleTheme, setTheme, getTheme }}>{children}</ThemeContext.Provider>;
+    return <ThemeContext.Provider value={{theme, toggleTheme, setTheme, getTheme}}>{children}</ThemeContext.Provider>;
 };
 
 export function useTheme(): ThemeContextType {

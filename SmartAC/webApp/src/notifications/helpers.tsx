@@ -1,5 +1,5 @@
 import {toast} from "react-toastify";
-import {Msg} from "./Msg";
+import {Msg} from "src/notifications";
 import styles from "./Msg.module.css";
 
 const showSuccess = (message: string) => {

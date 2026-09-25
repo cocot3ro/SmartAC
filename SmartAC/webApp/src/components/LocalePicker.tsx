@@ -2,7 +2,7 @@ import cn from "classnames";
 import {Flag} from "src/components";
 import {useTheme} from "src/hooks";
 import {getFlagCodeForLocale, supportedLngs} from "src/i18n";
-import styles from "./LocalePicker.module.css";
+import styles from "src/components/LocalePicker.module.css";
 import {useTranslation} from "react-i18next";
 
 interface Props {
@@ -31,6 +31,7 @@ function LocalePicker({menuAlign = "start"}: Props) {
                 {supportedLngs.map((item) => (
                     <a
                         className="dropdown-item"
+                        key={item.code}
                         onClick={(e) => {
                             e.preventDefault();
                             i18n.changeLanguage(item.code);

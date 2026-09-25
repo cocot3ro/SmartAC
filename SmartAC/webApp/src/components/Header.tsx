@@ -1,8 +1,6 @@
-import {LocaleSwitcher, NavLink} from "src/components";
+import {LocalePicker, NavLink, ThemeSwitcher} from "src/components";
 import {IconCpu, IconHome, IconSettings, IconUser} from "@tabler/icons-react";
 import {useTranslation} from "react-i18next";
-import {ThemeSwitcher} from "src/components/ThemeSwitcher.tsx";
-import {LocalePicker} from "src/components/LocalePicker.tsx";
 
 export function Header() {
 
@@ -16,14 +14,14 @@ export function Header() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <a href="." aria-label={t("app_title")} className="navbar-brand navbar-brand-autodark me-3">
+                <a href="/" aria-label={t("app_title")} className="navbar-brand navbar-brand-autodark me-3">
                     <span>{t("app_title")}</span>
                 </a>
 
                 <div className="collapse navbar-collapse" id="navbar-menu">
                     <ul className="navbar-nav">
                         {/*TODO: Localization*/}
-                        <NavLink icon={IconHome} title={"Home"} path="/"/>
+                        <NavLink icon={IconHome} title={"Index"} path="/"/>
                         <NavLink icon={IconUser} title={"Users"} path="/users"/>
                         <NavLink icon={IconCpu} title={"Devices"} path="/devices"/>
                         <NavLink icon={IconSettings} title={"Settings"} path="/settings"/>
@@ -33,10 +31,10 @@ export function Header() {
                 <div className={"navbar-nav flex-row order-md-last"}>
                     <div className="d-none d-md-flex">
                         <div className="nav-item">
-                            <LocalePicker />
+                            <LocalePicker/>
                         </div>
                         <div className="nav-item">
-                            <ThemeSwitcher />
+                            <ThemeSwitcher/>
                         </div>
                     </div>
                 </div>

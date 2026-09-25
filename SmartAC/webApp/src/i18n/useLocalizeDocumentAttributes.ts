@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
 
-export default function useLocalizeDocumentAttributes() {
+function useLocalizeDocumentAttributes() {
     const {t, i18n} = useTranslation();
 
     useEffect(() => {
@@ -23,3 +23,5 @@ export default function useLocalizeDocumentAttributes() {
         document.title = t("app_title");
     }, [i18n, i18n.resolvedLanguage, t]);
 }
+
+export {useLocalizeDocumentAttributes};

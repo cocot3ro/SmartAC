@@ -1,3 +1,5 @@
-export function foo() {
+function foo() {
 
 }
+
+export {foo};
