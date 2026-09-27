@@ -1,5 +1,5 @@
 import {LocalePicker, NavLink, ThemeSwitcher} from "src/components";
-import {IconCpu, IconHome, IconSettings, IconUser} from "@tabler/icons-react";
+import {IconCpu, IconHome, IconUser} from "@tabler/icons-react";
 import {useTranslation} from "react-i18next";
 
 export function Header() {
@@ -21,10 +21,9 @@ export function Header() {
                 <div className="collapse navbar-collapse" id="navbar-menu">
                     <ul className="navbar-nav">
                         {/*TODO: Localization*/}
-                        <NavLink icon={IconHome} title={"Index"} path="/"/>
+                        <NavLink icon={IconHome} title={"Dashboard"} path="/"/>
                         <NavLink icon={IconUser} title={"Users"} path="/users"/>
                         <NavLink icon={IconCpu} title={"Devices"} path="/devices"/>
-                        <NavLink icon={IconSettings} title={"Settings"} path="/settings"/>
                     </ul>
                 </div>
 

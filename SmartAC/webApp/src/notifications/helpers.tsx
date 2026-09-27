@@ -14,7 +14,7 @@ const showSuccess = (message: string) => {
 };
 
 const showError = (message: string) => {
-    toast(<Msg/>, {
+    toast(Msg, {
         className: styles.toaster,
         data: {
             type: "error",
@@ -24,10 +24,4 @@ const showError = (message: string) => {
     });
 };
 
-const showObjectSuccess = (obj: string, action: string) => {
-    showSuccess(
-        "Foo"
-    );
-};
-
-export {showSuccess, showError, showObjectSuccess};
+export {showSuccess, showError};

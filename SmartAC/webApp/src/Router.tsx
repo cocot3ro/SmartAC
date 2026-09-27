@@ -1,26 +1,30 @@
-import {MemoryRouter, Route, Routes} from "react-router-dom";
-import Users from "src/pages/Users";
-import Devices from "src/pages/Devices";
-import {Footer, Header} from "src/components";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {lazy} from "react";
+import {ErrorNotFound, Footer, Header} from "src/components";
+
+const Users = lazy(() => import("src/pages/Users"));
+const Devices = lazy(() => import("src/pages/Devices"));
+const Dashboard = lazy(() => import("src/pages/Dashboard"));
 
 function Router() {
     return (
-        <MemoryRouter initialEntries={["/"]}>
+        <BrowserRouter>
             <div className={"page"}>
                 <div className={"page-wrapper"}>
                     <Header/>
                     <div>
                         <Routes>
-                            <Route path={"/"} element={<div>Home</div>}/>
+                            <Route path="*" element={<ErrorNotFound />} />
                             <Route path={"/users"} element={<Users/>}/>
                             <Route path={"/devices"} element={<Devices/>}/>
+                            <Route path={"/"} element={<Dashboard/>}/>
                         </Routes>
 
                         <Footer/>
                     </div>
                 </div>
             </div>
-        </MemoryRouter>
+        </BrowserRouter>
     );
 }
 

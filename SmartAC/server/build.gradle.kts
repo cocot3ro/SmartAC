@@ -6,10 +6,10 @@ plugins {
 }
 
 group = "dev.cocot3ro.smartac"
-version = "1.0.0"
+version = "0.0.1"
 
 application {
-    mainClass = "io.ktor.server.netty.EngineMain"
+    mainClass = "dev.cocot3ro.smartac.MainKt"
 }
 
 dependencies {
