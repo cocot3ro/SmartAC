@@ -1,5 +1,5 @@
 {
-  "name": "webApp",
+  "name": "webapp",
   "version": "1.0.0",
   "description": "Web application that uses Kotlin Multiplatform Library",
   "type": "module",

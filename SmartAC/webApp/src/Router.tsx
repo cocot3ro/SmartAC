@@ -1,6 +1,6 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {lazy} from "react";
-import {ErrorNotFound, Footer, Header} from "src/components";
+import {lazy, Suspense} from "react";
+import {ErrorNotFound, Footer, Header, LoadingPage, Page, SiteContainer} from "src/components";
 
 const Users = lazy(() => import("src/pages/Users"));
 const Devices = lazy(() => import("src/pages/Devices"));
@@ -9,21 +9,20 @@ const Dashboard = lazy(() => import("src/pages/Dashboard"));
 function Router() {
     return (
         <BrowserRouter>
-            <div className={"page"}>
-                <div className={"page-wrapper"}>
-                    <Header/>
-                    <div>
+            <Page>
+                <Header/>
+                <SiteContainer>
+                    <Suspense fallback={<LoadingPage/>}>
                         <Routes>
-                            <Route path="*" element={<ErrorNotFound />} />
+                            <Route path="*" element={<ErrorNotFound/>}/>
                             <Route path={"/users"} element={<Users/>}/>
                             <Route path={"/devices"} element={<Devices/>}/>
                             <Route path={"/"} element={<Dashboard/>}/>
                         </Routes>
-
-                        <Footer/>
-                    </div>
-                </div>
-            </div>
+                    </Suspense>
+                </SiteContainer>
+                <Footer/>
+            </Page>
         </BrowserRouter>
     );
 }

@@ -8,6 +8,6 @@ import kotlin.js.JsExport
 class Greeting2 {
 
     fun greet(): String {
-        return "Levantar un colchón con la ñema"
+        return "Hello from Kotlin"
     }
 }

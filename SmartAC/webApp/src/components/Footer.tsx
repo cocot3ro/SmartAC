@@ -1,5 +1,4 @@
 import packageJson from 'src/../package.json';
-import {IconBrandGithub} from '@tabler/icons-react';
 
 export function Footer() {
     return (
@@ -11,9 +10,9 @@ export function Footer() {
                             <li className="list-inline-item">
                                 <a href="#" className="link-secondary">Documentation</a>
                             </li>
+
                             <li className="list-inline-item">
-                                <a href="https://github.com/cocot3ro/SmartAC" className="link-secondary">
-                                    <IconBrandGithub/>
+                                <a href="https://codeberg.org/cocot3ro/SmartAC" className="link-secondary">
                                     <span>Source code</span>
                                 </a>
                             </li>
@@ -21,9 +20,14 @@ export function Footer() {
                     </div>
                     <div className="col-12 col-lg-auto mt-3 mt-lg-0">
                         <ul className="list-inline list-inline-dots mb-0">
-                            <li className="list-inline-item">Copyright © 2026 <a href="#" className="link-secondary">Your
-                                company</a> . All rights reserved.
+                            <li className="list-inline-item">
+                                Copyright © 2026 <a href="#" className="link-secondary">cocot3ro</a> . All rights reserved.
                             </li>
+
+                            <li className={"list-inline-item"}>
+                                Theme by <a href={"https://tabler.io/"} className={"link-secondary"}>Tabler</a>
+                            </li>
+
                             <li className="list-inline-item">
                                 <a href="#" className="link-secondary">v{packageJson.version}</a>
                             </li>
