@@ -2,7 +2,7 @@ import {IconMoon, IconSun} from "@tabler/icons-react";
 import cn from "classnames";
 import {Button} from "src/components";
 import {useTheme} from "src/hooks";
-import styles from "src/components/ThemeSwitcher.module.css";
+import styles from "src/components/ThemeSwitcher/ThemeSwitcher.module.css";
 
 interface Props {
     className?: string;
