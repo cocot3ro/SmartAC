@@ -12,7 +12,7 @@
     "country-flag-icons": "^1.6.20",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "webApp-shared": "0.0.0-unspecified"
+    "webapp-shared": "0.0.0-unspecified"
   },
   "devDependencies": {
     "@types/react": "^19.3.0",

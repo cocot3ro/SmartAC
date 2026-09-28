@@ -1,4 +1,4 @@
-import {Greeting2 as KotlinGreeting} from "webApp-shared";
+import {Greeting2 as KotlinGreeting} from "webapp-shared";
 
 function Dashboard() {
     let greeting = new KotlinGreeting();

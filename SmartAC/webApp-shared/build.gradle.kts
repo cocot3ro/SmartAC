@@ -7,7 +7,7 @@ kotlin {
     jvm()
 
     js {
-        outputModuleName = "webApp-shared"
+        outputModuleName = "webapp-shared"
         browser()
         binaries.library()
         generateTypeScriptDefinitions()
