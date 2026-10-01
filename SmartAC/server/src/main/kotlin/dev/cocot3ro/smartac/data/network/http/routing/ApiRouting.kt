@@ -1,4 +1,4 @@
-package dev.cocot3ro.smartac.data.network.http.backend.routing
+package dev.cocot3ro.smartac.data.network.http.routing
 
 import dev.cocot3ro.smartac.User
 import dev.cocot3ro.smartac.modules.digestAuth
