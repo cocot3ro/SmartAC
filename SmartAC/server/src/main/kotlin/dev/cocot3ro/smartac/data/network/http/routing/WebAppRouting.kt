@@ -24,11 +24,11 @@ fun Application.webAppRouting() {
                 }
             }
 
-            // TODO: setup authentication
-//            authenticate() {
             route("/api") {
 
                 get {
+
+
                     call.respond(
                         HealthResponse(
                             setup = false,
@@ -37,6 +37,8 @@ fun Application.webAppRouting() {
                     )
                 }
 
+//                authenticate("auth-jwt") {
+                // TODO: setup authentication
                 post<LoginRoute> {
 
                 }
@@ -44,8 +46,8 @@ fun Application.webAppRouting() {
                 get<LogoutRoute> {
 
                 }
+//                }
             }
-//            }
         }
     }
 }

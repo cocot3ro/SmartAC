@@ -16,14 +16,15 @@ composeMultiplatform = "1.12.1"
 junit = "4.13.2"
 kotlin = "2.4.20"
 androidx-lifecycle-process = "2.11.0"
-logback = "1.6.4"
+logback = "1.6.5"
 material3 = "1.11.0-alpha07"
 koin = "4.2.2"
 koin-compiler = "1.2.1"
 datetime = "0.8.0"
-ksafe = "3.2.0"
+ksafe = "3.3.0"
 ktor-mqtt = "1.2.0"
 kotlinx-serialization = "1.11.0"
+sqldelight = "2.4.0"
 
 
 [libraries]
@@ -48,6 +49,7 @@ compose-uiToolingPreview = { module = "org.jetbrains.compose.ui:ui-tooling-previ
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "datetime" }
 ksafe = { group = "eu.anifantakis", name = "ksafe", version.ref = "ksafe" }
+ksafe-compose = { group = "eu.anifantakis", name = "ksafe-compose", version.ref = "ksafe" }
 
 koin-bom = { group = "io.insert-koin", name = "koin-bom", version.ref = "koin" }
 koin-annotations = { group = "io.insert-koin", name = "koin-annotations" }
@@ -66,6 +68,8 @@ ukemp-ktor-mqtt-client = { module = "de.kempmobil.ktor.mqtt:mqtt-client", versio
 kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 
+sqldelight-sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -76,6 +80,7 @@ kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 koin-compiler = { id = "io.insert-koin.compiler.plugin", version.ref = "koin-compiler" }
+sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 
 
 [bundles]

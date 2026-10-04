@@ -1,6 +1,7 @@
 package dev.cocot3ro.smartac
 
 import dev.cocot3ro.smartac.modules.configureCors
+import dev.cocot3ro.smartac.modules.configureKoin
 import dev.cocot3ro.smartac.modules.configureResources
 import dev.cocot3ro.smartac.modules.configureRouting
 import dev.cocot3ro.smartac.modules.configureSecurity
@@ -41,6 +42,7 @@ fun Application.modules() {
     configureSerialization()
     configureCors()
     configureResources()
+    configureKoin()
     configureSecurity()
     configureWebsockets()
     configureRouting()

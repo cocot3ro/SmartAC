@@ -66,6 +66,7 @@ kotlin {
             implementation(libs.bundles.koin.client)
 
             implementation(libs.ksafe)
+            implementation(libs.ksafe.compose)
         }
 
         commonTest.dependencies {

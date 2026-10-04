@@ -3,6 +3,7 @@ plugins {
     alias(ktorLibs.plugins.ktor)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.koin.compiler)
+    alias(libs.plugins.sqldelight)
 }
 
 group = "dev.cocot3ro.smartac"
@@ -27,6 +28,8 @@ dependencies {
     implementation(ktorLibs.server.websockets)
     implementation(ktorLibs.server.auth)
     implementation(ktorLibs.server.cors)
+
+    implementation(libs.sqldelight.sqlite.driver)
 
     implementation(libs.ukemp.ktor.mqtt.core)
     implementation(libs.ukemp.ktor.mqtt.client)
