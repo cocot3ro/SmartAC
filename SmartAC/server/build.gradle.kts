@@ -3,7 +3,8 @@ plugins {
     alias(ktorLibs.plugins.ktor)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.koin.compiler)
-    alias(libs.plugins.sqldelight)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.androidx.room3)
 }
 
 group = "dev.cocot3ro.smartac"
@@ -29,7 +30,10 @@ dependencies {
     implementation(ktorLibs.server.auth)
     implementation(ktorLibs.server.cors)
 
-    implementation(libs.sqldelight.sqlite.driver)
+    implementation(libs.androidx.room3.runtime)
+    implementation(libs.androidx.sqlite.bundled)
+
+    ksp(libs.androidx.room3.compiler)
 
     implementation(libs.ukemp.ktor.mqtt.core)
     implementation(libs.ukemp.ktor.mqtt.client)
@@ -40,4 +44,8 @@ dependencies {
     implementation(libs.bundles.koin.server)
 
     testImplementation(libs.kotlin.testJunit)
+}
+
+room3 {
+    schemaDirectory("$projectDir/schemas")
 }

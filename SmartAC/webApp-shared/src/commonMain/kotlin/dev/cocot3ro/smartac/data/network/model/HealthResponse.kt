@@ -8,6 +8,6 @@ import kotlin.js.JsExport
 @JsExport
 @Serializable
 data class HealthResponse(
-    val version: String,
+    val version: VersionModel,
     val setup: Boolean
 )
