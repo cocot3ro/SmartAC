@@ -10,11 +10,11 @@ import kotlinx.coroutines.flow.Flow
 interface AppConfigDao {
 
     @Insert
-    suspend fun insert(item: AppConfigDao)
+    suspend fun insert(item: AppConfigEntity)
 
     @Query("SELECT * FROM AppConfigEntity")
     fun getAllAsFlow(): Flow<AppConfigEntity>
 
-    @Query("SELECT * FROM AppConfigEntity WHERE id = ?")
+    @Query("SELECT * FROM AppConfigEntity WHERE config_key = :key")
     suspend fun get(key: String): AppConfigEntity?
 }

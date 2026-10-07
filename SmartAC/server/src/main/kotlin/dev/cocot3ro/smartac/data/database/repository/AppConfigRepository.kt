@@ -10,7 +10,7 @@ class AppConfigRepository(
     @Provided private val appConfigDao: AppConfigDao
 ) {
 
-    suspend fun hasAdminPassword(): Boolean {
+    suspend fun isPresentAdminPassword(): Boolean {
         return appConfigDao.get(DatabaseConstants.AppConfig.Keys.ADMIN_PASSWORD) != null
     }
 

@@ -68,7 +68,6 @@ ukemp-ktor-mqtt-core = { module = "de.kempmobil.ktor.mqtt:mqtt-core", version.re
 ukemp-ktor-mqtt-client = { module = "de.kempmobil.ktor.mqtt:mqtt-client", version.ref = "ktor-mqtt" }
 
 kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 
 androidx-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 androidx-room3-runtime = { module = "androidx.room3:room3-runtime", version.ref = "room3" }

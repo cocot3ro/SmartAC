@@ -9,5 +9,5 @@ class IsSetupUseCase(
     @Provided private val appConfigRepository: AppConfigRepository
 ) {
 
-    suspend operator fun invoke(): Boolean = appConfigRepository.hasAdminPassword()
+    suspend operator fun invoke(): Boolean = appConfigRepository.isPresentAdminPassword()
 }

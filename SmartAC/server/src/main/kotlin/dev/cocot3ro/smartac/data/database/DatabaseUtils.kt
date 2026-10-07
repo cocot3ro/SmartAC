@@ -13,9 +13,10 @@ import java.io.File
 @Single
 fun provideDatabaseBuilder(): RoomDatabase.Builder<SmartAcDatabase> {
     val dbFile = File("/data", DATABASE_NAME)
-    return Room.databaseBuilder<SmartAcDatabase>(
-        name = dbFile.absolutePath,
-    )
+//    return Room.databaseBuilder<SmartAcDatabase>(
+//        name = dbFile.absolutePath,
+//    )
+    return Room.inMemoryDatabaseBuilder<SmartAcDatabase>()
 }
 
 @Single
