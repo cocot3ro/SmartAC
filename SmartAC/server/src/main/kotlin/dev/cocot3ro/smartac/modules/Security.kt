@@ -43,6 +43,7 @@ fun Application.configureSecurity() {
 
 fun Routing.digestAuth(build: Route.() -> Unit) = authenticate("auth-digest", build = build)
 
+@Deprecated("Remove this crap")
 private fun computeHash(
     userName: String,
     realm: String,

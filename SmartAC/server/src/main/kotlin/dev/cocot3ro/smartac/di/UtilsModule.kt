@@ -6,5 +6,5 @@ import org.koin.core.annotation.Module
 
 @Module
 @Configuration
-@ComponentScan("dev.cocot3ro.smartac.domain.usecase")
-object UseCaseModule
+@ComponentScan("dev.cocot3ro.smartac.utils")
+object UtilsModule

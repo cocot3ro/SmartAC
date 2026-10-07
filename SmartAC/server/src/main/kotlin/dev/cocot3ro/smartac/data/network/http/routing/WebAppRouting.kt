@@ -3,9 +3,8 @@ package dev.cocot3ro.smartac.data.network.http.routing
 import dev.cocot3ro.smartac.data.network.model.HealthResponse
 import dev.cocot3ro.smartac.data.network.model.VersionModel
 import dev.cocot3ro.smartac.data.network.resources.HealthRoute
-import dev.cocot3ro.smartac.data.network.resources.LoginRoute
-import dev.cocot3ro.smartac.data.network.resources.LogoutRoute
-import dev.cocot3ro.smartac.domain.usecase.IsSetupUseCase
+import dev.cocot3ro.smartac.data.network.resources.TokensRoute
+import dev.cocot3ro.smartac.utils.IsSetup
 import io.ktor.server.application.Application
 import io.ktor.server.http.content.react
 import io.ktor.server.http.content.singlePageApplication
@@ -28,7 +27,7 @@ fun Application.webAppRouting() {
             route("/api") {
 
                 get<HealthRoute> { _ ->
-                    val isSetup by inject<IsSetupUseCase>()
+                    val isSetup by inject<IsSetup>()
 
                     call.respond(
                         HealthResponse(
@@ -39,13 +38,12 @@ fun Application.webAppRouting() {
                     )
                 }
 
-                // TODO: setup authentication
 //                authenticate("auth-jwt") {
-                post<LoginRoute> {
+                get<TokensRoute> {
 
                 }
 
-                get<LogoutRoute> {
+                post<TokensRoute> {
 
                 }
 //                }

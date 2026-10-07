@@ -9,7 +9,7 @@ import kotlin.js.JsExport
 @JsExport
 class HealthRoute {
     companion object {
-        const val PATH = "/health"
+        private const val PATH = "/health"
 
         fun getPath() = PATH
     }

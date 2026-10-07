@@ -19,6 +19,11 @@ const supportedLngs: Lang[] = [
         code: "es",
         locale: "es-ES",
         name: "Español",
+    },
+    {
+        code: "fa",
+        locale: "fa-IR",
+        name: "Persa",
     }
 ];
 const defaultLang: Lang = supportedLngs[0];
@@ -29,8 +34,8 @@ i18n
     .use(initReactI18next)
     .init({
         detection: {
-            order: ['querystring', 'navigator'],
-            lookupQuerystring: 'lng'
+            order: ['localStorage', 'navigator'],
+            caches: ['localStorage']
         },
         fallbackLng: defaultLang.code,
         supportedLngs: supportedLngs.map((item) => item.code),

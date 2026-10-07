@@ -1,0 +1,87 @@
+import { useQueryClient } from "@tanstack/react-query";
+import { createContext, type ReactNode, useContext, useState } from "react";
+import { useIntervalWhen } from "rooks";
+import {
+	getToken,
+	refreshToken,
+} from "src/api/backend";
+import { type TokenResponse } from "webapp-shared";
+import AuthStore from "src/modules/AuthStore";
+
+
+// Context
+export interface AuthContextType {
+	authenticated: boolean;
+	login: (username: string, password: string) => Promise<void>;
+	logout: () => void;
+	token?: string;
+}
+
+const initalValue = null;
+const AuthContext = createContext<AuthContextType | null>(initalValue);
+
+// Provider
+interface Props {
+	children?: ReactNode;
+	tokenRefreshInterval?: number;
+}
+function AuthProvider({ children, tokenRefreshInterval = 5 * 60 * 1000 }: Props) {
+	const queryClient = useQueryClient();
+	const [authenticated, setAuthenticated] = useState(AuthStore.hasActiveToken());
+
+	const handleTokenUpdate = (response: TokenResponse) => {
+		AuthStore.set(response);
+		setAuthenticated(true);
+	};
+
+	const login = async (identity: string, secret: string) => {
+		const response = await getToken(identity, secret);
+		handleTokenUpdate(response);
+	};
+
+	const logout = () => {
+		if (AuthStore.count() >= 2) {
+			AuthStore.drop();
+			queryClient.clear();
+			window.location.reload();
+			return;
+		}
+		AuthStore.clear();
+		setAuthenticated(false);
+		queryClient.clear();
+	};
+
+	const refresh = async () => {
+		const response = await refreshToken();
+		handleTokenUpdate(response);
+	};
+
+	useIntervalWhen(
+		() => {
+			if (authenticated) {
+				refresh();
+			}
+		},
+		tokenRefreshInterval,
+		true,
+	);
+
+	const value = {
+		authenticated,
+		login,
+		logout,
+	};
+
+	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}
+
+function useAuthState() {
+	const context = useContext(AuthContext);
+	if (!context) {
+		throw new Error("useAuthState must be used within a AuthProvider");
+	}
+	return context;
+}
+
+export { AuthProvider, useAuthState };
+export default AuthContext;

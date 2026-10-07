@@ -17,6 +17,11 @@ function LocalePicker({menuAlign = "start"}: Props) {
     const classes = ["btn", "dropdown-toggle", "btn-sm", styles.btn];
     const cns = cn(...classes, getTheme() === "dark" ? "btn-ghost-dark" : "btn-ghost-light");
 
+    const changeTo = (lang: string) => {
+        i18n.changeLanguage(lang);
+        location.reload();
+    };
+
     return (
         <div className="dropdown">
             <button type="button" className={cns} data-bs-toggle="dropdown">
@@ -33,10 +38,11 @@ function LocalePicker({menuAlign = "start"}: Props) {
                         key={item.code}
                         onClick={(e) => {
                             e.preventDefault();
-                            i18n.changeLanguage(item.code);
+                            changeTo(item.code);
                         }}
                     >
-                        <Flag countryCode={getFlagCodeForLocale(item.code)}/> <span>{item.name}</span>
+                        <Flag countryCode={getFlagCodeForLocale(item.code)}/>
+                        <span>{item.name}</span>
                     </a>
                 ))}
             </div>
