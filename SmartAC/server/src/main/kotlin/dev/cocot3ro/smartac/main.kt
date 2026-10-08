@@ -13,16 +13,15 @@ import io.ktor.server.engine.ApplicationEngine
 import io.ktor.server.engine.connector
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
+import io.ktor.server.netty.NettyApplicationEngine
 
 fun main() {
     embeddedServer(
         factory = Netty,
         rootConfig = serverConfig {
-            module {
-                modules()
-            }
+            module(Application::modules)
         },
-        configure = { envConfig() },
+        configure = NettyApplicationEngine.Configuration::envConfig,
     ).start(wait = true)
 }
 

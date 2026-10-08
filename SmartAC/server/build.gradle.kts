@@ -28,6 +28,7 @@ dependencies {
     implementation(ktorLibs.server.resources)
     implementation(ktorLibs.server.websockets)
     implementation(ktorLibs.server.auth)
+    implementation(ktorLibs.server.auth.jwt)
     implementation(ktorLibs.server.cors)
 
     implementation(libs.androidx.room3.runtime)
