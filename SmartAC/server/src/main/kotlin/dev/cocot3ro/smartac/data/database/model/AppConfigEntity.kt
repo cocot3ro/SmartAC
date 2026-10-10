@@ -1,15 +1,17 @@
 package dev.cocot3ro.smartac.data.database.model
 
+import androidx.room3.ColumnInfo
 import androidx.room3.Entity
 import androidx.room3.PrimaryKey
-import androidx.room3.ColumnInfo
+import dev.cocot3ro.smartac.data.database.constants.AppConfigTable
+import dev.cocot3ro.smartac.data.database.constants.AppConfigTable.Columns
 
-@Entity
+@Entity(AppConfigTable.TABLE_NAME)
 data class AppConfigEntity(
     @PrimaryKey
-    @ColumnInfo(name = "config_key")
+    @ColumnInfo(name = Columns.CONFIG_KEY)
     val configKey: String,
 
-    @ColumnInfo(name = "config_value")
+    @ColumnInfo(name = Columns.CONFIG_VALUE)
     val configValue: String
 )

@@ -2,15 +2,15 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "ed26477672767c0cac262fc3ff76a720",
+    "identityHash": "e05bda31bf96dcdba88efac77ae2dcb0",
     "entities": [
       {
-        "tableName": "DeviceUser",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`device_user_id_pk` TEXT NOT NULL, `password_hash` BLOB NOT NULL, PRIMARY KEY(`device_user_id_pk`))",
+        "tableName": "device_user",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `password_hash` BLOB NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
-            "columnName": "device_user_id_pk",
+            "columnName": "id",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -24,12 +24,12 @@
         "primaryKey": {
           "autoGenerate": false,
           "columnNames": [
-            "device_user_id_pk"
+            "id"
           ]
         }
       },
       {
-        "tableName": "AppConfigEntity",
+        "tableName": "app_config",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`config_key` TEXT NOT NULL, `config_value` TEXT NOT NULL, PRIMARY KEY(`config_key`))",
         "fields": [
           {
@@ -55,7 +55,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ed26477672767c0cac262fc3ff76a720')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e05bda31bf96dcdba88efac77ae2dcb0')"
     ]
   }
 }

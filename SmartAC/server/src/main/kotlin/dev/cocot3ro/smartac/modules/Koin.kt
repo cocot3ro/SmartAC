@@ -4,6 +4,7 @@ import dev.cocot3ro.smartac.di.SmartACKoinApplication
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import org.koin.environmentProperties
+import org.koin.fileProperties
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
 import org.koin.plugin.module.dsl.withConfiguration
@@ -11,7 +12,10 @@ import org.koin.plugin.module.dsl.withConfiguration
 fun Application.configureKoin() {
     install(Koin) {
         slf4jLogger()
-        environmentProperties()
+        fileProperties()
+        if (developmentMode) {
+            environmentProperties()
+        }
         withConfiguration<SmartACKoinApplication>()
     }
 }

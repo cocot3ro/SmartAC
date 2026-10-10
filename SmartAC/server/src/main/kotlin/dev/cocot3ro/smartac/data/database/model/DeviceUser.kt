@@ -1,20 +1,22 @@
 package dev.cocot3ro.smartac.data.database.model
 
 import androidx.room3.ColumnInfo
-import androidx.room3.ColumnTypeConverter
 import androidx.room3.Entity
 import androidx.room3.PrimaryKey
+import dev.cocot3ro.smartac.data.database.constants.DeviceUserTable.Columns
+import dev.cocot3ro.smartac.data.database.constants.DeviceUserTable
 import kotlin.uuid.Uuid
 
-@Entity
+@Entity(DeviceUserTable.TABLE_NAME)
 data class DeviceUser(
     @PrimaryKey
-    @ColumnInfo(name = "device_user_id_pk")
+    @ColumnInfo(name = Columns.ID)
     val id: Uuid,
 
-    @ColumnInfo(name = "password_hash")
+    @ColumnInfo(name = Columns.PASSWORD_HASH)
     val passwordHash: ByteArray
 ) {
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
