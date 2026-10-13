@@ -6,5 +6,5 @@ import org.koin.core.annotation.Module
 
 @Module
 @Configuration
-@ComponentScan("dev.cocot3ro.smartac.core.jwt")
-object JWTModule
+@ComponentScan("dev.cocot3ro.smartac.core.auth")
+object AuthModule

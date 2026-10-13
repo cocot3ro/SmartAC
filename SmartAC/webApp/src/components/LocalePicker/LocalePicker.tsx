@@ -1,20 +1,20 @@
 import cn from "classnames";
-import {Flag} from "src/components";
-import {useTheme} from "src/hooks";
-import {getFlagCodeForLocale, supportedLngs} from "src/i18n";
+import { Flag } from "src/components";
+import { useTheme } from "src/hooks";
+import { getFlagCodeForLocale, supportedLngs } from "src/i18n";
 import styles from "src/components/LocalePicker/LocalePicker.module.css";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 interface Props {
     menuAlign?: "start" | "end";
 }
 
-function LocalePicker({menuAlign = "start"}: Props) {
-    const {getTheme} = useTheme();
+function LocalePicker({ menuAlign = "start" }: Props) {
+    const { getTheme } = useTheme();
 
-    const {i18n} = useTranslation();
+    const { i18n } = useTranslation();
 
-    const classes = ["btn", "dropdown-toggle", "btn-sm", styles.btn];
+    const classes = [ "btn", "dropdown-toggle", "btn-sm", styles.btn ];
     const cns = cn(...classes, getTheme() === "dark" ? "btn-ghost-dark" : "btn-ghost-light");
 
     const changeTo = (lang: string) => {
@@ -24,30 +24,30 @@ function LocalePicker({menuAlign = "start"}: Props) {
 
     return (
         <div className="dropdown">
-            <button type="button" className={cns} data-bs-toggle="dropdown">
-                <Flag countryCode={getFlagCodeForLocale(i18n.resolvedLanguage)}/>
+            <button type="button" className={ cns } data-bs-toggle="dropdown">
+                <Flag countryCode={ getFlagCodeForLocale(i18n.resolvedLanguage) } />
             </button>
             <div
-                className={cn("dropdown-menu", {
-                    "dropdown-menu-end": menuAlign === "end",
-                })}
+                className={ cn("dropdown-menu", {
+                    "dropdown-menu-end": menuAlign === "end"
+                }) }
             >
-                {supportedLngs.map((item) => (
+                { supportedLngs.map((item) => (
                     <a
                         className="dropdown-item"
-                        key={item.code}
-                        onClick={(e) => {
+                        key={ item.code }
+                        onClick={ (e) => {
                             e.preventDefault();
                             changeTo(item.code);
-                        }}
+                        } }
                     >
-                        <Flag countryCode={getFlagCodeForLocale(item.code)}/>
-                        <span>{item.name}</span>
+                        <Flag countryCode={ getFlagCodeForLocale(item.code) } />
+                        <span>{ item.name }</span>
                     </a>
-                ))}
+                )) }
             </div>
         </div>
     );
 }
 
-export {LocalePicker};
+export { LocalePicker };

@@ -6,6 +6,7 @@ import dev.cocot3ro.smartac.modules.configureResources
 import dev.cocot3ro.smartac.modules.configureRouting
 import dev.cocot3ro.smartac.modules.configureSecurity
 import dev.cocot3ro.smartac.modules.configureSerialization
+import dev.cocot3ro.smartac.modules.configureSessions
 import dev.cocot3ro.smartac.modules.configureWebsockets
 import io.ktor.server.application.Application
 import io.ktor.server.engine.connector
@@ -36,6 +37,7 @@ suspend fun Application.modules() {
     configureCors()
     configureResources()
     configureKoin()
+    configureSessions()
     configureSecurity()
     configureWebsockets()
     configureRouting()

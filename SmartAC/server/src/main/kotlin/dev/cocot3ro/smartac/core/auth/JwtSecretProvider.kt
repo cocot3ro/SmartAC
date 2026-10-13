@@ -1,4 +1,4 @@
-package dev.cocot3ro.smartac.core.jwt
+package dev.cocot3ro.smartac.core.auth
 
 import org.koin.core.annotation.Factory
 import org.koin.core.annotation.Property

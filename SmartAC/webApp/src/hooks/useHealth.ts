@@ -1,19 +1,19 @@
-import {useQuery} from "@tanstack/react-query";
-import {getHealth} from "src/api/backend";
-import type {HealthResponse} from "webapp-shared";
+import { useQuery } from "@tanstack/react-query";
+import { getHealth } from "src/api/backend";
+import type { HealthResponse } from "webapp-shared";
 
 const fetchHealth = () => getHealth();
 
 const useHealth = (options = {}) => {
     return useQuery<HealthResponse, Error>({
-        queryKey: ["health"],
+        queryKey: [ "health" ],
         queryFn: fetchHealth,
         refetchOnWindowFocus: false,
         retry: 5,
         refetchInterval: 15 * 1000, // 15 seconds
         staleTime: 14 * 1000, // 14 seconds
-        ...options,
+        ...options
     });
 };
 
-export {fetchHealth, useHealth};
+export { fetchHealth, useHealth };

@@ -6,16 +6,12 @@ import androidx.room3.Query
 import dev.cocot3ro.smartac.data.database.constants.AppConfigTable.Columns
 import dev.cocot3ro.smartac.data.database.constants.AppConfigTable.TABLE_NAME
 import dev.cocot3ro.smartac.data.database.model.AppConfigEntity
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AppConfigDao {
 
     @Insert
-    suspend fun insert(item: AppConfigEntity)
-
-    @Query("SELECT * FROM $TABLE_NAME")
-    fun getAllAsFlow(): Flow<AppConfigEntity>
+    suspend fun insert(item: AppConfigEntity): Long
 
     @Query("SELECT * FROM $TABLE_NAME WHERE ${Columns.CONFIG_KEY} = :key")
     suspend fun get(key: String): AppConfigEntity?

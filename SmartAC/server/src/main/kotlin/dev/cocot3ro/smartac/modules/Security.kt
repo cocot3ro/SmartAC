@@ -2,8 +2,10 @@ package dev.cocot3ro.smartac.modules
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
-import dev.cocot3ro.smartac.core.jwt.JwtSecretProvider
+import dev.cocot3ro.smartac.core.auth.AdminSession
+import dev.cocot3ro.smartac.core.auth.JwtSecretProvider
 import dev.cocot3ro.smartac.data.database.repository.DeviceUserRepository
+import io.ktor.http.HttpStatusCode
 import io.ktor.http.auth.DigestAlgorithm
 import io.ktor.server.application.Application
 import io.ktor.server.auth.DigestCredential
@@ -12,13 +14,24 @@ import io.ktor.server.auth.authenticate
 import io.ktor.server.auth.authentication
 import io.ktor.server.auth.digest
 import io.ktor.server.auth.jwt.jwt
+import io.ktor.server.auth.session
+import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
-import io.ktor.server.routing.Routing
 import org.koin.ktor.ext.inject
 import kotlin.uuid.Uuid
 
 fun Application.configureSecurity() {
     authentication {
+
+        session<AdminSession>("auth-session") {
+            validate { session: AdminSession ->
+                session.takeIf { session.authenticated }
+            }
+
+            challenge {
+                call.respond(HttpStatusCode.Unauthorized)
+            }
+        }
 
         jwt("auth-jwt") {
             val jwtSecretProvider by this@configureSecurity.inject<JwtSecretProvider>()
@@ -69,6 +82,8 @@ fun Application.configureSecurity() {
     }
 }
 
-fun Routing.digestAuth(build: Route.() -> Unit) = authenticate("auth-digest", build = build)
+fun Route.digestAuth(build: Route.() -> Unit) = authenticate("auth-digest", build = build)
 
-fun Routing.jwtAuth(build: Route.() -> Unit) = authenticate("auth-jwt", build = build)
+fun Route.adminSessionAuth(build: Route.() -> Unit) = authenticate("auth-session", build = build)
+
+fun Route.jwtAuth(build: Route.() -> Unit) = authenticate("auth-jwt", build = build)

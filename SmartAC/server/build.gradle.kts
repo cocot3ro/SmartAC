@@ -44,6 +44,8 @@ dependencies {
     implementation(project.dependencies.platform(libs.koin.bom))
     implementation(libs.bundles.koin.server)
 
+    implementation(libs.argon2.jvm)
+
     testImplementation(libs.kotlin.testJunit)
 }
 

@@ -1,16 +1,15 @@
-package dev.cocot3ro.smartac.data.network.resources
+package dev.cocot3ro.smartac.data.network.routes
 
 import io.ktor.resources.Resource
 import kotlin.js.ExperimentalJsExport
 import kotlin.js.JsExport
 
 @OptIn(ExperimentalJsExport::class)
-@Resource(HealthRoute.PATH)
+@Resource(LoginRoute.PATH)
 @JsExport
-class HealthRoute {
+class LoginRoute {
     companion object {
-        private const val PATH = "/health"
-
+        private const val PATH = "/api/login"
         fun getPath() = PATH
     }
 }
