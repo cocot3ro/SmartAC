@@ -74,10 +74,7 @@ fun Route.adminRouting() {
             )
         }
 
-        call.respondRedirect(
-            url = LoginRoute.getPath(),
-            permanent = false
-        )
+        call.respond(message = HttpStatusCode.NoContent)
     }
 
     post<LoginRoute, LoginRequest> { _: LoginRoute, body: LoginRequest ->

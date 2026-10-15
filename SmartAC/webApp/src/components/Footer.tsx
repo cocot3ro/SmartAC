@@ -22,8 +22,6 @@ export function Footer() {
         return formatVersion(v);
     };
 
-    console.log(versionData);
-
     return (
         <footer className="footer footer-transparent d-print-none">
             <div className="container-xl">

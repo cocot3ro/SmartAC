@@ -1,44 +1,45 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { ErrorNotFound, Footer, Header, LoadingPage, Page, SiteContainer } from "src/components";
-// import { useHealth } from "src/hooks";
-// import { useAuthState } from "src/context";
+import { useHealth } from "src/hooks";
+import { useAuthState } from "src/context";
 
-// const Setup = lazy(() => import("src/pages/Setup"));
-// const Unhealthy = lazy(() => import("src/pages/Unhealthy"));
-// const Login = lazy(() => import("src/pages/Login"));
+const Setup = lazy(() => import("src/pages/Setup"));
+const Unhealthy = lazy(() => import("src/pages/Unhealthy"));
+const Login = lazy(() => import("src/pages/Login"));
 const Dashboard = lazy(() => import("src/pages/Dashboard"));
 const Users = lazy(() => import("src/pages/Users"));
 const Devices = lazy(() => import("src/pages/Devices"));
 
 function Router() {
 
-    // const health = useHealth();
-    // const { authenticated } = useAuthState();
+    const health = useHealth();
 
-    // if (health.isLoading) {
-    //     return <LoadingPage />;
-    // }
-    //
-    // if (health.isError) {
-    //     return <Unhealthy />;
-    // }
-    //
-    // if (!health.data?.setup) {
-    //     return <Setup />;
-    // }
-    //
-    // if (authenticated == null) {
-    //     return <LoadingPage />;
-    // }
-    //
-    // if (!authenticated) {
-    //     return (
-    //         <Suspense fallback={ <LoadingPage /> }>
-    //             <Login />
-    //         </Suspense>
-    //     );
-    // }
+    if (health.isLoading) {
+        return <LoadingPage />;
+    }
+
+    if (health.isError) {
+        return <Unhealthy />;
+    }
+
+    if (!health.data?.setup) {
+        return <Setup />;
+    }
+
+    const { authenticated } = useAuthState();
+
+    if (authenticated == null) {
+        return <LoadingPage />;
+    }
+
+    if (!authenticated) {
+        return (
+            <Suspense fallback={ <LoadingPage /> }>
+                <Login />
+            </Suspense>
+        );
+    }
 
     return (
         <BrowserRouter>
