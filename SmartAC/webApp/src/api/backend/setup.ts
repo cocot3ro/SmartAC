@@ -1,9 +1,9 @@
 import * as api from "./base.ts";
-import { type LoginRequest, LoginRoute } from "webapp-shared";
+import { LoginRequest, SetupRoute } from "webapp-shared";
 
-export async function setup(loginRequest: LoginRequest): Promise<void> {
+export async function setup(password: string): Promise<void> {
     return await api.post({
-        url: LoginRoute.Companion.getPath(),
-        data: loginRequest
+        url: SetupRoute.Companion.getPath(),
+        data: new LoginRequest(password)
     });
 }

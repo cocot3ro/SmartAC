@@ -35,17 +35,13 @@ function buildBody(data?: Record<string, any>): string | undefined {
 
 async function processResponse(response: Response) {
     if (!response.ok) {
-        // if (response.status === 401) {
-            // Force logout user and reload the page if Unauthorized
-            // console.log("Unauthorized");
-            // window.location.reload();
-        // }
-
-        throw new Error(response.status + " " + response.statusText);
+        throw new Error(`${ response.status } ${ response.statusText }`);
+    } else if (response.status === 204) {
+        return undefined;
+    } else {
+        const payload = await response.json();
+        return camelizeKeys(payload) as any;
     }
-
-    const payload = await response.json();
-    return camelizeKeys(payload) as any;
 }
 
 interface GetArgs {

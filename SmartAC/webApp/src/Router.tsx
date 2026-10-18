@@ -14,6 +14,7 @@ const Devices = lazy(() => import("src/pages/Devices"));
 function Router() {
 
     const health = useHealth();
+    const { authenticated } = useAuthState();
 
     if (health.isLoading) {
         return <LoadingPage />;
@@ -25,12 +26,6 @@ function Router() {
 
     if (!health.data?.setup) {
         return <Setup />;
-    }
-
-    const { authenticated } = useAuthState();
-
-    if (authenticated == null) {
-        return <LoadingPage />;
     }
 
     if (!authenticated) {

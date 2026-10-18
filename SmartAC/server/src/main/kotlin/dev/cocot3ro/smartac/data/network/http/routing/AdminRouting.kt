@@ -7,6 +7,7 @@ import dev.cocot3ro.smartac.data.network.model.HealthResponse
 import dev.cocot3ro.smartac.data.network.model.LoginRequest
 import dev.cocot3ro.smartac.data.network.model.VersionCheckResponse
 import dev.cocot3ro.smartac.data.network.model.VersionModel
+import dev.cocot3ro.smartac.data.network.routes.ChangePasswordRoute
 import dev.cocot3ro.smartac.data.network.routes.HealthRoute
 import dev.cocot3ro.smartac.data.network.routes.LoginRoute
 import dev.cocot3ro.smartac.data.network.routes.LogoutRoute
@@ -16,10 +17,10 @@ import dev.cocot3ro.smartac.data.network.routes.VersionCheckRoute
 import dev.cocot3ro.smartac.modules.adminSessionAuth
 import dev.cocot3ro.smartac.utils.IsSetup
 import io.ktor.http.HttpStatusCode
+import io.ktor.server.request.receive
 import io.ktor.server.resources.get
 import io.ktor.server.resources.post
 import io.ktor.server.response.respond
-import io.ktor.server.response.respondRedirect
 import io.ktor.server.routing.Route
 import io.ktor.server.sessions.clear
 import io.ktor.server.sessions.sessions
@@ -50,7 +51,7 @@ fun Route.adminRouting() {
         )
     }
 
-    post<SetupRoute, LoginRequest> { _: SetupRoute, body: LoginRequest ->
+    post<SetupRoute/*, LoginRequest*/> { _: SetupRoute/*, body: LoginRequest*/ ->
         val isSetup by inject<IsSetup>()
 
         if (isSetup()) {
@@ -62,6 +63,8 @@ fun Route.adminRouting() {
         }
 
         val adminAuthRepository by inject<AdminAuthRepository>()
+
+        val body = call.receive<LoginRequest>()
 
         val success: Boolean = adminAuthRepository.setAdminPassword(body.password)
 
@@ -89,12 +92,29 @@ fun Route.adminRouting() {
         call.sessions.clear<AdminSession>()
         call.sessions.set(value = AdminSession())
 
-        call.respond(message = HttpStatusCode.OK)
+        call.respond(message = HttpStatusCode.NoContent)
     }
 
     adminSessionAuth {
         get<SessionRoute> { _: SessionRoute ->
             call.respond(HttpStatusCode.NoContent)
+        }
+
+        post<ChangePasswordRoute, LoginRequest> { _: ChangePasswordRoute, body: LoginRequest ->
+            val adminAuthRepository by inject<AdminAuthRepository>()
+
+            val success: Boolean = adminAuthRepository.setAdminPassword(body.password)
+
+            if (!success) {
+                return@post call.respond(
+                    status = HttpStatusCode.BadRequest,
+                    message = "Invalid password. Password must be at least 8 characters long " +
+                            "and contain at least one uppercase letter, one lowercase letter, " +
+                            "one digit, and one special character."
+                )
+            }
+
+            call.respond(message = HttpStatusCode.NoContent)
         }
 
         post<LogoutRoute> { _: LogoutRoute ->

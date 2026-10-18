@@ -12,6 +12,7 @@
     "country-flag-icons": "^1.6.20",
     "humps": "^2.0.1",
     "react": "^19.3.0",
+    "react-bootstrap": "^2.10.10",
     "react-dom": "^19.3.0",
     "rooks": "^9.9.0",
     "webapp-shared": "0.0.0-unspecified"

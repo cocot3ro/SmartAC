@@ -1,11 +1,11 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { createContext, type ReactNode, useContext, useState } from "react";
 import { useIntervalWhen } from "rooks";
-import { checkSession } from "src/api/backend";
+import { checkSession, login, logout } from "src/api/backend";
 
 // Context
 export interface AuthContextType {
-    authenticated: boolean | undefined;
+    authenticated: boolean;
     login: (password: string) => Promise<void>;
     logout: () => void;
 }
@@ -20,12 +20,18 @@ interface Props {
 
 function AuthProvider({ children, sessionRefreshInterval = 5 * 60 * 1000 }: Props) {
     const queryClient = useQueryClient();
-    const [ authenticated, setAuthenticated ] = useState<boolean>();
+    const [ authenticated, setAuthenticated ] = useState<boolean | undefined>(undefined);
+
+    const clear = async () => {
+        setAuthenticated(false);
+        queryClient.clear();
+        await queryClient.refetchQueries({ queryKey: [ "health" ] });
+    }
 
     const refresh = async () => {
         checkSession()
-            .catch(() => logout())
-            .then(() => setAuthenticated(true));
+            .then(() => setAuthenticated(true))
+            .catch(() => clear());
     };
 
     useIntervalWhen(
@@ -40,22 +46,21 @@ function AuthProvider({ children, sessionRefreshInterval = 5 * 60 * 1000 }: Prop
         true
     );
 
-    const logout = () => {
-        console.log("Logging out");
-        setAuthenticated(false);
-        queryClient.clear();
+    const onLogout = async () => {
+        await logout();
+        await clear();
     };
 
-    const login = async (secret: string) => {
+    const onLogin = async (secret: string) => {
         login(secret)
-            .catch(() => logout())
-            .then(() => setAuthenticated(true));
+            .then(() => setAuthenticated(true))
+            .catch(() => clear());
     };
 
     const value = {
-        authenticated,
-        login,
-        logout
+        authenticated: authenticated === true,
+        login: onLogin,
+        logout: onLogout
     };
 
     return <AuthContext.Provider value={ value }>{ children }</AuthContext.Provider>;

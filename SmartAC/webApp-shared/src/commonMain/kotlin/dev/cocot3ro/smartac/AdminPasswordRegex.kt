@@ -12,4 +12,4 @@ import kotlin.js.JsExport
  */
 @OptIn(ExperimentalJsExport::class)
 @JsExport
-const val ADMIN_PASSWORD_REGEX: String = """^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&\.])[A-Za-z\d@$!%*?&\.]{8,}$"""
+const val ADMIN_PASSWORD_REGEX: String = """^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#!%*?&^.])[A-Za-z\d@$#!%*?&^.]{8,}$"""

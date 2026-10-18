@@ -3,6 +3,7 @@ package dev.cocot3ro.smartac.data.database.dao
 import androidx.room3.Dao
 import androidx.room3.Insert
 import androidx.room3.Query
+import androidx.room3.Update
 import dev.cocot3ro.smartac.data.database.constants.AppConfigTable.Columns
 import dev.cocot3ro.smartac.data.database.constants.AppConfigTable.TABLE_NAME
 import dev.cocot3ro.smartac.data.database.model.AppConfigEntity
@@ -15,4 +16,7 @@ interface AppConfigDao {
 
     @Query("SELECT * FROM $TABLE_NAME WHERE ${Columns.CONFIG_KEY} = :key")
     suspend fun get(key: String): AppConfigEntity?
+
+    @Update
+    suspend fun update(item: AppConfigEntity): Int
 }

@@ -20,6 +20,15 @@ class AppConfigRepository(
     }
 
     suspend fun setAdminPassword(password: String): Boolean {
+        getAdminConfig()?.let {
+            return appConfigDao.update(
+                item = AppConfigEntity(
+                    configKey = Keys.ADMIN_PASSWORD,
+                    configValue = password
+                )
+            ) > 0
+        }
+
         return appConfigDao.insert(
             item = AppConfigEntity(
                 configKey = Keys.ADMIN_PASSWORD,

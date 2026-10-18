@@ -1,7 +1,7 @@
 import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import HttpApi from "i18next-http-backend";
-import {initReactI18next} from "react-i18next";
+import { initReactI18next, useTranslation } from "react-i18next";
 
 interface Lang {
     code: string;
@@ -13,17 +13,17 @@ const supportedLngs: Lang[] = [
     {
         code: "en",
         locale: "en-US",
-        name: "English",
+        name: "English"
     },
     {
         code: "es",
         locale: "es-ES",
-        name: "Español",
+        name: "Español"
     },
     {
         code: "fa",
         locale: "fa-IR",
-        name: "Persa",
+        name: "Persa"
     }
 ];
 const defaultLang: Lang = supportedLngs[0];
@@ -34,15 +34,15 @@ i18n
     .use(initReactI18next)
     .init({
         detection: {
-            order: ['localStorage', 'navigator'],
-            caches: ['localStorage']
+            order: [ "localStorage" ],
+            caches: [ "localStorage" ]
         },
         fallbackLng: defaultLang.code,
         supportedLngs: supportedLngs.map((item) => item.code),
         debug: true,
         interpolation: {
-            escapeValue: false,
-        },
+            escapeValue: false
+        }
     });
 
 const getFlagCodeForLocale = (locale?: string) => {
@@ -58,14 +58,25 @@ const getFlagCodeForLocale = (locale?: string) => {
         ga: "ie", // Ireland (Irish)
         et: "ee", // Estonia (ISO 3166-1). "et" as a country code would be Ethiopia.
         uk: "ua", // Ukraine
-        fa: "ir", // Iran (Persian)
+        fa: "ir" // Iran (Persian)
     };
 
     if (specialCases[thisLocale]) {
         return specialCases[thisLocale].toUpperCase();
     }
+
     return thisLocale.toUpperCase();
 };
 
+const T = ({ id }: { id: string }) => {
+    let { t } = useTranslation();
+
+    return (
+        <span data-translation-id={ id }>
+			{ t(id) }
+		</span>
+    );
+};
+
 export default i18n;
-export {supportedLngs, defaultLang, getFlagCodeForLocale};
+export { supportedLngs, defaultLang, getFlagCodeForLocale, T };

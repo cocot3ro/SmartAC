@@ -1,6 +1,7 @@
 import { LocalePicker, NavLink, ThemeSwitcher } from "src/components";
 import { IconCpu, IconHome, IconUser } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
+import { T } from "src/i18n";
 
 export function Header() {
 
@@ -15,7 +16,7 @@ export function Header() {
                 </button>
 
                 <a href="/" aria-label={ t("app_title") } className="navbar-brand navbar-brand-autodark me-3">
-                    <span>{ t("app_title") }</span>
+                    <T id={ "app_title" } />
                 </a>
 
                 <div className="collapse navbar-collapse" id="navbar-menu">
