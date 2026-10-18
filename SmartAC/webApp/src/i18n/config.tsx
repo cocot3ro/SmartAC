@@ -19,11 +19,6 @@ const supportedLngs: Lang[] = [
         code: "es",
         locale: "es-ES",
         name: "Español"
-    },
-    {
-        code: "fa",
-        locale: "fa-IR",
-        name: "Persa"
     }
 ];
 const defaultLang: Lang = supportedLngs[0];
@@ -34,7 +29,7 @@ i18n
     .use(initReactI18next)
     .init({
         detection: {
-            order: [ "localStorage" ],
+            order: [ "localStorage", "navigator" ],
             caches: [ "localStorage" ]
         },
         fallbackLng: defaultLang.code,
@@ -78,5 +73,9 @@ const T = ({ id }: { id: string }) => {
     );
 };
 
+const isRtl = () => {
+    return i18n.dir(i18n.resolvedLanguage) === "rtl";
+};
+
 export default i18n;
-export { supportedLngs, defaultLang, getFlagCodeForLocale, T };
+export { supportedLngs, defaultLang, getFlagCodeForLocale, isRtl, T };

@@ -42,7 +42,7 @@ export default function Setup() {
 
     return (
         <Page className="page page-center">
-            <div className={ cn("d-none", "d-md-flex", styles.helperBtns) }>
+            <div className={ cn("d-none", "d-md-flex", "align-items-center", "gap-1", styles.helperBtns) }>
                 <LocalePicker />
                 <ThemeSwitcher />
             </div>

@@ -18,8 +18,8 @@ function LocalePicker({ menuAlign = "start" }: Props) {
     const cns = cn(...classes, getTheme() === "dark" ? "btn-ghost-dark" : "btn-ghost-light");
 
     const changeTo = (lang: string) => {
+        // noinspection JSIgnoredPromiseFromCall
         i18n.changeLanguage(lang);
-        location.reload();
     };
 
     return (
