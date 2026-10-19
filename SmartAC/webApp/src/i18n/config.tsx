@@ -77,7 +77,7 @@ const T = ({id, data, tData}: Props) => {
     if (tData) {
         // iterate over tData and translate each value
         Object.entries(tData).forEach(([key, value]) => {
-            translatedData[key] = t({ id: value });
+            translatedData[key] = t(value);
         });
     }
 

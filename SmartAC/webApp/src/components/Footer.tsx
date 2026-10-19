@@ -72,7 +72,7 @@ export function Footer() {
                                         title={t("update-available.title", {newVersion: formatVersion(versionData.latest)})}
                                     >
                                         <T id={"update-available"}
-                                           params={{"newVersion": formatVersion(versionData.latest)}}
+                                           data={{newVersion: formatVersion(versionData.latest)}}
                                         />
                                     </a>
                                 </li>
