@@ -29,8 +29,8 @@ i18n
     .use(initReactI18next)
     .init({
         detection: {
-            order: [ "localStorage", "navigator" ],
-            caches: [ "localStorage" ]
+            order: ["localStorage", "navigator"],
+            caches: ["localStorage"]
         },
         fallbackLng: defaultLang.code,
         supportedLngs: supportedLngs.map((item) => item.code),
@@ -63,12 +63,33 @@ const getFlagCodeForLocale = (locale?: string) => {
     return thisLocale.toUpperCase();
 };
 
-const T = ({ id }: { id: string }) => {
-    let { t } = useTranslation();
+
+interface Props {
+    id: string,
+    data?: Record<string, string | number | undefined>,
+    tData?: Record<string, string>
+}
+
+const T = ({id, data, tData}: Props) => {
+    let {t} = useTranslation();
+
+    const translatedData: Record<string, string> = {};
+    if (tData) {
+        // iterate over tData and translate each value
+        Object.entries(tData).forEach(([key, value]) => {
+            translatedData[key] = t({ id: value });
+        });
+    }
 
     return (
-        <span data-translation-id={ id }>
-			{ t(id) }
+        <span data-translation-id={id}>
+			{t(
+                id,
+                {
+                    ...data,
+                    ...translatedData
+                }
+            )}
 		</span>
     );
 };

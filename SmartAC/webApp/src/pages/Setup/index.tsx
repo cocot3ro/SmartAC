@@ -17,19 +17,19 @@ interface Payload {
 
 export default function Setup() {
     const queryClient = useQueryClient();
-    const { login } = useAuthState();
-    const [ errorMsg, setErrorMsg ] = useState<string | null>(null);
+    const {login} = useAuthState();
+    const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
-    const onSubmit = async (values: Payload, { setSubmitting }: any) => {
+    const onSubmit = async (values: Payload, {setSubmitting}: any) => {
         setErrorMsg(null);
 
         try {
             setup(values.password)
                 .then(() => login(values.password)
                     .then(() => {
-                        queryClient.refetchQueries({ queryKey: [ "health" ] });
+                        queryClient.refetchQueries({queryKey: ["health"]});
                     })
                     .catch(() => setErrorMsg(t("setup.error")))
                 )
@@ -42,57 +42,57 @@ export default function Setup() {
 
     return (
         <Page className="page page-center">
-            <div className={ cn("d-none", "d-md-flex", "align-items-center", "gap-1", styles.helperBtns) }>
-                <LocalePicker />
-                <ThemeSwitcher />
+            <div className={cn("d-none", "d-md-flex", "align-items-center", "gap-1", styles.helperBtns)}>
+                <LocalePicker/>
+                <ThemeSwitcher/>
             </div>
             <div className="container container-tight py-4">
                 <div className="card card-md">
-                    <Alert variant="danger" show={ !!errorMsg } onClose={ () => setErrorMsg(null) } dismissible>
-                        { errorMsg }
+                    <Alert variant="danger" show={!!errorMsg} onClose={() => setErrorMsg(null)} dismissible>
+                        {errorMsg}
                     </Alert>
                     <Formik
                         initialValues={
-                            { password: "" } as any
+                            {password: ""} as any
                         }
-                        onSubmit={ onSubmit }
+                        onSubmit={onSubmit}
                     >
-                        { ({ isSubmitting }) => (
+                        {({isSubmitting}) => (
                             <Form>
                                 <div className="card-body text-center py-4 p-sm-5">
                                     <h1 className="mt-5">
-                                        <T id="setup.title" />
+                                        <T id={"setup.title"}/>
                                     </h1>
                                     <p className="text-secondary">
-                                        <T id="setup.preamble" />
+                                        <T id={"setup.preamble"}/>
                                     </p>
                                 </div>
-                                <hr />
+                                <hr/>
                                 <div className="card-body">
                                     <div className="mb-3">
-                                        <Field name="password" validate={ validatePassword() }>
-                                            { ({ field, form }: any) => (
+                                        <Field name="password" validate={validatePassword()}>
+                                            {({field, form}: any) => (
                                                 <div className="form-floating mb-3">
                                                     <input
                                                         id="password"
                                                         type="password"
                                                         autoComplete="new-password"
-                                                        className={ `form-control ${ form.errors.password && form.touched.password ? "is-invalid" : "" }` }
-                                                        placeholder={ t("user.new-password") }
-                                                        { ...field }
+                                                        className={`form-control ${form.errors.password && form.touched.password ? "is-invalid" : ""}`}
+                                                        placeholder={t("user.new-password")}
+                                                        {...field}
                                                     />
                                                     <label htmlFor="password">
-                                                        <T id="user.new-password" />
+                                                        <T id={"user.new-password"}/>
                                                     </label>
-                                                    { form.errors.password ? (
+                                                    {form.errors.password ? (
                                                         <div className="invalid-feedback">
-                                                            { form.errors.password && form.touched.password
+                                                            {form.errors.password && form.touched.password
                                                                 ? form.errors.password
-                                                                : null }
+                                                                : null}
                                                         </div>
-                                                    ) : null }
+                                                    ) : null}
                                                 </div>
-                                            ) }
+                                            )}
                                         </Field>
                                     </div>
                                 </div>
@@ -101,15 +101,15 @@ export default function Setup() {
                                         type="submit"
                                         actionType="primary"
                                         data-bs-dismiss="modal"
-                                        isLoading={ isSubmitting }
-                                        disabled={ isSubmitting }
+                                        isLoading={isSubmitting}
+                                        disabled={isSubmitting}
                                         className="w-100"
                                     >
-                                        <T id="save" />
+                                        <T id={"save"}/>
                                     </Button>
                                 </div>
                             </Form>
-                        ) }
+                        )}
                     </Formik>
                 </div>
             </div>

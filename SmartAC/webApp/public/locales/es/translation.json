@@ -1,6 +1,9 @@
 {
   "app_title": "SmartAC",
   "setup.title": "¡Bienvenido!",
+  "save": "Guardar",
   "setup.preamble": "Comienza creando tu cuenta de administrador.",
-  "user.new-password": "Nueva contraseña"
+  "user.new-password": "Nueva contraseña",
+  "update-available": "Actualización disponible {newVersion}",
+  "update-available.title": "La nueva version {{newVersion}} está disponible"
 }

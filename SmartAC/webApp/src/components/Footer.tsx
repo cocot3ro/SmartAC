@@ -1,13 +1,16 @@
 import { useCheckVersion, useHealth } from "src/hooks";
 import { type VersionModel } from "webapp-shared";
+import { T } from "src/i18n";
+import { useTranslation } from "react-i18next";
 
 export function Footer() {
 
     const health = useHealth();
-    const { data: versionData } = useCheckVersion();
+    const {data: versionData} = useCheckVersion();
+    const { t } = useTranslation();
 
     const formatVersion = (v: VersionModel) => {
-        return `v${ v.major }.${ v.minor }.${ v.patch }`;
+        return `v${v.major}.${v.minor}.${v.patch}`;
     };
 
     const getVersion = () => {
@@ -43,36 +46,37 @@ export function Footer() {
                                 reserved.
                             </li>
 
-                            <li className={ "list-inline-item" }>
-                                Theme by <a href={ "https://tabler.io/" } className={ "link-secondary" }>Tabler</a>
+                            <li className={"list-inline-item"}>
+                                Theme by <a href={"https://tabler.io/"} className={"link-secondary"}>Tabler</a>
                             </li>
 
                             <li className="list-inline-item">
                                 <a
-                                    href={ `https://github.com/NginxProxyManager/nginx-proxy-manager/releases/tag/${ getVersion() }` }
+                                    href={`https://codeberg.org/cocot3ro/smartac/releases/tag/${getVersion()}`}
                                     className="link-secondary"
                                     target="_blank"
                                     rel="noopener"
                                 >
-                                    { " " }
-                                    { getVersion() }{ " " }
+                                    {" "}
+                                    {getVersion()}{" "}
                                 </a>
                             </li>
 
-                            { versionData?.updateAvailable && versionData?.latest && (
+                            {versionData?.updateAvailable && versionData?.latest && (
                                 <li className="list-inline-item">
                                     <a
-                                        href={ `https://codeberg.org/cocot3ro/smartac/releases/tag/${ versionData.latest }` }
+                                        href={`https://codeberg.org/cocot3ro/smartac/releases/tag/${versionData.latest}`}
                                         className="link-warning fw-bold"
                                         target="_blank"
                                         rel="noopener"
-                                        title={ `New version ${ versionData.latest } is available` }
+                                        title={t("update-available.title", {newVersion: formatVersion(versionData.latest)})}
                                     >
-                                        Update available: { formatVersion(versionData.latest) }
-                                        {/*{t("update-available", { latestVersion: checkVersion.data.latest })}*/ }
+                                        <T id={"update-available"}
+                                           params={{"newVersion": formatVersion(versionData.latest)}}
+                                        />
                                     </a>
                                 </li>
-                            ) }
+                            )}
                         </ul>
                     </div>
                 </div>
