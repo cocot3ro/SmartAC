@@ -8,7 +8,7 @@ import dev.cocot3ro.smartac.data.database.constants.DeviceUserTable
 import kotlin.uuid.Uuid
 
 @Entity(DeviceUserTable.TABLE_NAME)
-data class DeviceUser(
+data class DeviceUserEntity(
     @PrimaryKey
     @ColumnInfo(name = Columns.ID)
     val id: Uuid,
@@ -21,7 +21,7 @@ data class DeviceUser(
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as DeviceUser
+        other as DeviceUserEntity
 
         if (id != other.id) return false
         if (!passwordHash.contentEquals(other.passwordHash)) return false

@@ -7,14 +7,14 @@ import dev.cocot3ro.smartac.data.database.converter.UuidConverter
 import dev.cocot3ro.smartac.data.database.dao.AppConfigDao
 import dev.cocot3ro.smartac.data.database.dao.DeviceUserDao
 import dev.cocot3ro.smartac.data.database.model.AppConfigEntity
-import dev.cocot3ro.smartac.data.database.model.DeviceUser
+import dev.cocot3ro.smartac.data.database.model.DeviceUserEntity
 
 internal const val DATABASE_NAME = "SmartAC.db"
 
 @Database(
     version = 1,
     entities = [
-        DeviceUser::class,
+        DeviceUserEntity::class,
         AppConfigEntity::class
     ]
 )

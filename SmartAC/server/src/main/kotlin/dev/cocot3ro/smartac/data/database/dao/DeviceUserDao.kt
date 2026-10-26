@@ -5,16 +5,16 @@ import androidx.room3.Insert
 import androidx.room3.Query
 import dev.cocot3ro.smartac.data.database.constants.DeviceUserTable.Columns
 import dev.cocot3ro.smartac.data.database.constants.DeviceUserTable.TABLE_NAME
-import dev.cocot3ro.smartac.data.database.model.DeviceUser
+import dev.cocot3ro.smartac.data.database.model.DeviceUserEntity
 import kotlin.uuid.Uuid
 
 @Dao
 interface DeviceUserDao {
 
     @Query("SELECT * FROM $TABLE_NAME WHERE ${Columns.ID} = :id")
-    suspend fun getById(id: Uuid): DeviceUser?
+    suspend fun getById(id: Uuid): DeviceUserEntity?
 
     @Insert
-    suspend fun insert(deviceUser: DeviceUser): Long
+    suspend fun insert(deviceUser: DeviceUserEntity): Long
 
 }
