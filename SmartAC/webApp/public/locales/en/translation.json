@@ -5,5 +5,7 @@
   "setup.preamble": "Start creating your admin account.",
   "user.new-password": "New password",
   "update-available": "Update available {{newVersion}}",
-  "update-available.title": "New version {{newVersion}} is available"
+  "update-available.title": "New version {{newVersion}} is available",
+  "login": "Login",
+  "login.title": "Login to your account"
 }

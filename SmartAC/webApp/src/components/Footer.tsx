@@ -42,7 +42,7 @@ export function Footer() {
                     <div className="col-12 col-lg-auto mt-3 mt-lg-0">
                         <ul className="list-inline list-inline-dots mb-0">
                             <li className="list-inline-item">
-                                Copyright © 2026 <a href="#" className="link-secondary">cocot3ro</a>. All rights
+                                Copyright &copy; 2026 <a href="#" className="link-secondary">cocot3ro</a>. All rights
                                 reserved.
                             </li>
 

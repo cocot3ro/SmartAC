@@ -14,7 +14,7 @@ function Dashboard() {
     return (
         <div>
             <h1>Dashboard</h1>
-            <p>Version: ${getVersion()}</p>
+            <p>Version: {getVersion()}</p>
         </div>
     );
 }
