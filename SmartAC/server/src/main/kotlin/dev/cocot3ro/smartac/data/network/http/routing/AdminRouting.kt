@@ -50,7 +50,7 @@ fun Route.adminRouting() {
         )
     }
 
-    post < SetupRoute, LoginRequest> { _: SetupRoute, body: LoginRequest ->
+    post<SetupRoute, LoginRequest> { _: SetupRoute, body: LoginRequest ->
         val isSetup by inject<IsSetup>()
 
         if (isSetup()) {
