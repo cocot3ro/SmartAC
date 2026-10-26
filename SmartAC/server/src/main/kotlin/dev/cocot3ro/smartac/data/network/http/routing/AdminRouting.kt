@@ -17,7 +17,6 @@ import dev.cocot3ro.smartac.data.network.routes.VersionCheckRoute
 import dev.cocot3ro.smartac.modules.adminSessionAuth
 import dev.cocot3ro.smartac.utils.IsSetup
 import io.ktor.http.HttpStatusCode
-import io.ktor.server.request.receive
 import io.ktor.server.resources.get
 import io.ktor.server.resources.post
 import io.ktor.server.response.respond
@@ -51,7 +50,7 @@ fun Route.adminRouting() {
         )
     }
 
-    post<SetupRoute/*, LoginRequest*/> { _: SetupRoute/*, body: LoginRequest*/ ->
+    post < SetupRoute, LoginRequest> { _: SetupRoute, body: LoginRequest ->
         val isSetup by inject<IsSetup>()
 
         if (isSetup()) {
@@ -63,8 +62,6 @@ fun Route.adminRouting() {
         }
 
         val adminAuthRepository by inject<AdminAuthRepository>()
-
-        val body = call.receive<LoginRequest>()
 
         val success: Boolean = adminAuthRepository.setAdminPassword(body.password)
 
