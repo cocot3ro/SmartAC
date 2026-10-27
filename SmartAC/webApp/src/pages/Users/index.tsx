@@ -1,8 +1,13 @@
+import { useUsers } from "src/hooks";
+
 function Users() {
+
+    const users = useUsers();
+
     return (
-        <div>
-            <p>Users page</p>
-        </div>
+        <table>
+
+        </table>
     );
 }
 
