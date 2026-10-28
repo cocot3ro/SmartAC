@@ -29,6 +29,7 @@ room3 = "3.0.3"
 sqlite = "2.7.1"
 argon2 = "2.12"
 kotlin-wrappers = "2026.10.5"
+voyager = "1.1.0-beta02"
 
 
 [libraries]
@@ -81,6 +82,12 @@ androidx-room3-compiler = { module = "androidx.room3:room3-compiler", version.re
 
 argon2-jvm = { module = "de.mkammerer:argon2-jvm", version.ref = "argon2" }
 
+voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
+voyager-screenModel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
+voyager-tabNavigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
+voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
+voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -107,4 +114,12 @@ koin-client = [
     "koin-compose",
     "koin-compose-viewmodel",
     "koin-annotations"
+]
+
+voyager = [
+    "voyager-navigator",
+    "voyager-screenModel",
+    "voyager-tabNavigator",
+    "voyager-transitions",
+    "voyager-koin"
 ]

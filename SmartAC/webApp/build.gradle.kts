@@ -23,6 +23,8 @@ kotlin {
             implementation(libs.androidx.lifecycle.process)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+
+            implementation(libs.bundles.voyager)
         }
 
         jsMain.dependencies {
