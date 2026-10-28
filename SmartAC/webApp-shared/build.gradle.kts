@@ -7,14 +7,8 @@ kotlin {
     jvm()
 
     js {
-        outputModuleName = "webapp-shared"
         browser()
         binaries.library()
-        generateTypeScriptDefinitions()
-        compilerOptions {
-            target = "es2015"
-            optIn.add("kotlin.js.ExperimentalJsExport")
-        }
     }
 
     sourceSets {
