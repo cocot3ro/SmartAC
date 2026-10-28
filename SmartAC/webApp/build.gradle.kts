@@ -7,7 +7,6 @@ plugins {
 kotlin {
     js {
         browser()
-        generateTypeScriptDefinitions()
         binaries.executable()
     }
 
@@ -28,6 +27,8 @@ kotlin {
 
         jsMain.dependencies {
             implementation(libs.wrappers.browser)
+
+            implementation(npm("esptool-js", "0.7.0"))
         }
     }
 }
