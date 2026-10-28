@@ -1,4 +1,4 @@
-package com.example.myapplication
+package dev.cocot3ro.smartac
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
