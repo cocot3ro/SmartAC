@@ -5,6 +5,7 @@ import androidx.room3.RoomDatabase
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import dev.cocot3ro.smartac.data.database.dao.AppConfigDao
 import dev.cocot3ro.smartac.data.database.dao.DeviceUserDao
+import dev.cocot3ro.smartac.di.DATA_DIR
 import kotlinx.coroutines.Dispatchers
 import org.koin.core.annotation.Factory
 import org.koin.core.annotation.Property
@@ -14,7 +15,7 @@ import java.io.File
 
 @Factory
 fun provideDatabaseBuilder(
-    @Provided @Property("data_dir") dataDir: String
+    @Property(DATA_DIR) dataDir: String
 ): RoomDatabase.Builder<SmartAcDatabase> {
     val dbFile = File(dataDir, DATABASE_NAME)
     return Room.databaseBuilder<SmartAcDatabase>(
