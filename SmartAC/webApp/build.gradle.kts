@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -25,12 +26,21 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
             implementation(libs.bundles.voyager)
+
+            implementation(project.dependencies.platform(libs.koin.bom))
+            implementation(libs.bundles.koin.client)
+
+            implementation(ktorLibs.client.core)
+            implementation(ktorLibs.client.contentNegotiation)
+            implementation(ktorLibs.client.resources)
+            implementation(ktorLibs.serialization.kotlinx.json)
         }
 
         jsMain.dependencies {
             implementation(libs.wrappers.browser)
 
             implementation(npm("esptool-js", "0.7.0"))
+            implementation(ktorLibs.client.js)
         }
     }
 }
