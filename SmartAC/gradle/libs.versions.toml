@@ -30,6 +30,7 @@ sqlite = "2.7.1"
 argon2 = "2.12"
 kotlin-wrappers = "2026.10.5"
 voyager = "1.1.0-beta02"
+coroutines = "1.11.0"
 
 
 [libraries]
@@ -56,6 +57,7 @@ logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "lo
 wrappers-browser = { module = "org.jetbrains.kotlin-wrappers:kotlin-browser", version.ref = "kotlin-wrappers" }
 
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "datetime" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 
 ksafe = { group = "eu.anifantakis", name = "ksafe", version.ref = "ksafe" }
 ksafe-compose = { group = "eu.anifantakis", name = "ksafe-compose", version.ref = "ksafe" }

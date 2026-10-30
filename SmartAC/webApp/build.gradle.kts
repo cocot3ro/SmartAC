@@ -11,6 +11,10 @@ kotlin {
         binaries.executable()
     }
 
+    compilerOptions {
+        freeCompilerArgs.add("-Xname-based-destructuring=complete")
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(projects.webAppShared)
@@ -24,6 +28,8 @@ kotlin {
             implementation(libs.androidx.lifecycle.process)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+
+            implementation(libs.kotlinx.coroutines.core)
 
             implementation(libs.bundles.voyager)
 

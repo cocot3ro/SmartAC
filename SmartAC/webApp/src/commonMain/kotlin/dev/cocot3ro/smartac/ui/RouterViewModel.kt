@@ -11,10 +11,9 @@ import kotlinx.coroutines.launch
 import org.koin.core.annotation.KoinViewModel
 
 @KoinViewModel
-class RouterViewModel : ViewModel(
+class RouterViewModel(
 
-) {
-
+) : ViewModel() {
     private val _health: MutableStateFlow<HealthState> = MutableStateFlow(HealthState.Idle)
     val health: StateFlow<HealthState> = _health
         .onStart { fetchHealth() }
