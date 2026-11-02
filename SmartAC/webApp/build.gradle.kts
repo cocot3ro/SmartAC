@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.koin.compiler)
 }
 
 kotlin {
@@ -17,7 +18,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.webAppShared)
+            implementation(projects.siteShared)
 
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
@@ -40,10 +41,12 @@ kotlin {
             implementation(ktorLibs.client.contentNegotiation)
             implementation(ktorLibs.client.resources)
             implementation(ktorLibs.serialization.kotlinx.json)
+            implementation(libs.compose.html)
         }
 
         jsMain.dependencies {
             implementation(libs.wrappers.browser)
+
 
             implementation(npm("esptool-js", "0.7.0"))
             implementation(ktorLibs.client.js)

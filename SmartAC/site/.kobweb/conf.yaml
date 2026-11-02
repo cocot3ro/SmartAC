@@ -1,0 +1,14 @@
+site:
+  title: "SmartAC"
+
+server:
+  port: 8081
+
+  files:
+    dev:
+      contentRoot: "build/processedResources/js/main/public"
+      script: "build/kotlin-webpack/js/developmentExecutable/smartac.js"
+      api: "build/libs/smartac.jar"
+    prod:
+      script: "build/kotlin-webpack/js/productionExecutable/smartac.js"
+      siteRoot: ".kobweb/site"

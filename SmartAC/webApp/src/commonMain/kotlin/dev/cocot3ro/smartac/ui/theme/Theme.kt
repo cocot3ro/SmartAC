@@ -248,6 +248,7 @@ val unspecified_scheme = ColorFamily(
     Color.Unspecified, Color.Unspecified, Color.Unspecified, Color.Unspecified
 )
 
+@Suppress("ModifierRequired")
 @Composable
 fun SmartAcAdminTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -257,6 +258,8 @@ fun SmartAcAdminTheme(
         darkTheme -> darkScheme
         else -> lightScheme
     }
+
+    println("isSystemInDarkTheme: ${isSystemInDarkTheme()}")
 
     MaterialTheme(
         colorScheme = colorScheme,

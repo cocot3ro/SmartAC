@@ -16,7 +16,7 @@ application {
 
 dependencies {
     api(projects.core)
-    implementation(projects.webAppShared)
+    implementation(projects.siteShared)
 
     implementation(libs.logback.classic)
 

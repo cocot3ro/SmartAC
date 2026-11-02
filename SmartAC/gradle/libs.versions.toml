@@ -29,8 +29,9 @@ room3 = "3.0.3"
 sqlite = "2.7.1"
 argon2 = "2.12"
 kotlin-wrappers = "2026.10.5"
-voyager = "1.1.0-beta02"
+voyager = "2.2.21-1.10.3"
 coroutines = "1.11.0"
+kobweb = "0.25.1"
 
 
 [libraries]
@@ -51,6 +52,7 @@ compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", v
 compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "material3" }
 compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "composeMultiplatform" }
 compose-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "composeMultiplatform" }
+compose-html = { module = "org.jetbrains.compose.html:html-core", version.ref = "composeMultiplatform" }
 compose-uiToolingPreview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "composeMultiplatform" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 
@@ -90,6 +92,10 @@ voyager-tabNavigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", v
 voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
 voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
 
+kobweb-core = { module = "com.varabyte.kobweb:kobweb-core ", version.ref = "kobweb" }
+kobweb-silk = { module = "com.varabyte.kobweb:kobweb-silk", version.ref = "kobweb" }
+silk-icons-fa = { module = "com.varabyte.kobwebx:silk-icons-fa", version.ref = "kobweb" }
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -102,6 +108,7 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 koin-compiler = { id = "io.insert-koin.compiler.plugin", version.ref = "koin-compiler" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 androidx-room3 = { id = "androidx.room3", version.ref = "room3" }
+kobweb-application = { id = "com.varabyte.kobweb.application", version.ref = "kobweb" }
 
 
 [bundles]

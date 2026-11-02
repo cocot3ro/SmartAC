@@ -8,6 +8,6 @@ fun Route.webAppRouting() {
 
     singlePageApplication {
         useResources = true
-        react("dist")
+        filesPath = "dist"
     }
 }
