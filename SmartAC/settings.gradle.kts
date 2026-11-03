@@ -1,8 +1,5 @@
 @file:Suppress("UnstableApiUsage")
 
-include(":webApp")
-
-
 rootProject.name = "SmartAC"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
