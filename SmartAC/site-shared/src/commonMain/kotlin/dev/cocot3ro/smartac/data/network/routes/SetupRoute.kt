@@ -6,7 +6,7 @@ import io.ktor.resources.Resource
 class SetupRoute {
 
     companion object {
-        private const val PATH = "/api/setup"
+        private const val PATH = "/api/auth/setup"
         fun getPath(): String = PATH
     }
 }

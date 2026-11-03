@@ -6,7 +6,7 @@ import io.ktor.resources.Resource
 class LogoutRoute {
 
     companion object {
-        private const val PATH = "/api/logout"
+        private const val PATH = "/api/auth/logout"
 
         fun getPath(): String = PATH
     }

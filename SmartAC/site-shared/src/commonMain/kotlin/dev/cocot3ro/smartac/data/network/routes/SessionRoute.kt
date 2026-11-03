@@ -6,7 +6,7 @@ import io.ktor.resources.Resource
 class SessionRoute {
 
     companion object {
-        private const val PATH = "/api/session"
+        private const val PATH = "/api/auth/session"
         fun getPath(): String = PATH
     }
 }

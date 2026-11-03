@@ -6,7 +6,7 @@ import io.ktor.resources.Resource
 class ChangePasswordRoute {
 
     companion object {
-        private const val PATH = "/api/change-password"
+        private const val PATH = "/api/auth/change-password"
         fun getPath() = PATH
     }
 }

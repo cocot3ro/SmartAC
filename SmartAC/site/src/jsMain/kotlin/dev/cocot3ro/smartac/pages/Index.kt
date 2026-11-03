@@ -68,7 +68,10 @@ private val GridCellColorVar by StyleVariable<Color>()
 val HomeGridCellStyle = CssStyle.base {
     Modifier
         .backgroundColor(GridCellColorVar.value())
-        .boxShadow(blurRadius = 0.6.cssRem, color = GridCellColorVar.value())
+        .boxShadow(
+            blurRadius = 0.6.cssRem,
+            color = GridCellColorVar.value()
+        )
         .borderRadius(1.cssRem)
 }
 
@@ -145,12 +148,41 @@ fun HomePage() {
                 .toAttrs()
         ) {
             val sitePalette = ColorMode.current.toSitePalette()
-            GridCell(sitePalette.brand.primary, 1, 1, 2, 2)
-            GridCell(ColorPalettes.Monochrome._600, 1, 3)
-            GridCell(ColorPalettes.Monochrome._100, 1, 4, width = 2)
-            GridCell(sitePalette.brand.accent, 2, 3, width = 2)
-            GridCell(ColorPalettes.Monochrome._300, 2, 5)
-            GridCell(ColorPalettes.Monochrome._800, 3, 1, width = 5)
+            GridCell(
+                sitePalette.brand.primary,
+                1,
+                1,
+                2,
+                2
+            )
+            GridCell(
+                ColorPalettes.Monochrome._600,
+                1,
+                3
+            )
+            GridCell(
+                ColorPalettes.Monochrome._100,
+                1,
+                4,
+                width = 2
+            )
+            GridCell(
+                sitePalette.brand.accent,
+                2,
+                3,
+                width = 2
+            )
+            GridCell(
+                ColorPalettes.Monochrome._300,
+                2,
+                5
+            )
+            GridCell(
+                ColorPalettes.Monochrome._800,
+                3,
+                1,
+                width = 5
+            )
         }
     }
 }

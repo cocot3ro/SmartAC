@@ -6,6 +6,7 @@ import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.web.events.SyntheticMouseEvent
 import com.varabyte.kobweb.browser.dom.ElementTarget
 import com.varabyte.kobweb.compose.css.functions.clamp
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -42,6 +43,7 @@ import com.varabyte.kobweb.silk.components.overlay.OverlayVars
 import com.varabyte.kobweb.silk.components.overlay.PopupPlacement
 import com.varabyte.kobweb.silk.components.overlay.Tooltip
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.GeneralKind
 import com.varabyte.kobweb.silk.style.animation.Keyframes
 import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.base
@@ -59,31 +61,41 @@ import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.dom.Header
+import org.jetbrains.compose.web.events.SyntheticAnimationEvent
 
-val NavHeaderStyle = CssStyle.base {
+val NavHeaderStyle: CssStyle<GeneralKind> = CssStyle.base {
     Modifier.fillMaxWidth().padding(1.cssRem)
 }
 
 @Composable
 private fun NavLink(path: String, text: String) {
-    Link(path, text, variant = UndecoratedLinkVariant.then(UncoloredLinkVariant))
+    Link(
+        path = path,
+        text = text,
+        variant = UndecoratedLinkVariant.then(next = UncoloredLinkVariant)
+    )
 }
 
+@Suppress("MultipleContentEmitters")
 @Composable
 private fun MenuItems() {
     NavLink("/", "Home")
     NavLink("/about", "About")
 }
 
+@Suppress("MultipleContentEmitters")
 @Composable
 private fun ColorModeButton() {
     var colorMode by ColorMode.currentState
-    IconButton(onClick = { colorMode = colorMode.opposite }) {
+    IconButton(onClick = {
+        colorMode = colorMode.opposite
+    }) {
         if (colorMode.isLight) MoonIcon() else SunIcon()
     }
     Tooltip(
-        ElementTarget.PreviousSibling,
-        "Toggle color mode",
+        target = ElementTarget.PreviousSibling,
+        text = "Toggle color mode",
         placement = PopupPlacement.BottomRight
     )
 }
@@ -126,57 +138,65 @@ enum class SideMenuState {
     }
 }
 
+@Suppress("ModifierRequired")
 @Composable
 fun NavHeader() {
-    Row(NavHeaderStyle.toModifier(), verticalAlignment = Alignment.CenterVertically) {
-        Link("https://kobweb.varabyte.com") {
-            // Block display overrides inline display of the <img> tag, so it calculates centering better
-            Image(
-                "/kobweb-logo.png",
-                "Kobweb Logo",
-                Modifier.height(2.cssRem).display(DisplayStyle.Block)
-            )
-        }
-
-        Spacer()
-
-        Row(
-            Modifier.gap(1.5.cssRem).displayIfAtLeast(Breakpoint.MD),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            MenuItems()
-            ColorModeButton()
-        }
-
-        Row(
-            Modifier
-                .fontSize(1.5.cssRem)
-                .gap(1.cssRem)
-                .displayUntil(Breakpoint.MD),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            var menuState by remember { mutableStateOf(SideMenuState.CLOSED) }
-
-            ColorModeButton()
-            HamburgerButton(onClick = { menuState = SideMenuState.OPEN })
-
-            if (menuState != SideMenuState.CLOSED) {
-                SideMenu(
-                    menuState,
-                    close = { menuState = menuState.close() },
-                    onAnimationEnd = {
-                        if (menuState == SideMenuState.CLOSING) menuState = SideMenuState.CLOSED
-                    }
+    Header {
+        Row(NavHeaderStyle.toModifier(), verticalAlignment = Alignment.CenterVertically) {
+            Link("https://kobweb.varabyte.com") {
+                // Block display overrides inline display of the <img> tag, so it calculates centering better
+                Image(
+                    "/kobweb-logo.png",
+                    "Kobweb Logo",
+                    Modifier.height(2.cssRem).display(DisplayStyle.Block)
                 )
+            }
+
+            Spacer()
+
+            Row(
+                Modifier.gap(1.5.cssRem).displayIfAtLeast(Breakpoint.MD),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                MenuItems()
+                ColorModeButton()
+            }
+
+            Row(
+                Modifier
+                    .fontSize(1.5.cssRem)
+                    .gap(1.cssRem)
+                    .displayUntil(Breakpoint.MD),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                var menuState: dev.cocot3ro.smartac.components.sections.SideMenuState by remember { mutableStateOf(
+                    SideMenuState.CLOSED) }
+
+                ColorModeButton()
+                HamburgerButton(onClick = {
+                    menuState =
+                        SideMenuState.OPEN
+                })
+
+                if (menuState != SideMenuState.CLOSED) {
+                    SideMenu(
+                        menuState = menuState,
+                        close = { menuState = menuState.close() },
+                        onAnimationEnd = {
+                            if (menuState == SideMenuState.CLOSING) menuState =
+                                SideMenuState.CLOSED
+                        }
+                    )
+                }
             }
         }
     }
 }
 
 @Composable
-private fun SideMenu(menuState: SideMenuState, close: () -> Unit, onAnimationEnd: () -> Unit) {
+private fun SideMenu(menuState: dev.cocot3ro.smartac.components.sections.SideMenuState, close: () -> Unit, onAnimationEnd: () -> Unit) {
     Overlay(
-        Modifier
+        modifier = Modifier
             .setVariable(OverlayVars.BackgroundColor, Colors.Transparent)
             .onClick { close() }
     ) {
@@ -184,7 +204,7 @@ private fun SideMenu(menuState: SideMenuState, close: () -> Unit, onAnimationEnd
             Column(
                 Modifier
                     .fillMaxHeight()
-                    .width(clamp(8.cssRem, 33.percent, 10.cssRem))
+                    .width(size = clamp(min = 8.cssRem, value = 33.percent, max = 10.cssRem))
                     .align(Alignment.CenterEnd)
                     // Close button will appear roughly over the hamburger button, so the user can close
                     // things without moving their finger / cursor much.
@@ -200,13 +220,19 @@ private fun SideMenu(menuState: SideMenuState, close: () -> Unit, onAnimationEnd
                         )
                     )
                     .borderRadius(topLeft = 2.cssRem)
-                    .onClick { it.stopPropagation() }
-                    .onAnimationEnd { onAnimationEnd() },
+                    .onClick { ev: SyntheticMouseEvent ->
+                        ev.stopPropagation()
+                    }
+                    .onAnimationEnd { _: SyntheticAnimationEvent ->
+                        onAnimationEnd()
+                    },
                 horizontalAlignment = Alignment.End
             ) {
                 CloseButton(onClick = { close() })
                 Column(
-                    Modifier.padding(right = 0.75.cssRem).gap(1.5.cssRem).fontSize(1.4.cssRem),
+                    modifier = Modifier.padding(right = 0.75.cssRem)
+                        .gap(1.5.cssRem)
+                        .fontSize(1.4.cssRem),
                     horizontalAlignment = Alignment.End
                 ) {
                     MenuItems()

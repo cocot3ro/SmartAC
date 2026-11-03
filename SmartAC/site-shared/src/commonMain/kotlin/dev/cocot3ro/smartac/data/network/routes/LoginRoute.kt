@@ -5,7 +5,7 @@ import io.ktor.resources.Resource
 @Resource(LoginRoute.PATH)
 class LoginRoute {
     companion object {
-        private const val PATH = "/api/login"
+        private const val PATH = "/api/auth/login"
         fun getPath() = PATH
     }
 }

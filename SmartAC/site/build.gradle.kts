@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.kobweb.application)
+    alias(libs.plugins.koin.compiler)
 }
 
 group = "dev.cocot3ro.smartac"
