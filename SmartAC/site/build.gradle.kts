@@ -28,8 +28,14 @@ kotlin {
         }
 
         jsMain.dependencies {
+            implementation(projects.siteShared)
+
+            implementation(libs.wrappers.browser)
 
             implementation(libs.compose.runtime)
+            implementation(libs.androidx.lifecycle.process)
+            implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.compose.foundation)
             implementation(libs.compose.html)
             implementation(libs.kobweb.core)
             implementation(libs.kobweb.silk)

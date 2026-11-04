@@ -84,7 +84,7 @@ class PageLayoutData(val title: String)
 
 @Suppress("ModifierRequired")
 @Composable
-@Layout(".components.layouts.AuthLayout")
+@Layout(".presentation.components.layouts.AuthLayout")
 fun PageLayout(
     ctx: PageContext,
     content: @Composable ColumnScope.() -> Unit

@@ -19,6 +19,7 @@ import com.varabyte.kobweb.silk.theme.colors.loadFromLocalStorage
 import com.varabyte.kobweb.silk.theme.colors.saveToLocalStorage
 import com.varabyte.kobweb.silk.theme.colors.systemPreference
 import dev.cocot3ro.smartac.di.KoinApp
+import dev.cocot3ro.smartac.presentation.context.AuthContextProvider
 import org.jetbrains.compose.web.css.vh
 import org.koin.compose.KoinApplication
 import org.koin.plugin.module.dsl.koinConfiguration
@@ -44,12 +45,16 @@ fun initStyles(ctx: InitSilkContext) {
 fun AppEntry(content: @Composable () -> Unit) {
     KoinApplication(configuration = koinConfiguration<KoinApp>()) {
         SilkApp {
-            val colorMode = ColorMode.current
-            LaunchedEffect(colorMode) {
-                colorMode.saveToLocalStorage(COLOR_MODE_KEY)
-            }
-            Surface(SmoothColorStyle.toModifier().minHeight(100.vh)) {
-                content()
+            AuthContextProvider {
+                val colorMode = ColorMode.current
+
+                LaunchedEffect(colorMode) {
+                    colorMode.saveToLocalStorage(COLOR_MODE_KEY)
+                }
+
+                Surface(SmoothColorStyle.toModifier().minHeight(100.vh)) {
+                    content()
+                }
             }
         }
     }

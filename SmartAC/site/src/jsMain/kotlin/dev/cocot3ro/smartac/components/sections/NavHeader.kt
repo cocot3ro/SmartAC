@@ -169,7 +169,7 @@ fun NavHeader() {
                     .displayUntil(Breakpoint.MD),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                var menuState: dev.cocot3ro.smartac.components.sections.SideMenuState by remember { mutableStateOf(
+                var menuState: SideMenuState by remember { mutableStateOf(
                     SideMenuState.CLOSED) }
 
                 ColorModeButton()
@@ -194,7 +194,7 @@ fun NavHeader() {
 }
 
 @Composable
-private fun SideMenu(menuState: dev.cocot3ro.smartac.components.sections.SideMenuState, close: () -> Unit, onAnimationEnd: () -> Unit) {
+private fun SideMenu(menuState: SideMenuState, close: () -> Unit, onAnimationEnd: () -> Unit) {
     Overlay(
         modifier = Modifier
             .setVariable(OverlayVars.BackgroundColor, Colors.Transparent)
