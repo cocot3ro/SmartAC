@@ -26,7 +26,6 @@ import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
-import com.varabyte.kobweb.core.layout.Layout
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.navigation.Link
@@ -92,7 +91,6 @@ fun initHomePage(ctx: InitRouteContext) {
 
 @Suppress("ModifierRequired")
 @Page
-@Layout(".components.layouts.PageLayout")
 @Composable
 fun HomePage() {
     Row(HeroContainerStyle.toModifier()) {

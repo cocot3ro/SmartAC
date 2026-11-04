@@ -6,7 +6,7 @@ import com.varabyte.kobweb.core.layout.Layout
 import dev.cocot3ro.smartac.viewmodel.AuthViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
-@Layout(".components.layouts.PageLayout")
+@Layout
 @Composable
 fun AuthLayout(
     ctx: PageContext,
@@ -15,7 +15,6 @@ fun AuthLayout(
     @Suppress("ExplicitDependencies")
     val viewModel: AuthViewModel = koinViewModel()
 
-    println("ASUHDUIHSAD")
 
     content.invoke()
 }

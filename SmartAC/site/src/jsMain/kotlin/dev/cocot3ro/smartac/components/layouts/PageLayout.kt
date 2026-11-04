@@ -84,13 +84,12 @@ class PageLayoutData(val title: String)
 
 @Suppress("ModifierRequired")
 @Composable
-@Layout
+@Layout(".components.layouts.AuthLayout")
 fun PageLayout(
     ctx: PageContext,
     content: @Composable ColumnScope.() -> Unit
 ) {
-    val data: dev.cocot3ro.smartac.components.layouts.PageLayoutData =
-        ctx.data.getValue<dev.cocot3ro.smartac.components.layouts.PageLayoutData>()
+    val data: PageLayoutData = ctx.data.getValue<PageLayoutData>()
     LaunchedEffect(data.title) {
         document.title = "Kobweb - ${data.title}"
     }
@@ -106,14 +105,16 @@ fun PageLayout(
                 // pushed further down if the first row grows beyond the page.
                 // Grids are powerful but have a bit of a learning curve. For more info, see:
                 // https://css-tricks.com/snippets/css/complete-guide-grid/
-                .gridTemplateRows { size(1.fr); size(minContent) },
+                .gridTemplateRows {
+                    size(1.fr)
+                    size(minContent)
+                },
             contentAlignment = Alignment.Center
         ) {
             SvgCobweb(
-                modifier = Modifier.gridRow(
-                    1
-                ).align(Alignment.TopStart)
+                modifier = Modifier.gridRow(1).align(Alignment.TopStart)
             )
+
             Column(
                 // Isolate the content, because otherwise the absolute-positioned SVG above will render on top of it.
                 // This is confusing but how browsers work. Read up on stacking contexts for more info.
@@ -128,6 +129,7 @@ fun PageLayout(
                     content()
                 }
             }
+
             // Associate the footer with the row that will get pushed off the bottom of the page if it can't fit.
             Footer(
                 modifier = Modifier.fillMaxWidth().gridRow(2)
