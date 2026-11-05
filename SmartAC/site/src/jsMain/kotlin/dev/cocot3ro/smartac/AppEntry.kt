@@ -7,6 +7,8 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.minHeight
 import com.varabyte.kobweb.compose.ui.modifiers.scrollBehavior
 import com.varabyte.kobweb.core.App
+import com.varabyte.kobweb.core.rememberPageContext
+import com.varabyte.kobweb.navigation.Router
 import com.varabyte.kobweb.silk.SilkApp
 import com.varabyte.kobweb.silk.components.layout.Surface
 import com.varabyte.kobweb.silk.init.InitSilk
@@ -18,8 +20,9 @@ import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.loadFromLocalStorage
 import com.varabyte.kobweb.silk.theme.colors.saveToLocalStorage
 import com.varabyte.kobweb.silk.theme.colors.systemPreference
+import dev.cocot3ro.smartac.context.AuthContextProvider
+import dev.cocot3ro.smartac.context.LocalAuthContext
 import dev.cocot3ro.smartac.di.KoinApp
-import dev.cocot3ro.smartac.presentation.context.AuthContextProvider
 import org.jetbrains.compose.web.css.vh
 import org.koin.compose.KoinApplication
 import org.koin.plugin.module.dsl.koinConfiguration
@@ -52,7 +55,7 @@ fun AppEntry(content: @Composable () -> Unit) {
                     colorMode.saveToLocalStorage(COLOR_MODE_KEY)
                 }
 
-                Surface(SmoothColorStyle.toModifier().minHeight(100.vh)) {
+                Surface(modifier = SmoothColorStyle.toModifier().minHeight(100.vh)) {
                     content()
                 }
             }

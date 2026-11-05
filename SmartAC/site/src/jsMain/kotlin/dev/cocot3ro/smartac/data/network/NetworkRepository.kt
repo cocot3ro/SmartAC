@@ -13,28 +13,27 @@ class NetworkRepository(
     @Provided private val apiClient: ApiClient
 ) {
 
-    suspend fun getHealth(): HealthResponse {
+    suspend fun getHealth(): Result<HealthResponse> = runCatching {
         val response: HttpResponse = apiClient.getHealth()
-        return response.body()
+        return@runCatching response.body<HealthResponse>()
     }
 
-    suspend fun checkSession(): Boolean {
+    suspend fun checkSession(): Result<Boolean> = runCatching {
         val response: HttpResponse = apiClient.checkSession()
-        return response.status.isSuccess()
+        return@runCatching response.status.isSuccess()
     }
 
-    suspend fun setup(password: String): Boolean {
+    suspend fun setup(password: String): Result<Boolean> = runCatching {
         val response: HttpResponse = apiClient.setup(req = LoginRequest(password))
-        return response.status.isSuccess()
+        return@runCatching response.status.isSuccess()
     }
 
-    suspend fun login(password: String): Boolean {
+    suspend fun login(password: String): Result<Boolean> = runCatching {
         val response: HttpResponse = apiClient.login(req = LoginRequest(password))
-        return response.status.isSuccess()
+        return@runCatching response.status.isSuccess()
     }
 
-    suspend fun logout(): Boolean {
-        val response: HttpResponse = apiClient.logout()
-        return response.status.isSuccess()
+    suspend fun logout(): Result<Unit> = runCatching {
+        apiClient.logout()
     }
 }
