@@ -6,22 +6,25 @@ import com.varabyte.kobweb.core.layout.Layout
 import com.varabyte.kobweb.silk.components.text.SpanText
 import dev.cocot3ro.smartac.context.AuthContext
 import dev.cocot3ro.smartac.context.LocalAuthContext
+import dev.cocot3ro.smartac.data.network.NetworkRepository
+import org.koin.compose.koinInject
 
-@Suppress("ModifierRequired")
+@Suppress("ModifierRequired", "ExplicitDependencies")
 @Layout
 @Composable
-fun AuthLayout(
+fun RouterLayout(
     ctx: PageContext,
     content: @Composable () -> Unit
 ) {
-    @Suppress("ExplicitDependencies")
+    val networkRepository: NetworkRepository = koinInject()
     val authContext: AuthContext = LocalAuthContext.current
 
-    when (authContext.isAuthenticated) {
-        true -> content.invoke()
-
-        false -> ctx.router.tryRoutingTo(pathQueryAndFragment = "/login/")
-
-        null -> SpanText("Trying login")
+    val authenticated = authContext.isAuthenticated
+    if (authenticated == false) {
+        ctx.router.tryRoutingTo(pathQueryAndFragment = "/login/")
+    } else if (authenticated == null) {
+        SpanText("Trying login")
+    } else {
+        content.invoke()
     }
 }

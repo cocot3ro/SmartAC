@@ -38,7 +38,7 @@ class PageLayoutData(val title: String)
 
 @Suppress("ModifierRequired")
 @Composable
-@Layout(".components.layouts.AuthLayout")
+@Layout(".components.layouts.RouterLayout")
 fun PageLayout(
     ctx: PageContext,
     content: @Composable ColumnScope.() -> Unit
