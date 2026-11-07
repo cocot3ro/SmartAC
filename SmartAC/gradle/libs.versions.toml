@@ -28,10 +28,10 @@ ksp = "2.3.12"
 room3 = "3.0.3"
 sqlite = "2.7.1"
 argon2 = "2.12"
-kotlin-wrappers = "2026.11.0"
 voyager = "2.2.21-1.10.3"
 coroutines = "1.11.0"
 kobweb = "0.25.1"
+libres = "1.2.4"
 
 
 [libraries]
@@ -55,8 +55,6 @@ compose-components-resources = { module = "org.jetbrains.compose.components:comp
 compose-html = { module = "org.jetbrains.compose.html:html-core", version.ref = "composeMultiplatform" }
 compose-uiToolingPreview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "composeMultiplatform" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
-
-wrappers-browser = { module = "org.jetbrains.kotlin-wrappers:kotlin-browser", version.ref = "kotlin-wrappers" }
 
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "datetime" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
@@ -96,6 +94,8 @@ kobweb-core = { module = "com.varabyte.kobweb:kobweb-core ", version.ref = "kobw
 kobweb-silk = { module = "com.varabyte.kobweb:kobweb-silk", version.ref = "kobweb" }
 silk-icons-fa = { module = "com.varabyte.kobwebx:silk-icons-fa", version.ref = "kobweb" }
 
+libres = { module = "io.github.skeptick.libres:libres-compose", version.ref = "libres" }
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -109,6 +109,7 @@ koin-compiler = { id = "io.insert-koin.compiler.plugin", version.ref = "koin-com
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 androidx-room3 = { id = "androidx.room3", version.ref = "room3" }
 kobweb-application = { id = "com.varabyte.kobweb.application", version.ref = "kobweb" }
+libres = { id = "io.github.skeptick.libres", version.ref = "libres" }
 
 
 [bundles]

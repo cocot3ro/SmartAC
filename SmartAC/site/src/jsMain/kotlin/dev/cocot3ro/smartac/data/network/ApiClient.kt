@@ -7,6 +7,7 @@ import dev.cocot3ro.smartac.data.network.routes.LogoutRoute
 import dev.cocot3ro.smartac.data.network.routes.SessionRoute
 import dev.cocot3ro.smartac.data.network.routes.SetupRoute
 import io.ktor.client.HttpClient
+import io.ktor.client.fetchOptions
 import io.ktor.client.plugins.resources.get
 import io.ktor.client.plugins.resources.post
 import io.ktor.client.request.setBody
@@ -30,7 +31,11 @@ class ApiClient(
     }
 
     suspend fun checkSession(): HttpResponse {
-        return httpClient.get(resource = SessionRoute())
+        return httpClient.get(resource = SessionRoute()) {
+            fetchOptions {
+                credentials = "include"
+            }
+        }
     }
 
     suspend fun login(req: LoginRequest): HttpResponse {
@@ -40,6 +45,10 @@ class ApiClient(
     }
 
     suspend fun logout(): HttpResponse {
-        return httpClient.post(resource = LogoutRoute())
+        return httpClient.post(resource = LogoutRoute()) {
+            fetchOptions {
+                credentials = "include"
+            }
+        }
     }
 }

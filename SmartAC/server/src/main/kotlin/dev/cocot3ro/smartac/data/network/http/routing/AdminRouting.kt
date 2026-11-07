@@ -15,6 +15,7 @@ import dev.cocot3ro.smartac.data.network.routes.SessionRoute
 import dev.cocot3ro.smartac.data.network.routes.SetupRoute
 import dev.cocot3ro.smartac.data.network.routes.VersionCheckRoute
 import dev.cocot3ro.smartac.modules.adminSessionAuth
+import dev.cocot3ro.smartac.plugins.setupCheck
 import dev.cocot3ro.smartac.utils.IsSetup
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.resources.get
@@ -77,46 +78,48 @@ fun Route.adminRouting() {
         call.respond(message = HttpStatusCode.NoContent)
     }
 
-    post<LoginRoute, LoginRequest> { _: LoginRoute, body: LoginRequest ->
+    setupCheck {
+        post<LoginRoute, LoginRequest> { _: LoginRoute, body: LoginRequest ->
 
-        val passwordVerifier by inject<AdminPasswordVerifier>()
+            val passwordVerifier by inject<AdminPasswordVerifier>()
 
-        if (!passwordVerifier.verifyPassword(body.password)) {
-            call.respond(message = HttpStatusCode.Unauthorized)
-            return@post
-        }
-
-        call.sessions.clear<AdminSession>()
-        call.sessions.set(value = AdminSession())
-
-        call.respond(message = HttpStatusCode.NoContent)
-    }
-
-    adminSessionAuth {
-        get<SessionRoute> { _: SessionRoute ->
-            call.respond(HttpStatusCode.NoContent)
-        }
-
-        post<ChangePasswordRoute, LoginRequest> { _: ChangePasswordRoute, body: LoginRequest ->
-            val adminAuthRepository by inject<AdminAuthRepository>()
-
-            val success: Boolean = adminAuthRepository.setAdminPassword(body.password)
-
-            if (!success) {
-                return@post call.respond(
-                    status = HttpStatusCode.BadRequest,
-                    message = "Invalid password. Password must be at least 8 characters long " +
-                            "and contain at least one uppercase letter, one lowercase letter, " +
-                            "one digit, and one special character."
-                )
+            if (!passwordVerifier.verifyPassword(body.password)) {
+                call.respond(message = HttpStatusCode.Unauthorized)
+                return@post
             }
 
+            call.sessions.clear<AdminSession>()
+            call.sessions.set(value = AdminSession())
+
             call.respond(message = HttpStatusCode.NoContent)
         }
 
-        post<LogoutRoute> { _: LogoutRoute ->
-            call.sessions.clear<AdminSession>()
-            call.respond(message = HttpStatusCode.NoContent)
+        adminSessionAuth {
+            get<SessionRoute> { _: SessionRoute ->
+                call.respond(HttpStatusCode.NoContent)
+            }
+
+            post<ChangePasswordRoute, LoginRequest> { _: ChangePasswordRoute, body: LoginRequest ->
+                val adminAuthRepository by inject<AdminAuthRepository>()
+
+                val success: Boolean = adminAuthRepository.setAdminPassword(body.password)
+
+                if (!success) {
+                    return@post call.respond(
+                        status = HttpStatusCode.BadRequest,
+                        message = "Invalid password. Password must be at least 8 characters long " +
+                                "and contain at least one uppercase letter, one lowercase letter, " +
+                                "one digit, and one special character."
+                    )
+                }
+
+                call.respond(message = HttpStatusCode.NoContent)
+            }
+
+            post<LogoutRoute> { _: LogoutRoute ->
+                call.sessions.clear<AdminSession>()
+                call.respond(message = HttpStatusCode.NoContent)
+            }
         }
     }
 }

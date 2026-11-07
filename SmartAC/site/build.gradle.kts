@@ -3,9 +3,9 @@ import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.composeCompiler)
-    alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.kobweb.application)
     alias(libs.plugins.koin.compiler)
+    alias(libs.plugins.libres)
 }
 
 group = "dev.cocot3ro.smartac"
@@ -30,18 +30,14 @@ kotlin {
         jsMain.dependencies {
             implementation(projects.siteShared)
 
-            implementation(libs.wrappers.browser)
-
             implementation(libs.compose.runtime)
-            implementation(libs.androidx.lifecycle.process)
-            implementation(libs.androidx.lifecycle.runtimeCompose)
-            implementation(libs.compose.foundation)
             implementation(libs.compose.html)
             implementation(libs.kobweb.core)
             implementation(libs.kobweb.silk)
             implementation(libs.silk.icons.fa)
 
-            implementation(libs.androidx.lifecycle.viewmodelCompose)
+            implementation(libs.libres)
+
             implementation(libs.kotlinx.coroutines.core)
 
             implementation(project.dependencies.platform(libs.koin.bom))
@@ -57,4 +53,10 @@ kotlin {
             implementation(npm("esptool-js", "0.7.0"))
         }
     }
+}
+
+libres {
+    generatedClassName = "Res"
+    generateNamedArguments = true
+    baseLocaleLanguageCode = "es"
 }

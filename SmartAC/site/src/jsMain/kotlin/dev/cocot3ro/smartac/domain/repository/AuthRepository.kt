@@ -30,7 +30,7 @@ class AuthRepository(
                     refresh()
                 }
 
-                delay(5.minutes)
+                delay(15.minutes)
             }
         }
     }

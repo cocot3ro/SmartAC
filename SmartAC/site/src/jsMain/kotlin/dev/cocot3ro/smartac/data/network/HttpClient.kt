@@ -14,6 +14,10 @@ fun provideHttpClient(): HttpClient = HttpClient {
         json()
     }
 
+    defaultRequest {
+        port = 8081
+    }
+
     install(Resources)
 
     install(HttpCookies)
