@@ -25,6 +25,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.compose.components.resources)
+
+//            implementation(libs.libres.compose)
         }
 
         jsMain.dependencies {
@@ -35,8 +37,6 @@ kotlin {
             implementation(libs.kobweb.core)
             implementation(libs.kobweb.silk)
             implementation(libs.silk.icons.fa)
-
-            implementation(libs.libres)
 
             implementation(libs.kotlinx.coroutines.core)
 
@@ -58,5 +58,6 @@ kotlin {
 libres {
     generatedClassName = "Res"
     generateNamedArguments = true
-    baseLocaleLanguageCode = "es"
+    generateInternalResourceClasses = true
+    baseLocaleTag = "en"
 }

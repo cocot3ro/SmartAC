@@ -31,7 +31,7 @@ argon2 = "2.12"
 voyager = "2.2.21-1.10.3"
 coroutines = "1.11.0"
 kobweb = "0.25.1"
-libres = "1.2.4"
+libres = "2.0.0-beta03"
 
 
 [libraries]
@@ -94,7 +94,7 @@ kobweb-core = { module = "com.varabyte.kobweb:kobweb-core ", version.ref = "kobw
 kobweb-silk = { module = "com.varabyte.kobweb:kobweb-silk", version.ref = "kobweb" }
 silk-icons-fa = { module = "com.varabyte.kobwebx:silk-icons-fa", version.ref = "kobweb" }
 
-libres = { module = "io.github.skeptick.libres:libres-compose", version.ref = "libres" }
+libres-gradle-plugin = { module = "io.github.skeptick.libres:gradle-plugin", version.ref = "libres" }
 
 
 [plugins]

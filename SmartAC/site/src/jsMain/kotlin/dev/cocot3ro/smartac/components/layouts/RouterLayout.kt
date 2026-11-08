@@ -7,6 +7,9 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import dev.cocot3ro.smartac.context.LocalAuthContext
 import dev.cocot3ro.smartac.context.LocalHealthContext
 import dev.cocot3ro.smartac.domain.state.HealthState
+import dev.cocot3ro.smartac.pages.LoginPage
+import dev.cocot3ro.smartac.pages.SetupPage
+import dev.cocot3ro.smartac.pages.UnhealthyPage
 
 @Suppress("ModifierRequired", "ExplicitDependencies")
 @Layout
@@ -20,14 +23,14 @@ fun RouterLayout(
     when (val healthState: HealthState = LocalHealthContext.current.healthState) {
         HealthState.Idle -> SpanText("Loading health ...")
 
-        is HealthState.Unhealthy -> ctx.router.tryRoutingTo(pathQueryAndFragment = "/unhealthy/")
+        is HealthState.Unhealthy -> UnhealthyPage()
 
         is HealthState.Healthy -> if (!healthState.data.setup) {
-            ctx.router.tryRoutingTo(pathQueryAndFragment = "/setup/")
+            SetupPage()
         } else when (authenticated) {
             null -> SpanText("Verifying auth ...")
 
-            false -> ctx.router.tryRoutingTo(pathQueryAndFragment = "/login/")
+            false -> LoginPage()
 
             else -> content.invoke()
         }

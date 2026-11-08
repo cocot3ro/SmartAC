@@ -26,8 +26,6 @@ fun HealthContextProvider(
 ) {
     val healthState: HealthState by healthRepository.health.collectAsState()
 
-    println(healthState)
-
     CompositionLocalProvider(
         value = LocalHealthContext provides HealthContext(healthState),
         content = content

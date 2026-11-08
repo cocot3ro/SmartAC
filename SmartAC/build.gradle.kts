@@ -15,3 +15,14 @@ plugins {
     alias(libs.plugins.kobweb.application) apply false
     alias(libs.plugins.libres) apply false
 }
+
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+    }
+
+    dependencies {
+        classpath(libs.libres.gradle.plugin)
+    }
+}

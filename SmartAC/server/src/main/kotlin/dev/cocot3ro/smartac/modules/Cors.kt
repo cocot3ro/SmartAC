@@ -10,14 +10,10 @@ fun Application.configureCors() {
 
     if (developmentMode) {
         install(CORS) {
-            allowHost("localhost:8082", schemes = listOf("http"))
+            anyHost()
+            anyMethod()
 
             allowCredentials = true
-
-            allowMethod(HttpMethod.Get)
-            allowMethod(HttpMethod.Post)
-            allowMethod(HttpMethod.Put)
-            allowMethod(HttpMethod.Delete)
 
             allowHeader(HttpHeaders.ContentType)
         }
