@@ -25,7 +25,7 @@ fun RouterLayout(
 
         is HealthState.Unhealthy -> UnhealthyPage()
 
-        is HealthState.Healthy -> if (!healthState.data.setup) {
+        is HealthState.Healthy -> if (!healthState.data.isSetup) {
             SetupPage()
         } else when (authenticated) {
             null -> SpanText("Verifying auth ...")

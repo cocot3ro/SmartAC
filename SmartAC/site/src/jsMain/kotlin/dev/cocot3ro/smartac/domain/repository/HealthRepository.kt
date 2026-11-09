@@ -2,6 +2,7 @@ package dev.cocot3ro.smartac.domain.repository
 
 import dev.cocot3ro.smartac.data.network.NetworkRepository
 import dev.cocot3ro.smartac.data.network.model.HealthResponse
+import dev.cocot3ro.smartac.domain.model.toDto
 import dev.cocot3ro.smartac.domain.state.HealthState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -40,7 +41,7 @@ class HealthRepository(
             while (true) {
                 networkRepository.getHealth()
                     .onSuccess { response: HealthResponse ->
-                        _health.value = HealthState.Healthy(response)
+                        _health.value = HealthState.Healthy(response.toDto())
                     }
                     .onFailure { cause ->
                         _health.value = HealthState.Unhealthy(cause)
