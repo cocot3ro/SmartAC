@@ -1,4 +1,6 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
+import kotlinx.html.link
+import kotlinx.html.script
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -15,6 +17,22 @@ kobweb {
     app {
         index {
             description = "SmartAC Admin panel"
+
+            head.add {
+                link {
+                    rel = "stylesheet"
+                    href = "https://cdn.jsdelivr.net/npm/@tabler/core@1.7.1/dist/css/tabler.min.css"
+                    integrity = "sha384-FwFRx3iCRjX2MYq9Ni5guhu0G/HAeKcgZhAMxMtZkceAylYMpaOn6hHeId2bywU9"
+                    attributes["crossorigin"] = "anonymous"
+                }
+
+                script {
+                    src = "https://cdn.jsdelivr.net/npm/@tabler/core@1.7.1/dist/js/tabler.min.js"
+                    integrity="sha384-eqBhoRQcupNldY9cDRl77mvk57Y7DWYa+nVjNzLLwtwVynw+RpM/FotWDnIODMwM"
+                    attributes["crossorigin"] = "anonymous"
+                    defer = true
+                }
+            }
         }
     }
 }
@@ -25,8 +43,6 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.compose.components.resources)
-
-//            implementation(libs.libres.compose)
         }
 
         jsMain.dependencies {

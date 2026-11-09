@@ -5,6 +5,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.classNames
 import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
@@ -24,12 +25,10 @@ import org.jetbrains.compose.web.dom.Main
 @Suppress("ModifierRequired", "MultipleContentEmitters")
 @Composable
 fun SetupPage() {
-    Page {
+    Page(modifier = Modifier.classNames("page", "page-center")) {
         Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .maxWidth(32.cssRem)
-                .padding(all = 1.cssRem),
+                .classNames("container", "container-tight", "py-4"),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Header(
