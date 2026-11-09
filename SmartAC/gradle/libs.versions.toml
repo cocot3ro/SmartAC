@@ -32,6 +32,7 @@ voyager = "2.2.21-1.10.3"
 coroutines = "1.11.0"
 kobweb = "0.25.1"
 libres = "2.0.0-beta03"
+kotlin-wrappers = "2026.11.0"
 
 
 [libraries]
@@ -95,6 +96,8 @@ kobweb-silk = { module = "com.varabyte.kobweb:kobweb-silk", version.ref = "kobwe
 silk-icons-fa = { module = "com.varabyte.kobwebx:silk-icons-fa", version.ref = "kobweb" }
 
 libres-gradle-plugin = { module = "io.github.skeptick.libres:gradle-plugin", version.ref = "libres" }
+
+wrappers-browser = { module = "org.jetbrains.kotlin-wrappers:kotlin-browser", version.ref = "kotlin-wrappers" }
 
 
 [plugins]

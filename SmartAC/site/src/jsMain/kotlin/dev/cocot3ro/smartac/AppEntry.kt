@@ -21,9 +21,13 @@ import com.varabyte.kobweb.silk.theme.colors.systemPreference
 import dev.cocot3ro.smartac.context.AuthContextProvider
 import dev.cocot3ro.smartac.context.HealthContextProvider
 import dev.cocot3ro.smartac.di.KoinApp
+import io.github.skeptick.libres.LibresLocale
+import io.github.skeptick.libres.LibresSettings
+import io.github.skeptick.libres.getPlatformDefaultLibresLocale
 import org.jetbrains.compose.web.css.vh
 import org.koin.compose.KoinApplication
 import org.koin.plugin.module.dsl.koinConfiguration
+import web.dom.document
 
 private const val COLOR_MODE_KEY = "smartac:colorMode"
 
@@ -44,6 +48,13 @@ fun initStyles(ctx: InitSilkContext) {
 @App
 @Composable
 fun AppEntry(content: @Composable () -> Unit) {
+    LibresSettings.setLocaleProvider {
+        getPlatformDefaultLibresLocale()
+            ?: LibresLocale(language = "en", script = null, region = null)
+    }
+
+    document.documentElement.lang = LibresSettings.currentLocale!!.language
+
     KoinApplication(configuration = koinConfiguration<KoinApp>()) {
         SilkApp {
             HealthContextProvider {

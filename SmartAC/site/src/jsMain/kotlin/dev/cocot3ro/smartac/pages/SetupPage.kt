@@ -48,7 +48,7 @@ fun SetupPage() {
                     Modifier.classNames("d-block")
                 )
 
-                Row(modifier = Modifier) {
+                Row(modifier = Modifier.classNames("d-flex", "align-items-center", "gap-1")) {
                     LocalePicker()
                     ThemeSwitcher()
                 }

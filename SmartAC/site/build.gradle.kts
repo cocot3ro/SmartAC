@@ -48,6 +48,8 @@ kotlin {
         jsMain.dependencies {
             implementation(projects.siteShared)
 
+            implementation(libs.wrappers.browser)
+
             implementation(libs.compose.runtime)
             implementation(libs.compose.html)
             implementation(libs.kobweb.core)
