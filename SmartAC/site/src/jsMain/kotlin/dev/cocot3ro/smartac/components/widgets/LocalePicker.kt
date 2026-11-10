@@ -27,10 +27,13 @@ val LocalePickerBtnStyles = CssStyle {
 
     hover {
         Modifier.styleModifier {
-            property("border", "var(--tblr-btn-border-width) solid transparent !important")
             property(
-                "background",
-                "color-mix(in srgb, var(--tblr-btn-hover-bg) 10%, transparent) !important"
+                propertyName = "border",
+                value = "var(--tblr-btn-border-width) solid transparent !important"
+            )
+            property(
+                propertyName = "background",
+                value = "color-mix(in srgb, var(--tblr-btn-hover-bg) 10%, transparent) !important"
             )
         }
     }

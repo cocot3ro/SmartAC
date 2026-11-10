@@ -1,17 +1,28 @@
 package dev.cocot3ro.smartac.components.widgets
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.silk.theme.colors.ColorMode
+import dev.cocot3ro.smartac.components.icons.IconDarkMode
+import dev.cocot3ro.smartac.components.icons.IconLightMode
 
 @Composable
 fun ThemeSwitcher(modifier: Modifier = Modifier) {
     Box(modifier = modifier) {
+
+        var colorState by ColorMode.currentState
+
         IconButton(onClick = {
-            println("ThemeSwitcher")
+            colorState = colorState.opposite
         }) {
-            SpanText("T")
+            if (colorState.isLight) {
+                IconDarkMode()
+            } else {
+                IconLightMode()
+            }
         }
     }
 }

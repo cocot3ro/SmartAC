@@ -13,7 +13,7 @@ fun FlagIcon(
 ) {
     I(
         attrs = modifier
-            .classNames("flag", "flag-sm", "flag-country-$countryCode")
+            .classNames("flag", "flag-xs", "flag-country-$countryCode")
             .toAttrs()
     )
 }

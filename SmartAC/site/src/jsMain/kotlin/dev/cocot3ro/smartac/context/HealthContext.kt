@@ -14,6 +14,8 @@ data class HealthContext(
     val healthState: HealthState
 )
 
+fun HealthContext.asHealthy(): HealthState.Healthy = this.healthState as HealthState.Healthy
+
 val LocalHealthContext: ProvidableCompositionLocal<HealthContext> = compositionLocalOf {
     error("Use inside a HealthContextProvider")
 }
