@@ -10,6 +10,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import dev.cocot3ro.smartac.components.widgets.Card
 import dev.cocot3ro.smartac.components.widgets.LocalePicker
 import dev.cocot3ro.smartac.components.widgets.Page
@@ -35,23 +37,21 @@ fun SetupPage() {
             Header(
                 attrs = Modifier
                     .classNames(
-                        "d-flex",
-                        "justify-content-between",
-                        "align-items-center",
-                        "mb-4", "ps-4", "pe-3"
+                        "d-flex", "justify-content-between",
+                        "flex-row-reverse", "align-items-center", "mb-4"
                     )
                     .toAttrs()
             ) {
-                Image(
-                    "/kobweb-logo.png",
-                    "Kobweb Logo",
-                    Modifier.classNames("d-block")
-                )
-
                 Row(modifier = Modifier.classNames("d-flex", "align-items-center", "gap-1")) {
                     LocalePicker()
                     ThemeSwitcher()
                 }
+
+                Image(
+                    "/kobweb-logo.png",
+                    "Kobweb Logo",
+                    Modifier.displayIfAtLeast(Breakpoint.MD).classNames("d-block")
+                )
             }
 
             Main {

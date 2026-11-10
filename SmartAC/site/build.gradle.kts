@@ -22,15 +22,26 @@ kobweb {
                 link {
                     rel = "stylesheet"
                     href = "https://cdn.jsdelivr.net/npm/@tabler/core@1.7.1/dist/css/tabler.min.css"
-                    integrity = "sha384-FwFRx3iCRjX2MYq9Ni5guhu0G/HAeKcgZhAMxMtZkceAylYMpaOn6hHeId2bywU9"
+                    integrity =
+                        "sha384-FwFRx3iCRjX2MYq9Ni5guhu0G/HAeKcgZhAMxMtZkceAylYMpaOn6hHeId2bywU9"
                     attributes["crossorigin"] = "anonymous"
                 }
 
                 script {
                     src = "https://cdn.jsdelivr.net/npm/@tabler/core@1.7.1/dist/js/tabler.min.js"
-                    integrity="sha384-eqBhoRQcupNldY9cDRl77mvk57Y7DWYa+nVjNzLLwtwVynw+RpM/FotWDnIODMwM"
+                    integrity =
+                        "sha384-eqBhoRQcupNldY9cDRl77mvk57Y7DWYa+nVjNzLLwtwVynw+RpM/FotWDnIODMwM"
                     attributes["crossorigin"] = "anonymous"
                     defer = true
+                }
+
+                link {
+                    rel = "stylesheet"
+                    href =
+                        "https://cdn.jsdelivr.net/npm/@tabler/core@1.7.4/dist/css/tabler-flags.min.css"
+                    integrity =
+                        "sha384-dY8vZEpxhN02an00T8773o04+plkVOIEUZloG9zwuUB6gZQwuu/mt0qWuB6dWqHG"
+                    attributes["crossorigin"] = "anonymous"
                 }
             }
         }

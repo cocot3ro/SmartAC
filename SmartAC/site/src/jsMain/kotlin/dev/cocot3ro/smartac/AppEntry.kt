@@ -21,9 +21,12 @@ import com.varabyte.kobweb.silk.theme.colors.systemPreference
 import dev.cocot3ro.smartac.context.AuthContextProvider
 import dev.cocot3ro.smartac.context.HealthContextProvider
 import dev.cocot3ro.smartac.di.KoinApp
+import dev.cocot3ro.smartac.localization.defaultLocale
 import io.github.skeptick.libres.LibresLocale
 import io.github.skeptick.libres.LibresSettings
 import io.github.skeptick.libres.getPlatformDefaultLibresLocale
+import kotlinx.browser.localStorage
+import libres.resources.Res
 import org.jetbrains.compose.web.css.vh
 import org.koin.compose.KoinApplication
 import org.koin.plugin.module.dsl.koinConfiguration
@@ -49,9 +52,13 @@ fun initStyles(ctx: InitSilkContext) {
 @Composable
 fun AppEntry(content: @Composable () -> Unit) {
     LibresSettings.setLocaleProvider {
-        getPlatformDefaultLibresLocale()
-            ?: LibresLocale(language = "en", script = null, region = null)
+        localStorage.getItem("lang")
+            ?.let { lang -> LibresLocale(language = lang, script = null, region = null) }
+            ?: getPlatformDefaultLibresLocale()
+            ?: defaultLocale
     }
+
+    println(Res.string.greeting)
 
     document.documentElement.lang = LibresSettings.currentLocale!!.language
 
