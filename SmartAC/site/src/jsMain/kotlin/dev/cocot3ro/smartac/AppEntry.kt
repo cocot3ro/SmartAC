@@ -2,10 +2,16 @@ package dev.cocot3ro.smartac
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.ScrollBehavior
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.minHeight
+import com.varabyte.kobweb.compose.ui.modifiers.overflow
+import com.varabyte.kobweb.compose.ui.modifiers.position
+import com.varabyte.kobweb.compose.ui.modifiers.right
 import com.varabyte.kobweb.compose.ui.modifiers.scrollBehavior
+import com.varabyte.kobweb.compose.ui.modifiers.top
+import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.core.App
 import com.varabyte.kobweb.silk.SilkApp
 import com.varabyte.kobweb.silk.components.layout.Surface
@@ -26,8 +32,10 @@ import io.github.skeptick.libres.LibresLocale
 import io.github.skeptick.libres.LibresSettings
 import io.github.skeptick.libres.getPlatformDefaultLibresLocale
 import kotlinx.browser.localStorage
-import libres.resources.Res
+import org.jetbrains.compose.web.css.Position
+import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.vh
+import org.jetbrains.compose.web.css.vw
 import org.koin.compose.KoinApplication
 import org.koin.plugin.module.dsl.koinConfiguration
 import web.dom.document
@@ -44,6 +52,13 @@ fun initColorMode(ctx: InitSilkContext) {
 fun initStyles(ctx: InitSilkContext) {
     ctx.stylesheet.apply {
         registerStyleBase("body") { Modifier.scrollBehavior(ScrollBehavior.Smooth) }
+        registerStyleBase(".sr-only") {
+            Modifier.position(Position.Absolute)
+                .width(1.px)
+                .top(200.vh)
+                .right(200.vw)
+                .overflow(Overflow.Hidden)
+        }
     }
 }
 
@@ -57,8 +72,6 @@ fun AppEntry(content: @Composable () -> Unit) {
             ?: getPlatformDefaultLibresLocale()
             ?: defaultLocale
     }
-
-    println(Res.string.greeting)
 
     document.documentElement.lang = LibresSettings.currentLocale!!.language
 

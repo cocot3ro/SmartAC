@@ -1,3 +1,5 @@
 <resources>
     <string name="greeting">¡Hola, mundo!</string>
+    <string name="password">Contraseña</string>
+    <string name="welcome">¡Bienvenido!</string>
 </resources>
