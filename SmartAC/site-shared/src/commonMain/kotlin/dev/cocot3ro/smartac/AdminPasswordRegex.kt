@@ -1,5 +1,9 @@
 package dev.cocot3ro.smartac
 
+const val UPPERCASE = "A-ZÁÉÍÓÚÑÄËÏÖÜ"
+const val LOWERCASE = "a-záéíóúñäëïöü"
+const val SYMBOLS = """@$#!%*?&^."""
+
 /**
  * Admin password must be at least 8 characters long, containing at least:
  * - one uppercase letter,
@@ -8,4 +12,8 @@ package dev.cocot3ro.smartac
  * - and one special character.
  */
 const val ADMIN_PASSWORD_REGEX: String =
-    """^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#!%*?&^.])[A-Za-z\d@$#!%*?&^.]{8,}$"""
+    """^(?=.*[$LOWERCASE])""" +
+            """(?=.*[$UPPERCASE])""" +
+            """(?=.*\d)""" +
+            """(?=.*[$SYMBOLS])""" +
+            """[$UPPERCASE$LOWERCASE\d$SYMBOLS]{8,}$"""
