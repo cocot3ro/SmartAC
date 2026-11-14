@@ -11,7 +11,8 @@ import dev.cocot3ro.smartac.domain.state.HealthState
 import org.koin.compose.koinInject
 
 data class HealthContext(
-    val healthState: HealthState
+    val healthState: HealthState,
+    val refetchHealth: () -> Unit
 )
 
 fun HealthContext.asHealthy(): HealthState.Healthy = this.healthState as HealthState.Healthy
@@ -29,7 +30,10 @@ fun HealthContextProvider(
     val healthState: HealthState by healthRepository.health.collectAsState()
 
     CompositionLocalProvider(
-        value = LocalHealthContext provides HealthContext(healthState),
+        value = LocalHealthContext provides HealthContext(
+            healthState = healthState,
+            refetchHealth = healthRepository::refetchHealth
+        ),
         content = content
     )
 }

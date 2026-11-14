@@ -6,7 +6,9 @@ import androidx.compose.runtime.setValue
 import dev.cocot3ro.smartac.data.network.NetworkRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.core.annotation.Factory
@@ -19,12 +21,17 @@ class AuthRepository(
 ) {
 
     private val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+    private var _job: Job? = null
 
     var authenticated: Boolean? by mutableStateOf(null)
         private set
 
     init {
-        scope.launch {
+        start()
+    }
+
+    private fun start() {
+        _job = scope.launch {
             while (true) {
                 if (authenticated != false) {
                     refresh()
@@ -40,6 +47,7 @@ class AuthRepository(
             .onSuccess {
                 if (it) {
                     authenticated = true
+                    start()
                 } else {
                     clear()
                 }
@@ -54,8 +62,10 @@ class AuthRepository(
         clear()
     }
 
-    private fun clear() {
+    private suspend fun clear() {
         authenticated = false
+        _job?.cancelAndJoin()
+        _job = null
     }
 
     private suspend fun refresh() {

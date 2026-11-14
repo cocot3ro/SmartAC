@@ -51,4 +51,16 @@ class HealthRepository(
             }
         }
     }
+
+    fun refetchHealth() {
+        scope.launch {
+            networkRepository.getHealth()
+                .onSuccess { response: HealthResponse ->
+                    _health.value = HealthState.Healthy(response.toDto())
+                }
+                .onFailure { cause ->
+                    _health.value = HealthState.Unhealthy(cause)
+                }
+        }
+    }
 }

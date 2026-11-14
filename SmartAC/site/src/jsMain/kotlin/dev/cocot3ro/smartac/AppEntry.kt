@@ -34,6 +34,7 @@ import io.github.skeptick.libres.getPlatformDefaultLibresLocale
 import kotlinx.browser.localStorage
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.unaryMinus
 import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.css.vw
 import org.koin.compose.KoinApplication
@@ -55,7 +56,6 @@ fun initStyles(ctx: InitSilkContext) {
         registerStyleBase(".sr-only") {
             Modifier.position(Position.Absolute)
                 .width(1.px)
-                .top(200.vh)
                 .right(200.vw)
                 .overflow(Overflow.Hidden)
         }

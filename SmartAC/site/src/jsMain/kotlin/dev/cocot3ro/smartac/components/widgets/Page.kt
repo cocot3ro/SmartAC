@@ -14,7 +14,8 @@ import org.jetbrains.compose.web.css.fr
 import org.jetbrains.compose.web.dom.Div
 
 val PageStyle = CssStyle.base {
-    Modifier.display(DisplayStyle.Grid)
+    Modifier
+        .display(DisplayStyle.Grid)
         .gridTemplateRows {
             size(GridEntry.TrackSize.Auto)
             size(1.fr)

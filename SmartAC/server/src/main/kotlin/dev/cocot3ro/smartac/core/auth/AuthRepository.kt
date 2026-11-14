@@ -1,7 +1,7 @@
 package dev.cocot3ro.smartac.core.auth
 
-import dev.cocot3ro.smartac.ADMIN_PASSWORD_REGEX
 import dev.cocot3ro.smartac.data.database.repository.AppConfigRepository
+import dev.cocot3ro.smartac.validatePassword
 import org.koin.core.annotation.Factory
 import org.koin.core.annotation.Provided
 
@@ -19,7 +19,7 @@ class AuthRepository(
     }
 
     override suspend fun setAdminPassword(password: String): Boolean {
-        if (!ADMIN_PASSWORD_REGEX.toRegex().matches(password)) {
+        if (validatePassword(password).isNotEmpty()) {
             return false
         }
 

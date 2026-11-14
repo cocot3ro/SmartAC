@@ -10,7 +10,6 @@ import io.ktor.client.HttpClient
 import io.ktor.client.fetchOptions
 import io.ktor.client.plugins.resources.get
 import io.ktor.client.plugins.resources.post
-import io.ktor.client.request.setBody
 import io.ktor.client.statement.HttpResponse
 import org.koin.core.annotation.Factory
 import org.koin.core.annotation.Provided
@@ -26,7 +25,7 @@ class ApiClient(
 
     suspend fun setup(req: LoginRequest): HttpResponse {
         return httpClient.post(resource = SetupRoute()) {
-            setBody(req)
+            setJsonBody(req)
         }
     }
 
@@ -40,7 +39,11 @@ class ApiClient(
 
     suspend fun login(req: LoginRequest): HttpResponse {
         return httpClient.post(resource = LoginRoute()) {
-            setBody(req)
+            setJsonBody(req)
+
+            fetchOptions {
+                credentials = "include"
+            }
         }
     }
 
