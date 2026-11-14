@@ -9,6 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.web.events.SyntheticMouseEvent
 import com.varabyte.kobweb.browser.dom.ElementTarget
 import com.varabyte.kobweb.compose.css.functions.clamp
+import com.varabyte.kobweb.compose.dom.ref
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.foundation.layout.Spacer
@@ -50,9 +51,10 @@ import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
-import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import dev.cocot3ro.smartac.components.widgets.IconButton
+import dev.cocot3ro.smartac.components.widgets.ThemeSwitcher
 import dev.cocot3ro.smartac.toSitePalette
 import org.jetbrains.compose.web.css.AnimationDirection
 import org.jetbrains.compose.web.css.AnimationFillMode
@@ -126,7 +128,7 @@ val SideMenuSlideInAnim = Keyframes {
 
 // Note: When the user closes the side menu, we don't immediately stop rendering it (at which point it would disappear
 // abruptly). Instead, we start animating it out and only stop rendering it when the animation is complete.
-enum class SideMenuState {
+private enum class SideMenuState {
     CLOSED,
     OPEN,
     CLOSING;
@@ -141,25 +143,25 @@ enum class SideMenuState {
 @Suppress("ModifierRequired")
 @Composable
 fun NavHeader() {
-    Header {
-        Row(NavHeaderStyle.toModifier(), verticalAlignment = Alignment.CenterVertically) {
+    Header(attrs = NavHeaderStyle.toAttrs()) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             Link("https://kobweb.varabyte.com") {
                 // Block display overrides inline display of the <img> tag, so it calculates centering better
                 Image(
-                    "/kobweb-logo.png",
-                    "Kobweb Logo",
-                    Modifier.height(2.cssRem).display(DisplayStyle.Block)
+                    src = "/kobweb-logo.png",
+                    description = "Kobweb Logo",
+                    modifier = Modifier.height(2.cssRem).display(DisplayStyle.Block),
                 )
             }
 
             Spacer()
 
             Row(
-                Modifier.gap(1.5.cssRem).displayIfAtLeast(Breakpoint.MD),
+                modifier = Modifier.gap(1.5.cssRem).displayIfAtLeast(Breakpoint.MD),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 MenuItems()
-                ColorModeButton()
+                ThemeSwitcher()
             }
 
             Row(
@@ -169,13 +171,13 @@ fun NavHeader() {
                     .displayUntil(Breakpoint.MD),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                var menuState: SideMenuState by remember { mutableStateOf(
-                    SideMenuState.CLOSED) }
+                var menuState: SideMenuState by remember {
+                    mutableStateOf(SideMenuState.CLOSED)
+                }
 
-                ColorModeButton()
+                ThemeSwitcher()
                 HamburgerButton(onClick = {
-                    menuState =
-                        SideMenuState.OPEN
+                    menuState = SideMenuState.OPEN
                 })
 
                 if (menuState != SideMenuState.CLOSED) {
@@ -183,8 +185,8 @@ fun NavHeader() {
                         menuState = menuState,
                         close = { menuState = menuState.close() },
                         onAnimationEnd = {
-                            if (menuState == SideMenuState.CLOSING) menuState =
-                                SideMenuState.CLOSED
+                            if (menuState == SideMenuState.CLOSING)
+                                menuState = SideMenuState.CLOSED
                         }
                     )
                 }

@@ -1,4 +1,4 @@
-package dev.cocot3ro.smartac.components.widgets
+package dev.cocot3ro.smartac.components.icons
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.ui.Modifier

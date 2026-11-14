@@ -10,6 +10,7 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
+import dev.cocot3ro.smartac.components.icons.FlagIcon
 import dev.cocot3ro.smartac.localization.supportedLocales
 import io.github.skeptick.libres.LibresSettings
 import kotlinx.browser.localStorage
