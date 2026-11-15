@@ -147,6 +147,7 @@ fun NavHeader() {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Link("https://kobweb.varabyte.com") {
                 // Block display overrides inline display of the <img> tag, so it calculates centering better
+                // TODO: Logo
                 Image(
                     src = "/kobweb-logo.png",
                     description = "Kobweb Logo",

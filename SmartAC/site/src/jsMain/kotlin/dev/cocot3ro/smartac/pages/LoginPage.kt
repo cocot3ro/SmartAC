@@ -86,6 +86,7 @@ fun LoginPage() {
                     "flex-row"
                 )
             }) {
+                // TODO: Logo
                 Image(
                     src = "/kobweb-logo.png",
                     description = "Kobweb Logo",
