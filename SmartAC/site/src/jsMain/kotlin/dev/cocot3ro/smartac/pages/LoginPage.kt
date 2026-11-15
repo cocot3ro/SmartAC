@@ -23,8 +23,10 @@ import com.varabyte.kobweb.silk.style.toAttrs
 import dev.cocot3ro.smartac.ADMIN_PASSWORD_PATTERN
 import dev.cocot3ro.smartac.AdminPasswordValidationErrors.INSUFFICIENT_LENGTH
 import dev.cocot3ro.smartac.PASSWORD_MIN_LENGTH
+import dev.cocot3ro.smartac.components.sections.Page
+import dev.cocot3ro.smartac.components.sections.PageCenterVariant
+import dev.cocot3ro.smartac.components.sections.PageVariant
 import dev.cocot3ro.smartac.components.widgets.LocalePicker
-import dev.cocot3ro.smartac.components.widgets.Page
 import dev.cocot3ro.smartac.components.widgets.ThemeSwitcher
 import dev.cocot3ro.smartac.context.AuthContext
 import dev.cocot3ro.smartac.context.LocalAuthContext
@@ -66,7 +68,7 @@ import org.w3c.dom.HTMLInputElement
 fun LoginPage() {
     val authContext: AuthContext = LocalAuthContext.current
 
-    Page(modifier = Modifier.classNames("page", "page-center")) {
+    Page(PageVariant, PageCenterVariant) {
         Div(attrs = {
             classes("container", "container-tight", "py-4")
         }) {

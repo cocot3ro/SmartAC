@@ -35,7 +35,9 @@ import dev.cocot3ro.smartac.AdminPasswordValidationErrors.MISSING_UPPERCASE
 import dev.cocot3ro.smartac.PASSWORD_MIN_LENGTH
 import dev.cocot3ro.smartac.SYMBOLS_PATTERN
 import dev.cocot3ro.smartac.components.widgets.LocalePicker
-import dev.cocot3ro.smartac.components.widgets.Page
+import dev.cocot3ro.smartac.components.sections.Page
+import dev.cocot3ro.smartac.components.sections.PageCenterVariant
+import dev.cocot3ro.smartac.components.sections.PageVariant
 import dev.cocot3ro.smartac.components.widgets.ThemeSwitcher
 import dev.cocot3ro.smartac.context.AuthContext
 import dev.cocot3ro.smartac.context.HealthContext
@@ -97,7 +99,7 @@ fun SetupPage() {
     val authContext: AuthContext = LocalAuthContext.current
     val networkRepository: NetworkRepository = koinInject()
 
-    Page(modifier = Modifier.classNames("page", "page-center")) {
+    Page(PageVariant, PageCenterVariant) {
         Div(attrs = {
             classes("container", "container-tight", "py-4")
         }) {
