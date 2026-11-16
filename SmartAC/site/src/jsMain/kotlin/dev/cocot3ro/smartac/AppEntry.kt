@@ -10,7 +10,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.overflow
 import com.varabyte.kobweb.compose.ui.modifiers.position
 import com.varabyte.kobweb.compose.ui.modifiers.right
 import com.varabyte.kobweb.compose.ui.modifiers.scrollBehavior
-import com.varabyte.kobweb.compose.ui.modifiers.top
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.core.App
 import com.varabyte.kobweb.silk.SilkApp
@@ -34,7 +33,6 @@ import io.github.skeptick.libres.getPlatformDefaultLibresLocale
 import kotlinx.browser.localStorage
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.unaryMinus
 import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.css.vw
 import org.koin.compose.KoinApplication

@@ -11,11 +11,11 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.koin.core.annotation.Factory
 import org.koin.core.annotation.Provided
+import org.koin.core.annotation.Single
 import kotlin.time.Duration.Companion.minutes
 
-@Factory
+@Single
 class AuthRepository(
     @Provided private val networkRepository: NetworkRepository
 ) {

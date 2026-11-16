@@ -34,18 +34,16 @@ import dev.cocot3ro.smartac.AdminPasswordValidationErrors.MISSING_SYMBOL
 import dev.cocot3ro.smartac.AdminPasswordValidationErrors.MISSING_UPPERCASE
 import dev.cocot3ro.smartac.PASSWORD_MIN_LENGTH
 import dev.cocot3ro.smartac.SYMBOLS_PATTERN
-import dev.cocot3ro.smartac.components.widgets.LocalePicker
 import dev.cocot3ro.smartac.components.sections.Page
 import dev.cocot3ro.smartac.components.sections.PageCenterVariant
 import dev.cocot3ro.smartac.components.sections.PageVariant
+import dev.cocot3ro.smartac.components.widgets.LocalePicker
 import dev.cocot3ro.smartac.components.widgets.ThemeSwitcher
 import dev.cocot3ro.smartac.context.AuthContext
 import dev.cocot3ro.smartac.context.HealthContext
 import dev.cocot3ro.smartac.context.LocalAuthContext
 import dev.cocot3ro.smartac.context.LocalHealthContext
-import dev.cocot3ro.smartac.context.asHealthy
 import dev.cocot3ro.smartac.data.network.NetworkRepository
-import dev.cocot3ro.smartac.domain.state.HealthState
 import dev.cocot3ro.smartac.domain.state.PasswordValidationState
 import dev.cocot3ro.smartac.domain.state.asInvalid
 import dev.cocot3ro.smartac.domain.state.isInvalid
@@ -330,9 +328,8 @@ fun SetupPage() {
             Footer(attrs = {
                 classes("text-center", "text-secondary", "mt-3")
             }) {
-                val health: HealthState.Healthy = LocalHealthContext.current.asHealthy()
-
-                SpanText(text = "v${health.data.version}")
+//                val version = healthContext.asHealthy().data.version
+//                SpanText(text = "v${version}")
             }
         }
     }

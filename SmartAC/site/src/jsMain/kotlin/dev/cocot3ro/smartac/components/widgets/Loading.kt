@@ -16,11 +16,11 @@ val LogoStyle = CssStyle.base {
 
 @Suppress("ModifierRequired")
 @Composable
-fun Loading(label: String?, noLogo: Boolean) {
+fun Loading(label: String?, showLogo: Boolean) {
     Div(attrs = {
         classes("empty", "text-center")
     }) {
-        if (!noLogo) {
+        if (showLogo) {
             Div(attrs = {
                 classes("mb-3")
             }) {

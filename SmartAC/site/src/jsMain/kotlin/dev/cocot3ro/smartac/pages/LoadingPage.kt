@@ -8,12 +8,12 @@ import org.jetbrains.compose.web.dom.Div
 
 @Suppress("ModifierRequired")
 @Composable
-fun LoadingPage(label: String? = null, noLogo: Boolean= false) {
+fun LoadingPage(label: String? = null, showLogo: Boolean= false) {
     Page(PageCenterVariant) {
         Div(attrs = {
             classes("container-tight", "py-4")
         }) {
-            Loading(label, noLogo)
+            Loading(label, showLogo)
         }
     }
 }
