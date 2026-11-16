@@ -2,33 +2,18 @@ package dev.cocot3ro.smartac.components.layouts
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import com.varabyte.kobweb.compose.foundation.layout.Box
-import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.foundation.layout.ColumnScope
-import com.varabyte.kobweb.compose.ui.Alignment
-import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
-import com.varabyte.kobweb.compose.ui.modifiers.gridRow
-import com.varabyte.kobweb.compose.ui.modifiers.gridTemplateRows
-import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
-import com.varabyte.kobweb.compose.ui.modifiers.minHeight
-import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.data.getValue
 import com.varabyte.kobweb.core.layout.Layout
-import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.style.toAttrs
 import dev.cocot3ro.smartac.components.sections.Footer
-import dev.cocot3ro.smartac.components.sections.NavHeader
+import dev.cocot3ro.smartac.components.sections.Page
+import dev.cocot3ro.smartac.components.sections.SiteContainer
+import dev.cocot3ro.smartac.components.sections.SiteHeader
+import dev.cocot3ro.smartac.components.sections.SiteMenu
 import kotlinx.browser.document
-import org.jetbrains.compose.web.css.cssRem
-import org.jetbrains.compose.web.css.fr
-import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.dom.Div
-import org.jetbrains.compose.web.dom.Main
 
+/*
 val PageContentStyle = CssStyle {
     base { Modifier.fillMaxSize().padding(leftRight = 2.cssRem, top = 4.cssRem) }
     Breakpoint.MD { Modifier.maxWidth(60.cssRem) }
@@ -85,5 +70,32 @@ fun PageLayout(
                 modifier = Modifier.fillMaxWidth().gridRow(2)
             )
         }
+    }
+}
+*/
+
+class PageLayoutData(val title: String)
+
+@Suppress("ModifierRequired")
+@Composable
+@Layout(".components.layouts.RouterLayout")
+fun PageLayout(
+    ctx: PageContext,
+    content: @Composable () -> Unit
+) {
+    val data: PageLayoutData = ctx.data.getValue<PageLayoutData>()
+    LaunchedEffect(data.title) {
+        document.title = "SmartAC - ${data.title}"
+    }
+
+    Page {
+        Div {
+            SiteHeader()
+            SiteMenu()
+        }
+
+        SiteContainer(content = content)
+
+        Footer()
     }
 }

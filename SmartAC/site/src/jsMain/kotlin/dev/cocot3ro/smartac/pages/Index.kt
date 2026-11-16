@@ -1,54 +1,26 @@
 package dev.cocot3ro.smartac.pages
 
 import androidx.compose.runtime.Composable
-import com.varabyte.kobweb.compose.css.StyleVariable
-import com.varabyte.kobweb.compose.foundation.layout.Box
-import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.foundation.layout.Row
-import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Color
-import com.varabyte.kobweb.compose.ui.graphics.Colors
-import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
-import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
-import com.varabyte.kobweb.compose.ui.modifiers.boxShadow
-import com.varabyte.kobweb.compose.ui.modifiers.color
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
-import com.varabyte.kobweb.compose.ui.modifiers.gap
-import com.varabyte.kobweb.compose.ui.modifiers.grid
-import com.varabyte.kobweb.compose.ui.modifiers.gridItem
-import com.varabyte.kobweb.compose.ui.modifiers.height
-import com.varabyte.kobweb.compose.ui.modifiers.margin
-import com.varabyte.kobweb.compose.ui.modifiers.setVariable
-import com.varabyte.kobweb.compose.ui.modifiers.textShadow
-import com.varabyte.kobweb.compose.ui.modifiers.width
-import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
-import com.varabyte.kobweb.core.rememberPageContext
-import com.varabyte.kobweb.silk.components.forms.Button
-import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
-import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.base
-import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
-import com.varabyte.kobweb.silk.style.toAttrs
-import com.varabyte.kobweb.silk.style.toModifier
-import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import com.varabyte.kobweb.silk.theme.colors.ColorPalettes
-import dev.cocot3ro.smartac.HeadlineTextStyle
-import dev.cocot3ro.smartac.SubheadlineTextStyle
 import dev.cocot3ro.smartac.components.layouts.PageLayoutData
-import dev.cocot3ro.smartac.toSitePalette
-import org.jetbrains.compose.web.css.cssRem
-import org.jetbrains.compose.web.css.fr
-import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.vh
-import org.jetbrains.compose.web.dom.Div
-import org.jetbrains.compose.web.dom.Text
 
+@InitRoute
+fun initHomePage(ctx: InitRouteContext) {
+    ctx.data.add(PageLayoutData("Dashboard"))
+}
+
+@Suppress("ModifierRequired")
+@Page
+@Composable
+fun HomePage() {
+    SpanText("Dashboard")
+}
+
+/*
 // Container that has a tagline and grid on desktop, and just the tagline on mobile
 val HeroContainerStyle = CssStyle {
     base { Modifier.fillMaxWidth().gap(2.cssRem) }
@@ -86,7 +58,7 @@ private fun GridCell(color: Color, row: Int, column: Int, width: Int? = null, he
 
 @InitRoute
 fun initHomePage(ctx: InitRouteContext) {
-    ctx.data.add(PageLayoutData("Home"))
+    ctx.data.add(PageLayoutData("Dashboard"))
 }
 
 @Suppress("ModifierRequired")
@@ -183,4 +155,4 @@ fun HomePage() {
             )
         }
     }
-}
+}*/
