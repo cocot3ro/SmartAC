@@ -16,14 +16,14 @@ composeMultiplatform = "1.12.2"
 junit = "4.13.2"
 kotlin = "2.4.21"
 androidx-lifecycle-process = "2.11.0"
-logback = "1.6.6"
+logback = "1.6.7"
 material3 = "1.11.0-alpha07"
 koin = "4.2.2"
 koin-compiler = "1.2.3"
 datetime = "0.8.0"
 ksafe = "3.3.0"
 ktor-mqtt = "1.2.0"
-kotlinx-serialization = "1.12.0"
+kotlinx-serialization = "1.13.0"
 ksp = "2.3.12"
 room3 = "3.0.3"
 sqlite = "2.7.1"
@@ -32,7 +32,7 @@ voyager = "2.2.21-1.10.3"
 coroutines = "1.11.0"
 kobweb = "0.25.1"
 libres = "2.0.0-beta03"
-kotlin-wrappers = "2026.11.0"
+kotlin-wrappers = "2026.11.2"
 
 
 [libraries]
@@ -125,6 +125,12 @@ koin-client = [
     "koin-core",
     "koin-compose",
     "koin-compose-viewmodel",
+    "koin-annotations"
+]
+
+koin-web = [
+    "koin-core",
+    "koin-compose",
     "koin-annotations"
 ]
 

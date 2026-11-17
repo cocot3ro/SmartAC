@@ -69,7 +69,7 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
 
             implementation(project.dependencies.platform(libs.koin.bom))
-            implementation(libs.bundles.koin.client)
+            implementation(libs.bundles.koin.web)
 
             implementation(ktorLibs.client.core)
             implementation(ktorLibs.client.contentNegotiation)

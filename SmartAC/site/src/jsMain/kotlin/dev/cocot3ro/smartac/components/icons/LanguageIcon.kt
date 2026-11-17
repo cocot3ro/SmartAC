@@ -16,8 +16,6 @@ fun LanguageIcon(
     attrs: (SVGSvgAttrsScope.() -> Unit)? = null
 ) {
     Svg(attrs = Modifier.size(24.px).toAttrs {
-        classes("dark")
-
         viewBox(x = 0, y = 0, width = 24, height = 24)
         fill(Color.rgb(0xE3E3E3))
 
