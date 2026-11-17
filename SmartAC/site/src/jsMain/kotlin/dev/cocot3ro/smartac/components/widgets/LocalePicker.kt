@@ -70,7 +70,7 @@ fun LocalePicker(modifier: Modifier = Modifier) {
                             window.location.reload()
                         }
                     }) {
-                        FlagIcon(countryCode = code)
+                        FlagIcon(languageCode = code)
                         SpanText(lang)
                     }
                 }

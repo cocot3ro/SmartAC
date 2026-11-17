@@ -84,7 +84,9 @@ fun AppEntry(content: @Composable () -> Unit) {
                     }
 
                     Surface(modifier = SmoothColorStyle.toModifier().minHeight(100.vh)) {
-                        content.invoke()
+                        Router {
+                            content.invoke()
+                        }
                     }
                 }
             }

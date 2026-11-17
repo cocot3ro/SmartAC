@@ -6,6 +6,7 @@ import dev.cocot3ro.smartac.domain.model.toDto
 import dev.cocot3ro.smartac.domain.state.HealthState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,6 +14,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import org.koin.core.annotation.Factory
 import org.koin.core.annotation.Provided
@@ -24,6 +26,7 @@ class HealthRepository(
 ) {
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+    private var _job: Job? = null
 
     private val _health: MutableStateFlow<HealthState> = MutableStateFlow(HealthState.Idle)
     val health: StateFlow<HealthState> = _health
@@ -37,8 +40,9 @@ class HealthRepository(
         )
 
     private fun fetchHealth() {
-        scope.launch {
-            while (true) {
+        _job?.cancel()
+        _job = scope.launch {
+            while (isActive) {
                 networkRepository.getHealth()
                     .onSuccess { response: HealthResponse ->
                         _health.value = HealthState.Healthy(response.toDto())

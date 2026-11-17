@@ -78,7 +78,7 @@ class PageLayoutData(val title: String)
 
 @Suppress("ModifierRequired")
 @Composable
-@Layout(".components.layouts.RouterLayout")
+@Layout
 fun PageLayout(
     ctx: PageContext,
     content: @Composable () -> Unit

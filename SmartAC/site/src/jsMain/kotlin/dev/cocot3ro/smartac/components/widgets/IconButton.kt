@@ -9,12 +9,15 @@ import dev.cocot3ro.smartac.CircleButtonVariant
 import dev.cocot3ro.smartac.UncoloredButtonVariant
 import org.jetbrains.compose.web.css.em
 
-@Suppress("ModifierRequired")
 @Composable
-fun IconButton(onClick: () -> Unit, content: @Composable () -> Unit) {
+fun IconButton(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
+) {
     Button(
         onClick = { onClick() },
-        modifier = Modifier.setVariable(
+        modifier = modifier.setVariable(
             ButtonVars.FontSize,
             1.em
         ), // Make button icon size relative to parent container font size

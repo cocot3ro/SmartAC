@@ -10,6 +10,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import org.koin.core.annotation.Provided
 import org.koin.core.annotation.Single
@@ -31,8 +32,9 @@ class AuthRepository(
     }
 
     private fun start() {
+        _job?.cancel()
         _job = scope.launch {
-            while (true) {
+            while (isActive) {
                 if (authenticated != false) {
                     refresh()
                 }
