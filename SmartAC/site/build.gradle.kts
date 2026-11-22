@@ -56,29 +56,38 @@ kotlin {
             implementation(libs.compose.components.resources)
         }
 
-        jsMain.dependencies {
-            implementation(projects.siteShared)
+        jsMain {
 
-            implementation(libs.wrappers.browser)
+            kotlin.srcDir(
+                layout.buildDirectory
+                    .dir("generated/source/buildConfig/jsMain/kotlin")
+                    .get().asFile.toString()
+            )
 
-            implementation(libs.compose.runtime)
-            implementation(libs.compose.html)
-            implementation(libs.kobweb.core)
-            implementation(libs.kobweb.silk)
+            dependencies {
+                implementation(projects.siteShared)
 
-            implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.wrappers.browser)
 
-            implementation(project.dependencies.platform(libs.koin.bom))
-            implementation(libs.bundles.koin.web)
+                implementation(libs.compose.runtime)
+                implementation(libs.compose.html)
+                implementation(libs.kobweb.core)
+                implementation(libs.kobweb.silk)
 
-            implementation(ktorLibs.client.core)
-            implementation(ktorLibs.client.contentNegotiation)
-            implementation(ktorLibs.client.resources)
-            implementation(ktorLibs.serialization.kotlinx.json)
-            implementation(ktorLibs.client.js)
+                implementation(libs.kotlinx.coroutines.core)
 
-            implementation(devNpm("@swc/core", "1.16.1"))
-            implementation(npm("esptool-js", "0.7.0"))
+                implementation(project.dependencies.platform(libs.koin.bom))
+                implementation(libs.bundles.koin.web)
+
+                implementation(ktorLibs.client.core)
+                implementation(ktorLibs.client.contentNegotiation)
+                implementation(ktorLibs.client.resources)
+                implementation(ktorLibs.serialization.kotlinx.json)
+                implementation(ktorLibs.client.js)
+
+                implementation(devNpm("@swc/core", "1.16.1"))
+                implementation(npm("esptool-js", "0.7.0"))
+            }
         }
     }
 }
@@ -88,4 +97,40 @@ libres {
     generateNamedArguments = true
     generateInternalResourceClasses = true
     baseLocaleTag = "en"
+}
+
+tasks.named("build") {
+    finalizedBy(generateBuildConfig)
+}
+
+val generateBuildConfig = tasks.register("generateBuildConfig") {
+    group = "build"
+    description = "Generates BuildConfig with project information."
+
+    dependsOn("build")
+
+    val outputDir = layout.buildDirectory.dir("generated/source/buildConfig/jsMain/kotlin")
+    val buildVersion = version.toString()
+
+    outputs.dir(outputDir)
+
+    doLast {
+        val file = outputDir.get()
+            .dir("com")
+            .dir("cocot3ro")
+            .dir("smartac")
+            .dir("generated")
+            .file("BuildConfig.kt").asFile
+
+        file.parentFile.mkdirs()
+        file.writeText(
+            """
+            package com.cocot3ro.smartac.generated
+
+            object BuildConfig {
+                const val VERSION = "$buildVersion"
+            }
+            """.trimIndent()
+        )
+    }
 }

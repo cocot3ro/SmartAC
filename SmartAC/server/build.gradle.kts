@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.kotlin
+
 plugins {
     alias(libs.plugins.kotlinJvm)
     alias(ktorLibs.plugins.ktor)
@@ -51,4 +53,50 @@ dependencies {
 
 room3 {
     schemaDirectory("$projectDir/schemas")
+}
+
+kotlin {
+    sourceSets.main {
+        kotlin.srcDir(
+            layout.buildDirectory
+                .dir("generated/source/buildConfig/main/kotlin")
+                .get().asFile.toString()
+        )
+    }
+}
+
+tasks.named("build") {
+    finalizedBy(generateBuildConfig)
+}
+
+val generateBuildConfig = tasks.register("generateBuildConfig") {
+    group = "build"
+    description = "Generates BuildConfig with project information."
+
+    dependsOn("build")
+
+    val outputDir = layout.buildDirectory.dir("generated/source/buildConfig/main/kotlin")
+    val buildVersion = version.toString()
+
+    outputs.dir(outputDir)
+
+    doLast {
+        val file = outputDir.get()
+            .dir("com")
+            .dir("cocot3ro")
+            .dir("smartac")
+            .dir("generated")
+            .file("BuildConfig.kt").asFile
+
+        file.parentFile.mkdirs()
+        file.writeText(
+            """
+            package com.cocot3ro.smartac.generated
+
+            object BuildConfig {
+                const val VERSION = "$buildVersion"
+            }
+            """.trimIndent()
+        )
+    }
 }

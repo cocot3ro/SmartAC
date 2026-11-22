@@ -4,10 +4,7 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.dom.svg.Path
 import com.varabyte.kobweb.compose.dom.svg.SVGSvgAttrsScope
 import com.varabyte.kobweb.compose.dom.svg.Svg
-import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Color
-import com.varabyte.kobweb.compose.ui.modifiers.size
-import com.varabyte.kobweb.compose.ui.toAttrs
 import org.jetbrains.compose.web.css.px
 
 @Suppress("ModifierRequired")
@@ -15,111 +12,17 @@ import org.jetbrains.compose.web.css.px
 fun LanguageIcon(
     attrs: (SVGSvgAttrsScope.() -> Unit)? = null
 ) {
-    Svg(attrs = Modifier.size(24.px).toAttrs {
+    Svg(attrs = {
+        width(24.px)
+        height(24.px)
+
         viewBox(x = 0, y = 0, width = 24, height = 24)
         fill(Color.rgb(0xE3E3E3))
 
         attrs?.invoke(this)
     }) {
         Path {
-            d {
-                moveTo(8.13f, 21.21f)
-                quadraticBezierCurve(6.3f, 20.43f, 4.94f, 19.06f, false)
-                quadraticBezierCurve(3.58f, 17.7f, 2.79f, 15.88f, false)
-                smoothQuadraticBezierCurve(2f, 11.99f, false)
-                smoothQuadraticBezierCurve(2.79f, 8.11f, false)
-                smoothQuadraticBezierCurve(4.94f, 4.94f, false)
-                smoothQuadraticBezierCurve(8.13f, 2.79f, false)
-                smoothQuadraticBezierCurve(12.01f, 2f, false)
-                smoothQuadraticBezierCurve(3.88f, 0.79f, true)
-                smoothQuadraticBezierCurve(3.17f, 2.15f, true)
-                smoothQuadraticBezierCurve(2.15f, 3.17f, true)
-                smoothQuadraticBezierCurve(22f, 11.99f, false)
-                smoothQuadraticBezierCurve(-0.79f, 3.89f, true)
-                smoothQuadraticBezierCurve(-2.15f, 3.19f, true)
-                smoothQuadraticBezierCurve(-3.17f, 2.15f, true)
-                smoothQuadraticBezierCurve(12.01f, 22f, false)
-                smoothQuadraticBezierCurve(8.13f, 21.21f, false)
-                closePath()
-                moveTo(12f, 19.95f)
-                quadraticBezierCurve(0.65f, -0.9f, 1.13f, -1.88f, true)
-                smoothQuadraticBezierCurve(13.9f, 16f, false)
-                lineTo(10.1f, 16f)
-                quadraticBezierCurve(0.3f, 1.1f, 0.77f, 2.07f, true)
-                smoothQuadraticBezierCurve(12f, 19.95f, false)
-                closePath()
-                moveTo(9.4f, 19.55f)
-                quadraticBezierCurve(-0.45f, -0.82f, -0.79f, -1.71f, true)
-                smoothQuadraticBezierCurve(8.05f, 16f, false)
-                lineTo(5.1f, 16f)
-                quadraticBezierCurve(0.72f, 1.25f, 1.81f, 2.18f, true)
-                smoothQuadraticBezierCurve(9.4f, 19.55f, false)
-                closePath()
-                moveTo(14.6f, 19.55f)
-                quadraticBezierCurve(1.4f, -0.45f, 2.49f, -1.38f, true)
-                smoothQuadraticBezierCurve(18.9f, 16f, false)
-                lineTo(15.95f, 16f)
-                quadraticBezierCurve(-0.22f, 0.95f, -0.56f, 1.84f, true)
-                quadraticBezierCurve(-0.34f, 0.89f, -0.79f, 1.71f, true)
-                closePath()
-                moveTo(4.25f, 14f)
-                horizontalLineTo(3.4f, true)
-                quadraticBezierCurve(-0.08f, -0.5f, -0.11f, -0.99f, true)
-                smoothQuadraticBezierCurve(7.5f, 12f, false)
-                smoothQuadraticBezierCurve(0.04f, -1.01f, true)
-                smoothQuadraticBezierCurve(7.65f, 10f, false)
-                lineTo(4.25f, 10f)
-                quadraticBezierCurve(-0.13f, 0.5f, -0.19f, 0.99f, true)
-                quadraticBezierCurve(4f, 11.48f, 4f, 12f, false)
-                quadraticBezierCurve(0f, 0.52f, 0.06f, 1.01f, true)
-                smoothQuadraticBezierCurve(4.25f, 14f, false)
-                closePath()
-                moveTo(9.65f, 14f)
-                horizontalLineTo(4.7f, true)
-                quadraticBezierCurve(0.07f, -0.5f, 0.11f, -0.99f, true)
-                smoothQuadraticBezierCurve(14.5f, 12f, false)
-                smoothQuadraticBezierCurve(-0.04f, -1.01f, true)
-                smoothQuadraticBezierCurve(14.35f, 10f, false)
-                lineTo(9.65f, 10f)
-                quadraticBezierCurve(-0.07f, 0.5f, -0.11f, 0.99f, true)
-                quadraticBezierCurve(9.5f, 11.48f, 9.5f, 12f, false)
-                quadraticBezierCurve(0f, 0.52f, 0.04f, 1.01f, true)
-                quadraticBezierCurve(9.58f, 13.5f, 9.65f, 14f, false)
-                closePath()
-                moveTo(16.35f, 14f)
-                horizontalLineTo(3.4f, true)
-                quadraticBezierCurve(0.13f, -0.5f, 0.19f, -0.99f, true)
-                smoothQuadraticBezierCurve(20f, 12f, false)
-                smoothQuadraticBezierCurve(-0.06f, -1.01f, true)
-                smoothQuadraticBezierCurve(19.75f, 10f, false)
-                horizontalLineTo(-3.4f, true)
-                quadraticBezierCurve(0.07f, 0.5f, 0.11f, 0.99f, true)
-                quadraticBezierCurve(16.5f, 11.48f, 16.5f, 12f, false)
-                quadraticBezierCurve(0f, 0.52f, -0.04f, 1.01f, true)
-                smoothQuadraticBezierCurve(16.35f, 14f, false)
-                closePath()
-                moveTo(15.95f, 8f)
-                lineTo(18.9f, 8f)
-                quadraticBezierCurve(-0.73f, -1.25f, -1.81f, -2.18f, true)
-                smoothQuadraticBezierCurve(14.6f, 4.45f, false)
-                quadraticBezierCurve(0.45f, 0.82f, 0.79f, 1.71f, true)
-                smoothQuadraticBezierCurve(15.95f, 8f, false)
-                closePath()
-                moveTo(10.1f, 8f)
-                horizontalLineTo(3.8f, true)
-                quadraticBezierCurve(-0.3f, -1.1f, -0.78f, -2.07f, true)
-                smoothQuadraticBezierCurve(12f, 4.05f, false)
-                quadraticBezierCurve(-0.65f, 0.9f, -1.13f, 1.88f, true)
-                smoothQuadraticBezierCurve(10.1f, 8f, false)
-                closePath()
-                moveTo(5.1f, 8f)
-                lineTo(8.05f, 8f)
-                quadraticBezierCurve(8.28f, 7.05f, 8.61f, 6.16f, false)
-                smoothQuadraticBezierCurve(9.4f, 4.45f, false)
-                quadraticBezierCurve(8f, 4.9f, 6.91f, 5.82f, false)
-                smoothQuadraticBezierCurve(5.1f, 8f, false)
-                closePath()
-            }
+            d("M8.13,21.21Q6.3,20.43 4.94,19.06Q3.58,17.7 2.79,15.88T2,11.99T2.79,8.11T4.94,4.94T8.13,2.79T12.01,2t3.88,0.79t3.17,2.15t2.15,3.17T22,11.99t-0.79,3.89t-2.15,3.19t-3.17,2.15T12.01,22T8.13,21.21ZM12,19.95q0.65-0.9 1.13-1.88T13.9,16H10.1q0.3,1.1 0.77,2.07T12,19.95Zm-2.6-0.4q-0.45-0.82-0.79-1.71T8.05,16H5.1q0.72,1.25 1.81,2.18T9.4,19.55Zm5.2,0q1.4-0.45 2.49-1.38T18.9,16H15.95q-0.22,0.95-0.56,1.84q-0.34,0.89-0.79,1.71ZM4.25,14h3.4q-0.08-0.5-0.11-0.99T7.5,12t0.04-1.01T7.65,10H4.25q-0.13,0.5-0.19,0.99Q4,11.48 4,12q0,0.52 0.06,1.01T4.25,14Zm5.4,0h4.7q0.07-0.5 0.11-0.99T14.5,12t-0.04-1.01T14.35,10H9.65q-0.07,0.5-0.11,0.99Q9.5,11.48 9.5,12q0,0.52 0.04,1.01Q9.58,13.5 9.65,14Zm6.7,0h3.4q0.13-0.5 0.19-0.99T20,12t-0.06-1.01T19.75,10h-3.4q0.07,0.5 0.11,0.99Q16.5,11.48 16.5,12q0,0.52-0.04,1.01T16.35,14Zm-0.4-6H18.9q-0.73-1.25-1.81-2.18T14.6,4.45q0.45,0.82 0.79,1.71T15.95,8ZM10.1,8h3.8q-0.3-1.1-0.78-2.07T12,4.05q-0.65,0.9-1.13,1.88T10.1,8Zm-5,0H8.05Q8.28,7.05 8.61,6.16T9.4,4.45Q8,4.9 6.91,5.82T5.1,8Z")
         }
     }
 }

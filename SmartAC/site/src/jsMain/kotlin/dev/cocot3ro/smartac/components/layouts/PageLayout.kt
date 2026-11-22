@@ -8,6 +8,7 @@ import com.varabyte.kobweb.core.layout.Layout
 import dev.cocot3ro.smartac.components.sections.Footer
 import dev.cocot3ro.smartac.components.sections.Page
 import dev.cocot3ro.smartac.components.sections.SiteContainer
+import dev.cocot3ro.smartac.components.sections.SiteFooter
 import dev.cocot3ro.smartac.components.sections.SiteHeader
 import dev.cocot3ro.smartac.components.sections.SiteMenu
 import kotlinx.browser.document
@@ -96,6 +97,6 @@ fun PageLayout(
 
         SiteContainer(content = content)
 
-        Footer()
+        SiteFooter()
     }
 }
