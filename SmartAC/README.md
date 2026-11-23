@@ -32,9 +32,7 @@ commands and options:
 - Android app: `./gradlew :app:androidApp:assembleDebug`
 - iOS app: open the [/app/iosApp](./app/iosApp) directory in Xcode and run it from there.
 - Server: `./gradlew :server:run`
--
-    - Web app:
-
+- Web app:
     1. Install the KobWeb plugin
     2. `./gradlew kobwebStart -PkobwebEnv=DEV -PkobwebRunLayout=FULLSTACK -t --stacktrace`
 
