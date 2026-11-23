@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "dev.cocot3ro.smartac"
-version = "0.0.1"
+version = providers.gradleProperty("serverSiteVersion").get()
 
 application {
     mainClass = "dev.cocot3ro.smartac.MainKt"
