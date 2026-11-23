@@ -5,9 +5,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class VersionCheckResponse(
-    val current: VersionModel,
+    val current: Version,
 
-    val latest: VersionModel,
+    val latest: Version,
 
     @SerialName("update_available")
     val updateAvailable: Boolean

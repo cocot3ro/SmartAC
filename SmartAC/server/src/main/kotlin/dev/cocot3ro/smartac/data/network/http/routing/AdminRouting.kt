@@ -1,12 +1,12 @@
 package dev.cocot3ro.smartac.data.network.http.routing
 
+import com.cocot3ro.smartac.generated.BuildConfig
 import dev.cocot3ro.smartac.core.auth.AdminAuthRepository
 import dev.cocot3ro.smartac.core.auth.AdminPasswordVerifier
 import dev.cocot3ro.smartac.core.auth.AdminSession
 import dev.cocot3ro.smartac.data.network.model.HealthResponse
 import dev.cocot3ro.smartac.data.network.model.LoginRequest
 import dev.cocot3ro.smartac.data.network.model.VersionCheckResponse
-import dev.cocot3ro.smartac.data.network.model.VersionModel
 import dev.cocot3ro.smartac.data.network.routes.ChangePasswordRoute
 import dev.cocot3ro.smartac.data.network.routes.HealthRoute
 import dev.cocot3ro.smartac.data.network.routes.LoginRoute
@@ -17,6 +17,7 @@ import dev.cocot3ro.smartac.data.network.routes.VersionCheckRoute
 import dev.cocot3ro.smartac.modules.adminSessionAuth
 import dev.cocot3ro.smartac.plugins.setupCheck
 import dev.cocot3ro.smartac.utils.IsSetup
+import io.github.z4kn4fein.semver.toVersion
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.resources.get
 import io.ktor.server.resources.post
@@ -35,8 +36,7 @@ fun Route.adminRouting() {
         call.respond(
             message = HealthResponse(
                 setup = isSetup(),
-                // TODO: Replace with the real version
-                version = VersionModel(major = 0, minor = 0, patch = 1)
+                version = BuildConfig.VERSION.toVersion()
             )
         )
     }
@@ -44,8 +44,9 @@ fun Route.adminRouting() {
     get<VersionCheckRoute> { _: VersionCheckRoute ->
         call.respond(
             message = VersionCheckResponse(
-                current = VersionModel(major = 0, minor = 0, patch = 1),
-                latest = VersionModel(major = 0, minor = 0, patch = 2),
+                current = BuildConfig.VERSION.toVersion(),
+                // TODO: Replace with the real version
+                latest = "0.0.2".toVersion(),
                 updateAvailable = true
             )
         )

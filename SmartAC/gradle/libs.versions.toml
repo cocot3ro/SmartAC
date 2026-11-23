@@ -33,6 +33,7 @@ coroutines = "1.11.0"
 kobweb = "0.25.1"
 libres = "2.0.0-beta03"
 kotlin-wrappers = "2026.11.2"
+semverVersion = "3.1.0"
 
 
 [libraries]
@@ -97,6 +98,8 @@ kobweb-silk = { module = "com.varabyte.kobweb:kobweb-silk", version.ref = "kobwe
 libres-gradle-plugin = { module = "io.github.skeptick.libres:gradle-plugin", version.ref = "libres" }
 
 wrappers-browser = { module = "org.jetbrains.kotlin-wrappers:kotlin-browser", version.ref = "kotlin-wrappers" }
+
+semver = { module = "io.github.z4kn4fein:semver", version.ref = "semverVersion" }
 
 
 [plugins]

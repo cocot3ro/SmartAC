@@ -11,6 +11,11 @@ kotlin {
 
     jvm()
 
+    js {
+        browser()
+        binaries.library()
+    }
+
     android {
         namespace = "dev.cocot3ro.smartac.core"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
@@ -31,8 +36,9 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            // put your Multiplatform dependencies here
+            api(libs.semver)
         }
+
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
