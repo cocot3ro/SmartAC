@@ -99,15 +99,18 @@ libres {
     baseLocaleTag = "en"
 }
 
-tasks.named("build") {
-    finalizedBy(generateBuildConfig)
+tasks.configureEach {
+    if (
+        name.startsWith("ksp") ||
+        name.startsWith("compileKotlin")
+    ) {
+        dependsOn(generateBuildConfig)
+    }
 }
 
 val generateBuildConfig = tasks.register("generateBuildConfig") {
     group = "build"
     description = "Generates BuildConfig with project information."
-
-    dependsOn("build")
 
     val outputDir = layout.buildDirectory.dir("generated/source/buildConfig/jsMain/kotlin")
     val buildVersion = version.toString()

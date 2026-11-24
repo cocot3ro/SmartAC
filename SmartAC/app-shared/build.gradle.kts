@@ -13,7 +13,7 @@ kotlin {
     jvm()
 
     android {
-        namespace = "dev.cocot3ro.smartac.app-shared"
+        namespace = "dev.cocot3ro.smartac.app_shared"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
 
@@ -32,7 +32,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.core)
+            api(projects.core)
 
             implementation(libs.kotlinx.serialization.core)
 
