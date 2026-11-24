@@ -10,7 +10,10 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
-    jvm()
+    js {
+        browser()
+        binaries.executable()
+    }
 
     android {
         namespace = "dev.cocot3ro.smartac.client_shared"
