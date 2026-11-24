@@ -42,12 +42,17 @@ fun Route.adminRouting() {
     }
 
     get<VersionCheckRoute> { _: VersionCheckRoute ->
+
+        val current = BuildConfig.VERSION.toVersion()
+
+        // TODO: Replace with the real version, result of querying github/releases/latest
+        val latest = "0.0.2".toVersion()
+
         call.respond(
             message = VersionCheckResponse(
-                current = BuildConfig.VERSION.toVersion(),
-                // TODO: Replace with the real version
-                latest = "0.0.2".toVersion(),
-                updateAvailable = true
+                current = current,
+                latest = latest,
+                updateAvailable = latest > current
             )
         )
     }
