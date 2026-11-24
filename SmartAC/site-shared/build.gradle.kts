@@ -1,3 +1,8 @@
+import com.squareup.kotlinpoet.FileSpec
+import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.PropertySpec
+import com.squareup.kotlinpoet.TypeSpec
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.kotlin.serialization)
@@ -8,28 +13,29 @@ val generateBuildConfig = tasks.register("generateBuildConfig") {
     description = "Generates BuildConfig with project information."
 
     val outputDir = layout.buildDirectory.dir("generated/source/buildConfig/main/kotlin")
-    val buildVersion = version.toString()
+    val buildVersion = providers.gradleProperty("serverSiteVersion").get()
 
     outputs.dir(outputDir)
 
     doLast {
-        val file = outputDir.get()
-            .dir("com")
-            .dir("cocot3ro")
-            .dir("smartac")
-            .dir("generated")
-            .file("BuildConfig.kt").asFile
+        val file = outputDir.get().asFile
 
         file.parentFile.mkdirs()
-        file.writeText(
-            """
-            package com.cocot3ro.smartac.generated
 
-            object BuildConfig {
-                const val VERSION = "$buildVersion"
-            }
-            """.trimIndent()
-        )
+        FileSpec.builder("com.cocot3ro.smartac.generated", "BuildConfig")
+            .addType(
+                TypeSpec.objectBuilder("BuildConfig")
+                    .addProperty(
+                        PropertySpec
+                            .builder("VERSION", String::class)
+                            .addModifiers(KModifier.CONST)
+                            .initializer("%S", buildVersion)
+                            .build()
+                    )
+                    .build()
+            )
+            .build()
+            .writeTo(file)
     }
 }
 
