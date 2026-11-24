@@ -66,6 +66,7 @@ kotlin {
 
             dependencies {
                 implementation(projects.siteShared)
+                api(projects.clientShared)
 
                 implementation(libs.wrappers.browser)
 

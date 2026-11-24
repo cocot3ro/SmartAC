@@ -46,6 +46,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.appShared)
+            api(projects.clientShared)
+
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
             implementation(libs.compose.material3)

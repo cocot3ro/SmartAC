@@ -20,9 +20,14 @@ This is a Kotlin Multiplatform project targeting Android, iOS, Server.
 
 * [/site](./site) contains a KobWeb application.
 
-* [/site-shared](./site-shared) is for the code shared between the server and the site project.
-
 * [/server](./server/src/main/kotlin) is for the Ktor server application.
+
+* [/site-shared](./site-shared) is for the code shared between the server and the `site` project.
+
+* [/app-shared](./app-shared) is for the code shared between the server and the `app` project.
+
+* [/client-shared](./client-shared) is for the code shared between the `site` and the `app`
+  projects.
 
 ### Running the apps
 
