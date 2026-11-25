@@ -29,6 +29,22 @@ This is a Kotlin Multiplatform project targeting Android, iOS, Server.
 * [/client-shared](./client-shared) is for the code shared between the `site` and the `app`
   projects.
 
+```mermaid
+    flowchart TD;
+        core --> site-shared;
+        core --> app-shared;
+        core --> client-shared;
+        
+        site-shared --> site;
+        site-shared --> server;
+        
+        app-shared --> app;
+        app-shared --> server;
+        
+        client-shared --> app;
+        client-shared --> site;
+```
+
 ### Running the apps
 
 Use the run configurations provided by the run widget in your IDE's toolbar. You can also use these
