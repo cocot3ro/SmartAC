@@ -1,12 +1,15 @@
 package dev.cocot3ro.smartac.pages
 
 import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
+import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.text.SpanText
 import dev.cocot3ro.smartac.components.layouts.PageLayoutData
+import dev.cocot3ro.smartac.notifications.NotificationManager
 
 @InitRoute
 fun initHomePage(ctx: InitRouteContext) {
@@ -17,7 +20,15 @@ fun initHomePage(ctx: InitRouteContext) {
 @Page
 @Composable
 fun HomePage() {
-    SpanText("Dashboard")
+//    SpanText("Dashboard")
+    Button(onClick = {
+        NotificationManager.success("success", "success")
+        NotificationManager.error("error", "error")
+        NotificationManager.warning("warning", "warning")
+        NotificationManager.info("info", "info")
+    }) {
+        SpanText("Notificación")
+    }
 }
 
 /*

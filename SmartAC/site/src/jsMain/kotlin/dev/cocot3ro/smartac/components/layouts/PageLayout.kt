@@ -2,16 +2,23 @@ package dev.cocot3ro.smartac.components.layouts
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import com.varabyte.kobweb.compose.foundation.layout.Box
+import com.varabyte.kobweb.compose.ui.Alignment
+import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.zIndex
+import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.data.getValue
 import com.varabyte.kobweb.core.layout.Layout
-import dev.cocot3ro.smartac.components.sections.Footer
+import dev.cocot3ro.smartac.components.notifications.NotificationHost
 import dev.cocot3ro.smartac.components.sections.Page
 import dev.cocot3ro.smartac.components.sections.SiteContainer
 import dev.cocot3ro.smartac.components.sections.SiteFooter
 import dev.cocot3ro.smartac.components.sections.SiteHeader
 import dev.cocot3ro.smartac.components.sections.SiteMenu
 import kotlinx.browser.document
+import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.dom.Div
 
 /*
@@ -95,7 +102,17 @@ fun PageLayout(
             SiteMenu()
         }
 
-        SiteContainer(content = content)
+        Box {
+            SiteContainer(content = content)
+
+            NotificationHost(
+                attrs = Modifier
+                    .align(Alignment.TopEnd)
+                    .margin(topBottom = 1.cssRem, leftRight = 1.cssRem)
+                    .zIndex(9999)
+                    .toAttrs()
+            )
+        }
 
         SiteFooter()
     }
